@@ -1,269 +1,395 @@
 Element1,Element2,Result,IconFilename
-Grass,Scythe,Hay,hay.png
-Grass,Farmer,Hay,hay.png
-Grass,Sun,Hay,hay.png
-Ring,Volcano,The one ring,the_one_ring.png
-Sea,Wind,Wave,wave.png
-Ocean,Wind,Wave,wave.png
-Wild animal,Human,Dog,dog.png
-Wolf,Bone,Dog,dog.png
-Flower,Wild animal,Bee,bee.png
-Light,House,Lighthouse,lighthouse.png
-Light,Beach,Lighthouse,lighthouse.png
-Light,Sea,Lighthouse,lighthouse.png
-Light,Ocean,Lighthouse,lighthouse.png
-Desert,Grave,Pyramid,pyramid.png
-Desert,Stone,Pyramid,pyramid.png
-Deity,Fruit,Dionysus,dionysus.png
-Deity,Wine,Dionysus,dionysus.png
-Deity,Beer,Dionysus,dionysus.png
-Deity,Alcohol,Dionysus,dionysus.png
-Deity,Drunk,Dionysus,dionysus.png
-Blood,Container,Blood bag,blood_bag.png
-Blood,Sack,Blood bag,blood_bag.png
-Blood,Bottle,Blood bag,blood_bag.png
-Blood,BagFanon,Blood bag,blood_bag.png
-Windmill,Knight,Don quixote,don_quixote.png
-Dinosaur,Air,Pterodactyl,pterodactyl.png
-Dinosaur,Bird,Pterodactyl,pterodactyl.png
-Blood,Ocean,Shark,shark.png
-Blood,Sea,Shark,shark.png
-Wild animal,Ocean,Shark,shark.png
-Wild animal,Sea,Shark,shark.png
-Plant,Fire,Tobacco,tobacco.png
-Petroleum,Machine,Combustion engine,combustion_engine.png
-Petroleum,Wheel,Combustion engine,combustion_engine.png
-Petroleum,Steam engine,Combustion engine,combustion_engine.png
-Explosion,Machine,Combustion engine,combustion_engine.png
-Explosion,Steam engine,Combustion engine,combustion_engine.png
-Plant,Cloud,Cotton,cotton.png
-Farmer,Field,Wheat,wheat.png
-Farmer,Plant,Wheat,wheat.png
-Steamboat,Iceberg,Titanic,titanic.png
-Deity,Sky,Zeus,zeus.png
-Deity,Mount olympus,Zeus,zeus.png
-Clock,Bird,Cuckoo,cuckoo.png
-Blood,Fabric,Bandage,bandage.png
-House,Wolf,Cave,cave.png
-House,Lion,Cave,cave.png
-House,Fox,Cave,cave.png
-House,Bat,Cave,cave.png
-Container,Wolf,Cave,cave.png
-Container,Lion,Cave,cave.png
-Container,Fox,Cave,cave.png
-Container,Bat,Cave,cave.png
-Day,Night,Dawn,dawn.png
-Time,Night,Dawn,dawn.png
-Tobacco,Paper,Cigarette,cigarette.png
-Bird,Night,Owl,owl.png
-Bird,Wizard,Owl,owl.png
-Coconut,Tool,Coconut milk,coconut_milk.png
-Coconut,Milk,Coconut milk,coconut_milk.png
-Livestock,Bird,Chicken,chicken.png
-Egg,Livestock,Chicken,chicken.png
-Bird,Farmer,Chicken,chicken.png
-Cow,Sea,Manatee,manatee.png
+Wizard,Broom,Witch,witch.png
+Human,Broom,Witch,witch.png
+Crystal eggFanon,Human,Witch,witch.png
+Lava,Lamp,Lava lamp,lava_lamp.png
+Sea,Ice,Iceberg,iceberg.png
+Ocean,Ice,Iceberg,iceberg.png
+Sea,Antarctica,Iceberg,iceberg.png
+Ocean,Antarctica,Iceberg,iceberg.png
+Fruit,Blender,Smoothie,smoothie.png
+House,Firefighter,Firestation,firestation.png
+House,Firetruck,Firestation,firestation.png
+Firefighter,Land,Firestation,firestation.png
+Firefighter,Village,Firestation,firestation.png
+Firefighter,City,Firestation,firestation.png
+Rainbow,Horse,Unicorn,unicorn.png
+Rainbow,Life,Unicorn,unicorn.png
+Double rainbow!,Horse,Unicorn,unicorn.png
+Double rainbow!,Life,Unicorn,unicorn.png
+Grass,House,Lawn,lawn.png
+Grass,Container,Lawn,lawn.png
+Grass,Lawn mower,Lawn,lawn.png
+Field,Lawn mower,Lawn,lawn.png
+Space,Container,Universe,universe.png
+Galaxy cluster,Galaxy cluster,Universe,universe.png
+Galaxy cluster,Container,Universe,universe.png
+Primordial soup,Cosmic egg,Universe,universe.png
+Sugar,Confetti,Sprinkles,sprinkles.png
+Gunpowder,Pirate ship,Cannon,cannon.png
+Gunpowder,Castle,Cannon,cannon.png
+Tool,Mountain goat,Cashmere,cashmere.png
+Thread,Mountain goat,Cashmere,cashmere.png
+Fabric,Mountain goat,Cashmere,cashmere.png
+Scissors,Mountain goat,Cashmere,cashmere.png
+Wool,Mountain goat,Cashmere,cashmere.png
+Tree,Fire,Charcoal,charcoal.png
+Wood,Fire,Charcoal,charcoal.png
+Snow,Human,Snowman,snowman.png
+Snowball,Snowball,Snowman,snowman.png
+Carrot,Snowball,Snowman,snowman.png
+Carrot,Snow,Snowman,snowman.png
+Letter,Computer,Email,email.png
+Letter,Internet,Email,email.png
+Giant,Axe,Paul bunyan,paul_bunyan.png
+Giant,Lumberjack,Paul bunyan,paul_bunyan.png
+Container,Wood,Bucket,bucket.png
+Container,Yogurt,Bucket,bucket.png
+Container,Paint,Bucket,bucket.png
+Bottle,River,Bucket,bucket.png
+Bottle,Paint,Bucket,bucket.png
+Chicken wing,Container,Bucket,bucket.png
+Chicken wing,Box,Bucket,bucket.png
+Letter,Box,Mailbox,mailbox.png
+Letter,Metal,Mailbox,mailbox.png
+Letter,Steel,Mailbox,mailbox.png
+Letter,Wood,Mailbox,mailbox.png
+Mailman,Box,Mailbox,mailbox.png
+Mailman,Metal,Mailbox,mailbox.png
+Mailman,Steel,Mailbox,mailbox.png
+Mailman,Wood,Mailbox,mailbox.png
 Bicycle,Human,Cyclist,cyclist.png
-Sword,Stone,Excalibur,excalibur.png
-Human,Library,Librarian,librarian.png
-Air,Steam,Cloud,cloud.png
-Sword,Sailor,Pirate,pirate.png
-Sailor,Pirate ship,Pirate,pirate.png
-Sand,Plant,Cactus,cactus.png
-Desert,Plant,Cactus,cactus.png
-Human,Hay,Scarecrow,scarecrow.png
+Wood,Life,Pinocchio,pinocchio.png
+Hammer,Boulder,Ore,ore.png
+Hammer,Earth,Ore,ore.png
+Hammer,Rock,Ore,ore.png
+Hammer,Stone,Ore,ore.png
+Hammer,Hill,Ore,ore.png
+Hammer,Mountain,Ore,ore.png
+Human,Lion,Sphinx,sphinx.png
+Human,Telescope,Science,science.png
+Human,Microscope,Science,science.png
+Human,Universe,Science,science.png
+Gunpowder,Wire,Dynamite,dynamite.png
+Fire,Clay,Pottery,pottery.png
+Clay,Wheel,Pottery,pottery.png
+Clay,Tool,Pottery,pottery.png
+Ice,Mountain,Glacier,glacier.png
+Bird,Metal,Airplane,airplane.png
+Bird,Steel,Airplane,airplane.png
+Butterfly,Net,Butterfly net,butterfly_net.png
+Bee,Net,Butterfly net,butterfly_net.png
+Lizard,Fire,Dragon,dragon.png
+Wood,Leather,Drum,drum.png
+Wizard,Evil,Necromancer,necromancer.png
+Wizard,Curse,Necromancer,necromancer.png
+Witch,Evil,Necromancer,necromancer.png
+Witch,Curse,Necromancer,necromancer.png
+Black magicFanon,Human,Necromancer,necromancer.png
+Black magicFanon,Evil,Necromancer,necromancer.png
+Bird,Earth,Ostrich,ostrich.png
+Bird,Sand,Ostrich,ostrich.png
+Vegetable,Fire,Pumpkin,pumpkin.png
+Vegetable,Light,Pumpkin,pumpkin.png
+Corpse,Legend,Frankenstein's monster,frankenstein's_monster.png
+Corpse,Lightning,Frankenstein's monster,frankenstein's_monster.png
+Corpse,Electricity,Frankenstein's monster,frankenstein's_monster.png
+Corpse,Story,Frankenstein's monster,frankenstein's_monster.png
+Zombie,Electricity,Frankenstein's monster,frankenstein's_monster.png
+Zombie,Lightning,Frankenstein's monster,frankenstein's_monster.png
+Monster,Story,Frankenstein's monster,frankenstein's_monster.png
+Monster,Corpse,Frankenstein's monster,frankenstein's_monster.png
+Cup,Immortality,Holy grail,holy_grail.png
+Cup,Good,Holy grail,holy_grail.png
+Meat,Smoke,Ham,ham.png
+Egg,Deity,Cosmic egg,cosmic_egg.png
+Universe,OvalFanon,Cosmic egg,cosmic_egg.png
 Cat,Plant,Catnip,catnip.png
-Computer,Small,Laptop,laptop.png
-Moon,Time,Night,night.png
-Time,Day,Night,night.png
-Sky,Moon,Night,night.png
-Wild animal,Milk,Cat,cat.png
-Human,Wave,Surfer,surfer.png
-Sugar,Fire,Caramel,caramel.png
-Mouse,Computer,Computer mouse,computer_mouse.png
-Fish,Electricity,Electric eel,electric_eel.png
-Bird,House,Birdhouse,birdhouse.png
-Mouse,Tree,Squirrel,squirrel.png
-Robot,Vacuum cleaner,Robot vacuum,robot_vacuum.png
-Robot,Broom,Robot vacuum,robot_vacuum.png
-Computer,Vacuum cleaner,Robot vacuum,robot_vacuum.png
-Computer,Broom,Robot vacuum,robot_vacuum.png
-Steam,Metal,Boiler,boiler.png
-Mountain,River,Waterfall,waterfall.png
-Tool,Wheel,Machine,machine.png
-Tool,Tool,Machine,machine.png
-Tool,Chain,Machine,machine.png
-Tool,Engineer,Machine,machine.png
-Boiler,Wheel,Machine,machine.png
-Boiler,Tool,Machine,machine.png
-Boiler,Chain,Machine,machine.png
-Water,Pipe,Water pipe,water_pipe.png
-Doctor,Needle,Syringe,syringe.png
-Tool,Needle,Syringe,syringe.png
-Squirrel,Bird,Flying squirrel,flying_squirrel.png
-Squirrel,Wind,Flying squirrel,flying_squirrel.png
-Squirrel,Airplane,Flying squirrel,flying_squirrel.png
-Sky,Squirrel,Flying squirrel,flying_squirrel.png
-Gun,Electricity,Stun gun,stun_gun.png
-Gun,Wire,Stun gun,stun_gun.png
-Gun,Energy,Stun gun,stun_gun.png
-Bow,Electricity,Stun gun,stun_gun.png
-Bow,Energy,Stun gun,stun_gun.png
-Human,Light bulb,Idea,idea.png
-Nerd,Light bulb,Idea,idea.png
-Oil,Ash,Soap,soap.png
-Snow,Wood,Snowboard,snowboard.png
-Snow,Surfer,Snowboard,snowboard.png
+Corpse,Time,Skeleton,skeleton.png
+Bone,Bone,Skeleton,skeleton.png
+Goat,Human,Faun,faun.png
+Monster,Bridge,Troll,troll.png
+Monster,Cave,Troll,troll.png
+Monster,Mountain,Troll,troll.png
+Monster,Mountain range,Troll,troll.png
+Giant,Bridge,Troll,troll.png
+Giant,Cave,Troll,troll.png
+Giant,Mountain,Troll,troll.png
+Giant,Mountain range,Troll,troll.png
+Wild animal,Ice,Penguin,penguin.png
+Bird,Ice,Penguin,penguin.png
+Bird,Snow,Penguin,penguin.png
+Statue,Water,Fountain,fountain.png
+Pottery,Plant,Vase,vase.png
+Pottery,Flower,Vase,vase.png
+Plant,Wall,Ivy,ivy.png
+Container,Broom,Closet,closet.png
+Container,Toolbox,Closet,closet.png
+Container,Umbrella,Closet,closet.png
+Container,Robot vacuum,Closet,closet.png
+Container,Vacuum cleaner,Closet,closet.png
+Sun,Tool,Solar cell,solar_cell.png
+Tool,Container,Toolbox,toolbox.png
+Tool,Safe,Toolbox,toolbox.png
+Tool,Box,Toolbox,toolbox.png
+Hammer,Container,Toolbox,toolbox.png
+Hammer,Box,Toolbox,toolbox.png
+Ruler,Container,Toolbox,toolbox.png
+Ruler,Box,Toolbox,toolbox.png
+Steel wool,Container,Toolbox,toolbox.png
+Steel wool,Box,Toolbox,toolbox.png
+Chain,Box,Toolbox,toolbox.png
+Chain,Container,Toolbox,toolbox.png
+Pumpkin,Fire,Jack-o'-lantern,jack-o'-lantern.png
+Pumpkin,Blade,Jack-o'-lantern,jack-o'-lantern.png
+Pumpkin,Candle,Jack-o'-lantern,jack-o'-lantern.png
+House,Knight,Castle,castle.png
+Pig,Fire,Bacon,bacon.png
+Sun,Planet,Solar system,solar_system.png
+Snow,Snow,Blizzard,blizzard.png
+Snow,Wind,Blizzard,blizzard.png
+Snow,Storm,Blizzard,blizzard.png
+Sugar,Campfire,Marshmallows,marshmallows.png
+Glass,Blade,Blender,blender.png
+Blade,Electricity,Blender,blender.png
+Wind,Small,Gust,gust.png
+Air,Small,Gust,gust.png
+Fire,Wood,Campfire,campfire.png
+Dog,Internet,Doge,doge.png
+Dog,Computer,Doge,doge.png
+Faerie,Big,Elf,elf.png
+Swamp,Energy,Life,life.png
+Love,Time,Life,life.png
+Rain,Ice,Hail,hail.png
+Storm,Ice,Hail,hail.png
+Cloud,Ice,Hail,hail.png
+Gunpowder,Metal,Bullet,bullet.png
+Coffin,Earth,Grave,grave.png
+Corpse,Earth,Grave,grave.png
+Water,Rose,Perfume,perfume.png
+Water,Flower,Perfume,perfume.png
+Steam,Rose,Perfume,perfume.png
+Steam,Flower,Perfume,perfume.png
+Alcohol,Rose,Perfume,perfume.png
+Alcohol,Flower,Perfume,perfume.png
+Wild animal,Dune,Scorpion,scorpion.png
+Wild animal,Sand,Scorpion,scorpion.png
+Bird,Wood,Woodpecker,woodpecker.png
+House,Dough,Gingerbread house,gingerbread_house.png
+House,Gingerbread man,Gingerbread house,gingerbread_house.png
+Metal,Energy,Electricity,electricity.png
+Wind turbine,Wind,Electricity,electricity.png
+Solar cell,Sun,Electricity,electricity.png
+Solar cell,Light,Electricity,electricity.png
+Pig,Wild animal,Wild boar,wild_boar.png
+Pig,Forest,Wild boar,wild_boar.png
 Chocolate milk,Heat,Hot chocolate,hot_chocolate.png
 Chocolate,Heat,Hot chocolate,hot_chocolate.png
 Hot,Chocolate,Hot chocolate,hot_chocolate.png
 Hot,Chocolate milk,Hot chocolate,hot_chocolate.png
-Bee,House,Beehive,beehive.png
-Bee,Tree,Beehive,beehive.png
-Bee,OvalFanon,Beehive,beehive.png
-Hard roe,Human,Caviar,caviar.png
+Wheat,Milk,Cereal,cereal.png
 House,Sky,Skyscraper,skyscraper.png
-Flute,Flute,Pan flute,pan_flute.png
-Stone,Plant,Moss,moss.png
-Stone,Algae,Moss,moss.png
-Evil,Immortality,Demon,demon.png
-Evil,Deity,Demon,demon.png
-Evil,Angel,Demon,demon.png
-Human,Hell,Demon,demon.png
-Water,Plant,Algae,algae.png
-Sea,Plant,Algae,algae.png
-Ocean,Plant,Algae,algae.png
-Chicken,Wild animal,Fox,fox.png
-Air,Metal,Rust,rust.png
-Metal,Oxygen,Rust,rust.png
-Steel,Oxygen,Rust,rust.png
-Air,Steel,Rust,rust.png
-Egg,Oil,Mayonnaise,mayonnaise.png
-Tool,Hay,Pitchfork,pitchfork.png
-Tool,Nerd,Computer,computer.png
-Electricity,Nerd,Computer,computer.png
-Wire,Nerd,Computer,computer.png
-Car,Armor,Tank,tank.png
-Car,Gun,Tank,tank.png
-Kite,Big,Paraglider,paraglider.png
-Snow,Energy,Avalanche,avalanche.png
-Human,Fruit,Cook,cook.png
-Human,Vegetable,Cook,cook.png
-Human,Campfire,Cook,cook.png
-Human,Nuts,Cook,cook.png
-Wild animal,Ice,Penguin,penguin.png
-Bird,Ice,Penguin,penguin.png
-Bird,Snow,Penguin,penguin.png
-Bicycle,Energy,Motorcycle,motorcycle.png
-Bicycle,Steel,Motorcycle,motorcycle.png
-Tree,Family,Family tree,family_tree.png
-Human,Snowboard,Snowboarder,snowboarder.png
-Fire,Wall,Firewall,firewall.png
-Fruit,Monkey,Banana,banana.png
-House,Ice,Igloo,igloo.png
-House,Snow,Igloo,igloo.png
-Wheel,Metal,Car,car.png
-Ruins,Human,Archeologist,archeologist.png
-Ruins,Science,Archeologist,archeologist.png
-Cheese,Dough,Pizza,pizza.png
-Fish,Blood,Piranha,piranha.png
-Magic,Evil,Curse,curse.png
-Black magicFanon,Human,Curse,curse.png
-Necromancer,Black magicFanon,Curse,curse.png
-Wood,Bullet,Arrow,arrow.png
-Wood,Bow,Arrow,arrow.png
-Train,Mountain,Roller coaster,roller_coaster.png
-Mountain,Cart,Roller coaster,roller_coaster.png
-Wild animal,Cheese,Mouse,mouse.png
-Paper,Gold,Money,money.png
-Stone,Air,Sand,sand.png
-Stone,Wind,Sand,sand.png
-Water,Leaf,Tea,tea.png
-Tree,Wind,Leaf,leaf.png
-Beaver,Duck,Platypus,platypus.png
-Mountain,Bird,Eagle,eagle.png
-Small,Earth,Pebble,pebble.png
-Small,Stone,Pebble,pebble.png
-Small,Rock,Pebble,pebble.png
-Flour,Water,Dough,dough.png
-Shovel,Big,Excavator,excavator.png
-Shovel,Car,Excavator,excavator.png
-Water,Gun,Water gun,water_gun.png
-Tree,Farmer,Fruit,fruit.png
-Tree,Sun,Fruit,fruit.png
-Livestock,House,Barn,barn.png
-Cow,House,Barn,barn.png
-House,Hay,Barn,barn.png
-House,Sickness,Hospital,hospital.png
-House,Ambulance,Hospital,hospital.png
-House,Doctor,Hospital,hospital.png
-Dog,Sea,Seal,seal.png
-Flour,Milk,Batter,batter.png
-Water,Air,Rain,rain.png
-Cloud,Water,Rain,rain.png
-Human,House,Family,family.png
-Safe,Big,Vault,vault.png
-Horse,Bird,Pegasus,pegasus.png
-Horse,Sky,Pegasus,pegasus.png
-Unicorn,Bird,Pegasus,pegasus.png
-Container,Milk,Bottle,bottle.png
-Container,Water,Bottle,bottle.png
-Container,Coconut milk,Bottle,bottle.png
-Container,Juice,Bottle,bottle.png
-Container,Oil,Bottle,bottle.png
-Container,Alcohol,Bottle,bottle.png
-Container,Wine,Bottle,bottle.png
-Container,Beer,Bottle,bottle.png
-Container,Chocolate milk,Bottle,bottle.png
-Container,Soda,Bottle,bottle.png
-Container,Perfume,Bottle,bottle.png
-Container,Liquid,Bottle,bottle.png
-Plant,Earth,Grass,grass.png
-Sky,Cheese,Moon,moon.png
-Sky,Stone,Moon,moon.png
-Sea,Earthquake,Tsunami,tsunami.png
-Ocean,Earthquake,Tsunami,tsunami.png
-Wheel,Wood,Cart,cart.png
-Rainforest,Rope,Vine,vine.png
-Rainforest,Thread,Vine,vine.png
-Rainforest,Wire,Vine,vine.png
-Bird,Wood,Woodpecker,woodpecker.png
-Metal,Coal,Steel,steel.png
-Fruit,Immortality,Peach of immortality,peach_of_immortality.png
-Fruit tree,Immortality,Peach of immortality,peach_of_immortality.png
-Dog,Internet,Doge,doge.png
-Dog,Computer,Doge,doge.png
-Wool,Tool,Sweater,sweater.png
-Wool,Human,Sweater,sweater.png
-Wild animal,Pirate ship,Rat,rat.png
-Wild animal,Sailboat,Rat,rat.png
-Sand,Castle,Sand castle,sand_castle.png
-Sand,Paper,Sandpaper,sandpaper.png
+Fruit tree,Fruit tree,Orchard,orchard.png
+Fruit tree,Field,Orchard,orchard.png
 Airplane,Blade,Helicopter,helicopter.png
 Airplane,Windmill,Helicopter,helicopter.png
-Life,Rainbow,Magic,magic.png
-Life,Double rainbow!,Magic,magic.png
-Energy,Witch,Magic,magic.png
-Energy,Wizard,Magic,magic.png
-Metal,Life,Robot,robot.png
-Steel,Life,Robot,robot.png
-Life,Armor,Robot,robot.png
-Human,Future time,Robot,robot.png
-Cyborg,Future time,Robot,robot.png
-Butterfly,Net,Butterfly net,butterfly_net.png
-Bee,Net,Butterfly net,butterfly_net.png
-Earth,Fire,Lava,lava.png
-Earth,Hot,Lava,lava.png
-Space,House,Space station,space_station.png
-Diamond,Metal,Ring,ring.png
-Diamond,Gold,Ring,ring.png
-Big,Rock,Boulder,boulder.png
-Big,Stone,Boulder,boulder.png
-Small,Hill,Boulder,boulder.png
-Rock,Stone,Boulder,boulder.png
-Rock,Rock,Boulder,boulder.png
-Rock,Earth,Boulder,boulder.png
+Corpse,Curse,Jiangshi,jiangshi.png
+Corpse,Evil,Jiangshi,jiangshi.png
+Human,Human,Love,love.png
+Sunflower,Pressure,Oil,oil.png
+Hospital,Car,Ambulance,ambulance.png
+Doctor,Car,Ambulance,ambulance.png
+Sand,Mud,Clay,clay.png
+Egg,Fire,Omelette,omelette.png
+Egg,Hot,Omelette,omelette.png
+Gun,Blade,Bayonet,bayonet.png
+Gun,Sword,Bayonet,bayonet.png
+Animal,Ice,Polar bear,polar_bear.png
+Animal,Arctic,Polar bear,polar_bear.png
+Mailman,House,Post office,post_office.png
+Mailman,Wall,Post office,post_office.png
+Mailman,Container,Post office,post_office.png
+Mailman,Letter,Post office,post_office.png
+Letter,Letter,Post office,post_office.png
+Letter,House,Post office,post_office.png
+Letter,Wall,Post office,post_office.png
+Grass,Tool,Lawn mower,lawn_mower.png
+Electricity,Scythe,Lawn mower,lawn_mower.png
+Bird,Paper,Origami,origami.png
+Air,Pressure,Wind,wind.png
+Air,Energy,Wind,wind.png
+Sun,Time,Day,day.png
+Sun,Night,Day,day.png
+Time,Night,Day,day.png
+Sky,Sun,Day,day.png
+Stone,Space,Meteoroid,meteoroid.png
+Wild animal,Dog,Wolf,wolf.png
+Wild animal,Moon,Wolf,wolf.png
+Dog,Forest,Wolf,wolf.png
+Fire,Gun,Flamethrower,flamethrower.png
+Telescope,Telescope,Binoculars,binoculars.png
+Glasses,Glasses,Binoculars,binoculars.png
+Mountain,Car,Cable car,cable_car.png
+Mountain,Wire,Cable car,cable_car.png
+Mountain,Rope,Cable car,cable_car.png
+Mountain range,Car,Cable car,cable_car.png
+Mountain range,Wire,Cable car,cable_car.png
+Mountain range,Rope,Cable car,cable_car.png
+Tree,Blade,Sap,sap.png
+Flower,Pond,Water lily,water_lily.png
+Water,Glasses,Swim goggles,swim_goggles.png
+Car,Armor,Tank,tank.png
+Car,Gun,Tank,tank.png
+Tool,Tree,Wood,wood.png
+Planet,Small,Mercury,mercury.png
+Planet,Heat,Mercury,mercury.png
+Planet,Hot,Mercury,mercury.png
+Planet,DecompositionFanon,Mercury,mercury.png
+PlutoFanon,Big,Mercury,mercury.png
+Human,Castle,Monarch,monarch.png
+Human,Crown,Monarch,monarch.png
+Human,Excalibur,Monarch,monarch.png
+Fire,Sand,Glass,glass.png
+Sand,Electricity,Glass,glass.png
+Sand,Hot,Glass,glass.png
+Corpse,Life,Zombie,zombie.png
+Human,Zombie,Zombie,zombie.png
+Lizard,Rainbow,Chameleon,chameleon.png
+Lizard,Wizard,Chameleon,chameleon.png
+Monster,Chicken,Cockatrice,cockatrice.png
+Monster,Egg,Cockatrice,cockatrice.png
+Flour,Water,Dough,dough.png
+Explosion,Sky,Fireworks,fireworks.png
+Steam,Earth,Geyser,geyser.png
+Plant,Fire,Tobacco,tobacco.png
+Cup,Paper,Paper cup,paper_cup.png
+Immortality,Rock,Philosopher's stone,philosopher's_stone.png
+Immortality,Stone,Philosopher's stone,philosopher's_stone.png
+Immortality,Alchemist,Philosopher's stone,philosopher's_stone.png
+Magic box,Rock,Philosopher's stone,philosopher's_stone.png
+Magic box,Stone,Philosopher's stone,philosopher's_stone.png
+Horse,Wood,Trojan horse,trojan_horse.png
+Fog,Grass,Dew,dew.png
+Water,Grass,Dew,dew.png
+Mountain,Mountain,Mountain range,mountain_range.png
+Cow,Tool,Meat,meat.png
+Cow,Butcher,Meat,meat.png
+Pig,Tool,Meat,meat.png
+Pig,Butcher,Meat,meat.png
+Livestock,Blade,Meat,meat.png
+Livestock,Butcher,Meat,meat.png
+Human,Story,Philosophy,philosophy.png
+Human,Idea,Philosophy,philosophy.png
+Egg,Chicken,Philosophy,philosophy.png
+Nuts,Butter,Peanut butter,peanut_butter.png
+Nuts,Pressure,Peanut butter,peanut_butter.png
+Computer,Small,Laptop,laptop.png
+Pond,Motion,Stream,stream.png
+Rivulet,Big,Stream,stream.png
+River,Small,Stream,stream.png
+Bee,Beehive,Wax,wax.png
+Earth,Air,Dust,dust.png
+Sun,Vampire,Dust,dust.png
+Day,Vampire,Dust,dust.png
+Juice,Cold,Popsicle,popsicle.png
+Juice,Ice,Popsicle,popsicle.png
+Science,Star,Plasma,plasma.png
+Science,Sun,Plasma,plasma.png
+Hot,Hot,Plasma,plasma.png
+Heat,Heat,Plasma,plasma.png
+Hot,Pressure,Plasma,plasma.png
+Heat,Pressure,Plasma,plasma.png
+House,Fireplace,Chimney,chimney.png
+Smoke,Brick,Chimney,chimney.png
+Fireplace,Brick,Chimney,chimney.png
+Microscope,Glass,Bacteria,bacteria.png
+Swamp,Life,Bacteria,bacteria.png
+Blade,Metal,Sword,sword.png
+Blade,Steel,Sword,sword.png
+StickFanon,Idea,Sword,sword.png
+Dog,Sea,Seal,seal.png
+Doctor,Mold,Penicillin,penicillin.png
+Mermaid,Poseidon,Cyclops,cyclops.png
+Giant,Giant,Cyclops,cyclops.png
+Giant,Poseidon,Cyclops,cyclops.png
+Giant,Zeus,Cyclops,cyclops.png
+Time,Electricity,Clock,clock.png
+Time,Wheel,Clock,clock.png
+Time,Tool,Clock,clock.png
+Lava,Water,Obsidian,obsidian.png
+Sea,Earthquake,Tsunami,tsunami.png
+Ocean,Earthquake,Tsunami,tsunami.png
+Metal,Wood,Hammer,hammer.png
+Bird,Container,Birdcage,birdcage.png
+Bird,Safe,Birdcage,birdcage.png
+Bird,Wall,Birdcage,birdcage.png
+Bird,Cage,Birdcage,birdcage.png
+Bread,Ham,Sandwich,sandwich.png
+Bread,Cheese,Sandwich,sandwich.png
+Bread,Bacon,Sandwich,sandwich.png
+Bee,Flower,Honey,honey.png
+Bee,Beehive,Honey,honey.png
+Wall,Wood,Fence,fence.png
+Sea,Sun,Salt,salt.png
+Ocean,Sun,Salt,salt.png
+Sea,Fire,Salt,salt.png
+Ocean,Fire,Salt,salt.png
+Meat,Bread,Hamburger,hamburger.png
+Star,Star,Galaxy,galaxy.png
+Wild animal,Cat,Lion,lion.png
+Glasses,Tool,Safety glasses,safety_glasses.png
+Glasses,Explosion,Safety glasses,safety_glasses.png
+Glasses,Engineer,Safety glasses,safety_glasses.png
+Human,Hospital,Doctor,doctor.png
+Electricity,Cloud,Lightning,lightning.png
+Electricity,Storm,Lightning,lightning.png
+Electricity,Rain,Lightning,lightning.png
+Energy,Cloud,Lightning,lightning.png
+Energy,Storm,Lightning,lightning.png
+Energy,Rain,Lightning,lightning.png
+Land,Storm,Lightning,lightning.png
+Zeus,Tool,Lightning,lightning.png
+Cyclops,Tool,Lightning,lightning.png
+Santa,Christmas tree,Gift,gift.png
+Santa,Christmas stocking,Gift,gift.png
+Santa,Chimney,Gift,gift.png
+Santa,Fireplace,Gift,gift.png
+Santa,Cookie,Gift,gift.png
+Warrior,Holy grail,Paladin,paladin.png
+Warrior,Holy water,Paladin,paladin.png
+Warrior,Durendal,Paladin,paladin.png
+Warrior,Good,Paladin,paladin.png
+Knight,Holy grail,Paladin,paladin.png
+Knight,Holy water,Paladin,paladin.png
+Knight,Durendal,Paladin,paladin.png
+Knight,Good,Paladin,paladin.png
+Lava,Pressure,Granite,granite.png
+Volcano,Energy,Eruption,eruption.png
+Sand,Glass,Hourglass,hourglass.png
+Tree,Tree,Forest,forest.png
+Wool,Fireplace,Christmas stocking,christmas_stocking.png
 Glasses,Snow,Ski goggles,ski_goggles.png
+Human,Electricity,Electrician,electrician.png
+Human,Wire,Electrician,electrician.png
+Horse,Leather,Saddle,saddle.png
+Snow,Motorcycle,Snowmobile,snowmobile.png
+Snow,Car,Snowmobile,snowmobile.png
+Fabric,Paint,Canvas,canvas.png
+Egg,Sand,Turtle,turtle.png
+Shovel,Small,Spoon,spoon.png
+Paper,Gold,Money,money.png
+Sound,Metal,Bell,bell.png
+Sound,Steel,Bell,bell.png
+Sound,Wood,Bell,bell.png
+Metal,Hammer,Bell,bell.png
+Steel,Hammer,Bell,bell.png
+Human,Gold,Alchemist,alchemist.png
+Gold,Philosophy,Alchemist,alchemist.png
+Electricity,Glass,Light bulb,light_bulb.png
+Swamp,Plant,Peat,peat.png
+Swamp,Time,Peat,peat.png
+Swamp,Pressure,Peat,peat.png
+Time,Grass,Peat,peat.png
 Car,House,Garage,garage.png
 Car,Container,Garage,garage.png
 Car,Wall,Garage,garage.png
@@ -304,677 +430,135 @@ Ice cream truck,House,Garage,garage.png
 Ice cream truck,Container,Garage,garage.png
 Ice cream truck,Wall,Garage,garage.png
 Ice cream truck,Barn,Garage,garage.png
-Bee,Beehive,Wax,wax.png
-Human,Fishing rod,Angler,angler.png
-Fruit,Time,Alcohol,alcohol.png
-Juice,Time,Alcohol,alcohol.png
-Rainbow,Pencil,Crayon,crayon.png
-Rainbow,Wax,Crayon,crayon.png
-Earth,Energy,Earthquake,earthquake.png
-Earth,Wave,Earthquake,earthquake.png
-Cheese,Pasta,Mac and cheese,mac_and_cheese.png
-Air,Fire,Energy,energy.png
-Plant,Sun,Energy,energy.png
-Bird,Container,Birdcage,birdcage.png
-Bird,Safe,Birdcage,birdcage.png
-Bird,Wall,Birdcage,birdcage.png
-Bird,Cage,Birdcage,birdcage.png
-Pirate,Map,Treasure map,treasure_map.png
-Tool,Fish,Fishing rod,fishing_rod.png
-Wood,Fish,Fishing rod,fishing_rod.png
-Wood,Pencil,Ruler,ruler.png
-Fossil,Time,Petroleum,petroleum.png
-Fossil,Pressure,Petroleum,petroleum.png
-Grave,Stone,Gravestone,gravestone.png
-Galaxy,Galaxy,Galaxy cluster,galaxy_cluster.png
-Galaxy,Container,Galaxy cluster,galaxy_cluster.png
-Lava,Science,Magma,magma.png
-Volcano,Science,Magma,magma.png
-Hot,Science,Magma,magma.png
-Bird,Water,Duck,duck.png
-Bird,Pond,Duck,duck.png
-Bird,Lake,Duck,duck.png
-Time,Duckling,Duck,duck.png
-Rope,Cow,Lasso,lasso.png
-Rope,Horse,Lasso,lasso.png
-Pollen,Plant,Seed,seed.png
-Pollen,Bee,Seed,seed.png
-Time,Flower,Seed,seed.png
-Pig,Wild animal,Wild boar,wild_boar.png
-Pig,Forest,Wild boar,wild_boar.png
-Pirate,Treasure map,Treasure,treasure.png
-Science,Star,Plasma,plasma.png
-Science,Sun,Plasma,plasma.png
-Hot,Hot,Plasma,plasma.png
-Heat,Heat,Plasma,plasma.png
-Hot,Pressure,Plasma,plasma.png
-Heat,Pressure,Plasma,plasma.png
-Bird,Earth,Ostrich,ostrich.png
-Bird,Sand,Ostrich,ostrich.png
-Bird,Pirate,Parrot,parrot.png
-Blade,Heat,Katana,katana.png
-Blade,Hot,Katana,katana.png
-Blade,Shuriken,Katana,katana.png
-Blade,Ninja,Katana,katana.png
-Sword,Shuriken,Katana,katana.png
-Sword,Ninja,Katana,katana.png
-Wind,Surfer,Windsurfer,windsurfer.png
-Sand,Sand,Desert,desert.png
-Sand,Cactus,Desert,desert.png
-Cold,Sea,Arctic,arctic.png
-Cold,Ocean,Arctic,arctic.png
-Time,Life,Death,death.png
-Corpse,Philosophy,Death,death.png
-Skeleton,Philosophy,Death,death.png
-Meteor,Dinosaur,Death,death.png
-Grave,Philosophy,Death,death.png
-Graveyard,Philosophy,Death,death.png
-Cancer (disease)Fanon,Philosophy,Death,death.png
-Vegetable lamb,Time,Death,death.png
-Schrödinger's cat,Time,Death,death.png
-Wild animal,Dune,Scorpion,scorpion.png
-Wild animal,Sand,Scorpion,scorpion.png
-Human,Snake,Medusa,medusa.png
-Lava,Lamp,Lava lamp,lava_lamp.png
-Fire,Ice,Water,water.png
-Hot,Ice,Water,water.png
-Livestock,Mountain,Goat,goat.png
-Volcano,Sea,Island,island.png
-Volcano,Ocean,Island,island.png
-Maui's fishhook,Ocean,Island,island.png
-Maui's fishhook,Sea,Island,island.png
-Human,Cow,Minotaur,minotaur.png
-Wine,Time,Vinegar,vinegar.png
-Wine,Air,Vinegar,vinegar.png
-Wine,Oxygen,Vinegar,vinegar.png
-Livestock,Mud,Pig,pig.png
-Human,Gun,Corpse,corpse.png
-Human,Grim reaper,Corpse,corpse.png
-Human,Cancer (disease)Fanon,Corpse,corpse.png
-Human,Future time,Corpse,corpse.png
-Light bulb,Tree,Christmas tree,christmas_tree.png
-Star,Tree,Christmas tree,christmas_tree.png
-Rain,Tool,Umbrella,umbrella.png
-Rain,Fabric,Umbrella,umbrella.png
-Glass,Tool,Lens,lens.png
-Glass,Engineer,Lens,lens.png
-Sea,Ice,Iceberg,iceberg.png
-Ocean,Ice,Iceberg,iceberg.png
-Sea,Antarctica,Iceberg,iceberg.png
-Ocean,Antarctica,Iceberg,iceberg.png
-Wood,Coal,Pencil,pencil.png
-Wood,Charcoal,Pencil,pencil.png
-Small,Alchemist,Little alchemy (element),little_alchemy_(element).png
-AlchemyFanon,Small,Little alchemy (element),little_alchemy_(element).png
-Videogame,PolandFanon,Little alchemy (element),little_alchemy_(element).png
-Wire,Light,Optical fiber,optical_fiber.png
-Energy,Explosion,Atomic bomb,atomic_bomb.png
-Corpse,Pyramid,Mummy,mummy.png
-Brick,Brick,Wall,wall.png
-Paper,Flour,Recipe,recipe.png
-Paper,Baker,Recipe,recipe.png
-Blade,Metal,Sword,sword.png
-Blade,Steel,Sword,sword.png
-StickFanon,Idea,Sword,sword.png
-Cloud,Livestock,Sheep,sheep.png
-Mountain,Car,Cable car,cable_car.png
-Mountain,Wire,Cable car,cable_car.png
-Mountain,Rope,Cable car,cable_car.png
-Mountain range,Car,Cable car,cable_car.png
-Mountain range,Wire,Cable car,cable_car.png
-Mountain range,Rope,Cable car,cable_car.png
-Big,Birdcage,Aviary,aviary.png
-Rain,Forest,Rainforest,rainforest.png
-Animal,Human,Domestication,domestication.png
-Animal,Farmer,Domestication,domestication.png
-Animal,Science,Domestication,domestication.png
-Farmer,Science,Domestication,domestication.png
-Volcano,Energy,Eruption,eruption.png
-Metal,Horse,Horseshoe,horseshoe.png
-Sunflower,Pressure,Oil,oil.png
-Wild animal,Thread,Spider,spider.png
-Car,House,Rv,rv.png
-Paper,Cookie,Fortune cookie,fortune_cookie.png
-Clay,Fire,Brick,brick.png
-Mud,Fire,Brick,brick.png
-Clay,Sun,Brick,brick.png
-Mud,Sun,Brick,brick.png
-Plant,Time,Tree,tree.png
-Sword,Human,Warrior,warrior.png
-Goblin,Good,Faerie,faerie.png
-Human,Bird,Angel,angel.png
-Human,Garden,Gardener,gardener.png
-Pebble,Pebble,Rock,rock.png
-Pebble,Big,Rock,rock.png
-Boulder,Small,Rock,rock.png
-Explosion,Star,Supernova,supernova.png
-Explosion,Sun,Supernova,supernova.png
-Explosion,Galaxy,Supernova,supernova.png
-Explosion,Space,Supernova,supernova.png
-Bird,Flower,Hummingbird,hummingbird.png
-Tool,Mountain goat,Cashmere,cashmere.png
-Thread,Mountain goat,Cashmere,cashmere.png
-Fabric,Mountain goat,Cashmere,cashmere.png
-Scissors,Mountain goat,Cashmere,cashmere.png
-Wool,Mountain goat,Cashmere,cashmere.png
-Earth,Vegetable,Potato,potato.png
-Sandwich,Fire,Toast,toast.png
-Bread,Fire,Toast,toast.png
-Grass,Wild animal,Ant,ant.png
-Wild animal,Sugar,Ant,ant.png
-House,Wind,Windmill,windmill.png
-Wheel,Wind,Windmill,windmill.png
-Wood,Life,Pinocchio,pinocchio.png
-Human,Human,Love,love.png
-Dough,Oil,Donut,donut.png
-Tree,Sea,Coral,coral.png
-Tree,Ocean,Coral,coral.png
-Fossil,Sea,Coral,coral.png
-Fossil,Ocean,Coral,coral.png
-Bone,Sea,Coral,coral.png
-Bone,Ocean,Coral,coral.png
-Knight,Dragon,Hero,hero.png
-Meat,Bbq,Steak,steak.png
-Fire,Cow,Steak,steak.png
-Chocolate,Milk,Chocolate milk,chocolate_milk.png
-Flower,Pond,Water lily,water_lily.png
+Cow,Paul bunyan,Babe the blue ox,babe_the_blue_ox.png
+Cow,Giant,Babe the blue ox,babe_the_blue_ox.png
+Livestock,Paul bunyan,Babe the blue ox,babe_the_blue_ox.png
+Livestock,Giant,Babe the blue ox,babe_the_blue_ox.png
+Water,Good,Holy water,holy_water.png
+Water,Heaven,Holy water,holy_water.png
+Life,Death,Organic matter,organic_matter.png
+Life,Science,Organic matter,organic_matter.png
+Bacteria,Death,Organic matter,organic_matter.png
+Corpse,Science,Organic matter,organic_matter.png
+Human,Wood,House,house.png
+Human,Brick,House,house.png
+Tool,Brick,House,house.png
+Wall,Wall,House,house.png
 Human,Light sword,Force knight,force_knight.png
 Warrior,Light sword,Force knight,force_knight.png
 Knight,Light sword,Force knight,force_knight.png
-Clock,Sound,Alarm clock,alarm_clock.png
-Meat,Smoke,Ham,ham.png
-Fire,Dust,Gunpowder,gunpowder.png
-Goat,Mountain,Mountain goat,mountain_goat.png
-Goat,Mountain range,Mountain goat,mountain_goat.png
-Pilot,Fabric,Parachute,parachute.png
-Pilot,Umbrella,Parachute,parachute.png
-Human,Immortality,Deity,deity.png
-Human,Peach of immortality,Deity,deity.png
-Human,Philosopher's stone,Deity,deity.png
-Human,Fountain of youth,Deity,deity.png
-Human,Elixir of life,Deity,deity.png
-Human,Kaki,Deity,deity.png
-Human,Ichor,Deity,deity.png
-Hospital,Car,Ambulance,ambulance.png
-Doctor,Car,Ambulance,ambulance.png
-Snowboard,Wheel,Skateboard,skateboard.png
-Wood,Cheese,Mousetrap,mousetrap.png
-Metal,Cheese,Mousetrap,mousetrap.png
-Shovel,Small,Spoon,spoon.png
-Immortality,Rock,Philosopher's stone,philosopher's_stone.png
-Immortality,Stone,Philosopher's stone,philosopher's_stone.png
-Immortality,Alchemist,Philosopher's stone,philosopher's_stone.png
-Magic box,Rock,Philosopher's stone,philosopher's_stone.png
-Magic box,Stone,Philosopher's stone,philosopher's_stone.png
-Fire,Clay,Pottery,pottery.png
-Clay,Wheel,Pottery,pottery.png
-Clay,Tool,Pottery,pottery.png
-Metal,Wood,Hammer,hammer.png
-Tree,House,Treehouse,treehouse.png
-Statue,Water,Fountain,fountain.png
-Human,Dinosaur,Paleontologist,paleontologist.png
-Human,Fossil,Paleontologist,paleontologist.png
-Science,Dinosaur,Paleontologist,paleontologist.png
-Science,Fossil,Paleontologist,paleontologist.png
-Fruit,Tree,Fruit tree,fruit_tree.png
-Human,Lion,Sphinx,sphinx.png
-Light,Machine,Spotlight,spotlight.png
-Light,Metal,Spotlight,spotlight.png
-Light,Steel,Spotlight,spotlight.png
-Human,Fish,Mermaid,mermaid.png
-House,Cook,Restaurant,restaurant.png
-Earth,Life,Human,human.png
-MortalityFanon,Life,Human,human.png
-Black magicFanon,Corpse,Human,human.png
-Campfire,Fabric,Smoke signal,smoke_signal.png
-Smoke,Fabric,Smoke signal,smoke_signal.png
-Milk,Cold,Ice cream,ice_cream.png
-Milk,Ice,Ice cream,ice_cream.png
-Human,Oxygen,Carbon dioxide,carbon_dioxide.png
-Plant,Night,Carbon dioxide,carbon_dioxide.png
-Tree,Night,Carbon dioxide,carbon_dioxide.png
-Letter,Box,Mailbox,mailbox.png
-Letter,Metal,Mailbox,mailbox.png
-Letter,Steel,Mailbox,mailbox.png
-Letter,Wood,Mailbox,mailbox.png
-Mailman,Box,Mailbox,mailbox.png
-Mailman,Metal,Mailbox,mailbox.png
-Mailman,Steel,Mailbox,mailbox.png
-Mailman,Wood,Mailbox,mailbox.png
-Lava,Water,Obsidian,obsidian.png
-Water,Cold,Ice,ice.png
-Quicksilver,Glass,Thermometer,thermometer.png
-Quicksilver,Tool,Thermometer,thermometer.png
-Quicksilver,Engineer,Thermometer,thermometer.png
-Wood,Hay,Broom,broom.png
-Tool,Wood,Wheel,wheel.png
-Coal,Pressure,Diamond,diamond.png
-Coal,Time,Diamond,diamond.png
-Bird,Paper,Origami,origami.png
-Life,Stone,Egg,egg.png
-Bird,Bird,Egg,egg.png
-Turtle,Turtle,Egg,egg.png
-Lizard,Lizard,Egg,egg.png
-Bird,OvalFanon,Egg,egg.png
-Turtle,OvalFanon,Egg,egg.png
-Lizard,OvalFanon,Egg,egg.png
-Sun,Moon,Eclipse,eclipse.png
-Willy wonka,River,Chocolate,chocolate.png
-Fire,Alcohol,Fire,fire.png
-Fire,Coal,Fire,fire.png
-Rockstar,Lava,Fire,fire.png
-AppleFanon,File:Rocker 2.svg Rocker,Fire,fire.png
-Will-o'-the-wisp,RedFanon,Fire,fire.png
-House,Knight,Castle,castle.png
-Star,Fish,Starfish,starfish.png
-Star,Ocean,Starfish,starfish.png
-Star,Sea,Starfish,starfish.png
-Wood,House,Log cabin,log_cabin.png
-Santa,Wild animal,Reindeer,reindeer.png
-Santa,Livestock,Reindeer,reindeer.png
-Sap,Heat,Maple syrup,maple_syrup.png
-Sap,Hot,Maple syrup,maple_syrup.png
-Sap,Sugar,Maple syrup,maple_syrup.png
-House,Book,Library,library.png
-Air,Lava,Stone,stone.png
-House,Dough,Gingerbread house,gingerbread_house.png
-House,Gingerbread man,Gingerbread house,gingerbread_house.png
-Gunpowder,Metal,Bullet,bullet.png
-Mountain,Mountain,Mountain range,mountain_range.png
-Human,Bread,Baker,baker.png
-Human,Flour,Baker,baker.png
-Human,Dough,Baker,baker.png
-Human,Computer,Hacker,hacker.png
-Human,Computer mouse,Hacker,hacker.png
-Human,Glasses,Hacker,hacker.png
-Human,Internet,Hacker,hacker.png
-Cart,Horse,Wagon,wagon.png
-Bird,Corpse,Vulture,vulture.png
-Monster,Chicken,Cockatrice,cockatrice.png
-Monster,Egg,Cockatrice,cockatrice.png
-Hard roe,Time,Fish,fish.png
-Stone,Sand,Sandstone,sandstone.png
-Wine,Container,Barrel,barrel.png
-Wine,Wood,Barrel,barrel.png
-Grass,House,Lawn,lawn.png
-Grass,Container,Lawn,lawn.png
-Grass,Lawn mower,Lawn,lawn.png
-Field,Lawn mower,Lawn,lawn.png
-Rain,Smoke,Acid rain,acid_rain.png
-Rain,Smog,Acid rain,acid_rain.png
-Human,Clock,Watch,watch.png
-Airplane,Water,Seaplane,seaplane.png
-Airplane,Sea,Seaplane,seaplane.png
-Airplane,Ocean,Seaplane,seaplane.png
-Farmer,Cow,Milk,milk.png
-Cow,Human,Milk,milk.png
-Bread,Ham,Sandwich,sandwich.png
-Bread,Cheese,Sandwich,sandwich.png
-Bread,Bacon,Sandwich,sandwich.png
-Gunpowder,Fire,Explosion,explosion.png
-Ice,Statue,Ice sculpture,ice_sculpture.png
-Air,Cloud,Sky,sky.png
-Gun,Blade,Bayonet,bayonet.png
-Gun,Sword,Bayonet,bayonet.png
-Lava,Earth,Volcano,volcano.png
-Lava,Mountain,Volcano,volcano.png
-Fire,Mountain,Volcano,volcano.png
-Fabric,Paint,Canvas,canvas.png
-Human,Field,Farmer,farmer.png
-Human,Plant,Farmer,farmer.png
-Human,Pitchfork,Farmer,farmer.png
-Yogurt,Cold,Frozen yogurt,frozen_yogurt.png
-Yogurt,Ice,Frozen yogurt,frozen_yogurt.png
-Star,Pressure,Black hole,black_hole.png
-Metal,Liquid,Quicksilver,quicksilver.png
-Santa,Christmas tree,Gift,gift.png
-Santa,Christmas stocking,Gift,gift.png
-Santa,Chimney,Gift,gift.png
-Santa,Fireplace,Gift,gift.png
-Santa,Cookie,Gift,gift.png
-Wild animal,Time,Sloth,sloth.png
-Earth,Metal,Plow,plow.png
-Earth,Steel,Plow,plow.png
-Earth,Wood,Plow,plow.png
-Field,Metal,Plow,plow.png
-Field,Steel,Plow,plow.png
-Field,Wood,Plow,plow.png
-Field,Tool,Plow,plow.png
-Fire,Sand,Glass,glass.png
-Sand,Electricity,Glass,glass.png
-Sand,Hot,Glass,glass.png
-Vegetable,Fire,Pumpkin,pumpkin.png
-Vegetable,Light,Pumpkin,pumpkin.png
-Human,Katana,Samurai,samurai.png
-Wild animal,Cat,Lion,lion.png
-Wind,Small,Gust,gust.png
-Air,Small,Gust,gust.png
-Monster,Bridge,Troll,troll.png
-Monster,Cave,Troll,troll.png
-Monster,Mountain,Troll,troll.png
-Monster,Mountain range,Troll,troll.png
-Giant,Bridge,Troll,troll.png
-Giant,Cave,Troll,troll.png
-Giant,Mountain,Troll,troll.png
-Giant,Mountain range,Troll,troll.png
-Human,Old,Monkey,monkey.png
-Wild animal,Tree,Monkey,monkey.png
-Bird,Sea,Seagull,seagull.png
-Bird,Ocean,Seagull,seagull.png
-Bird,Beach,Seagull,seagull.png
-Campfire,Meat,Bbq,bbq.png
-Campfire,Garden,Bbq,bbq.png
-Dinosaur,City,Kaiju,kaiju.png
-Dinosaur,Skyscraper,Kaiju,kaiju.png
-Dinosaur,Legend,Kaiju,kaiju.png
-Dinosaur,Story,Kaiju,kaiju.png
-Monster,City,Kaiju,kaiju.png
-Monster,Skyscraper,Kaiju,kaiju.png
 Glass,Metal,Glasses,glasses.png
 Glass,Glass,Glasses,glasses.png
-Wheat,Milk,Cereal,cereal.png
-Human,Ski goggles,Skier,skier.png
-Human,Mountain,Skier,skier.png
-Human,Mountain range,Skier,skier.png
-Lava,Ocean,Primordial soup,primordial_soup.png
-Lava,Sea,Primordial soup,primordial_soup.png
-Planet,Ocean,Primordial soup,primordial_soup.png
-Planet,Sea,Primordial soup,primordial_soup.png
-Earth,Ocean,Primordial soup,primordial_soup.png
-Earth,Sea,Primordial soup,primordial_soup.png
-House,Bread,Bakery,bakery.png
-House,Baker,Bakery,bakery.png
-Thread,Tool,Fabric,fabric.png
-Air,Cold,Chill,chill.png
-Human,Cold,Chill,chill.png
-Human,Ice,Chill,chill.png
-Story,Lake,Nessie,nessie.png
-Bread,Banana,Banana bread,banana_bread.png
-Blade,Blade,Scissors,scissors.png
-Story,Mountain,Yeti,yeti.png
-Story,Mountain range,Yeti,yeti.png
-Sword,Fish,Swordfish,swordfish.png
-Wheat,Stone,Flour,flour.png
-Windmill,Wheat,Flour,flour.png
-Wheat,Waterwheel,Flour,flour.png
 Container,Electricity,Battery,battery.png
 Container,Energy,Battery,battery.png
 Electricity,Mineral,Battery,battery.png
 Electricity,Ore,Battery,battery.png
-Unicorn,Water,Narwhal,narwhal.png
-Unicorn,Sea,Narwhal,narwhal.png
-Unicorn,Ocean,Narwhal,narwhal.png
-Human,Metal,Tool,tool.png
-Paper,Wood,Book,book.png
-Paper,Story,Book,book.png
-Water,Science,Liquid,liquid.png
-Water,Idea,Liquid,liquid.png
-Energy,Solid,Liquid,liquid.png
-Snow,Desert,Antarctica,antarctica.png
-Ice,Desert,Antarctica,antarctica.png
-Bird,Fire,Phoenix,phoenix.png
-Corpse,Life,Zombie,zombie.png
-Human,Zombie,Zombie,zombie.png
-Juice,Sugar,Jam,jam.png
-Fruit,Hot,Jam,jam.png
-Meat,Bread,Hamburger,hamburger.png
-Pumpkin,Fire,Jack-o'-lantern,jack-o'-lantern.png
-Pumpkin,Blade,Jack-o'-lantern,jack-o'-lantern.png
-Pumpkin,Candle,Jack-o'-lantern,jack-o'-lantern.png
-Human,Swim goggles,Swimmer,swimmer.png
-Wild animal,Armor,Armadillo,armadillo.png
-Plant,Plant,Garden,garden.png
-Plant,Grass,Garden,garden.png
-House,Grass,Garden,garden.png
-Flower,Flower,Garden,garden.png
-Hedge,Fence,Garden,garden.png
-Plant,Wall,Ivy,ivy.png
-Wizard,Wood,Wand,wand.png
-Black magicFanon,Tool,Wand,wand.png
+Bread,Banana,Banana bread,banana_bread.png
+Volcano,Sea,Island,island.png
+Volcano,Ocean,Island,island.png
+Maui's fishhook,Ocean,Island,island.png
+Maui's fishhook,Sea,Island,island.png
+Desert,Grave,Pyramid,pyramid.png
+Desert,Stone,Pyramid,pyramid.png
 Bird,City,Pigeon,pigeon.png
 Bird,Letter,Pigeon,pigeon.png
 Bird,Statue,Pigeon,pigeon.png
-Animal,Ice,Polar bear,polar_bear.png
-Animal,Arctic,Polar bear,polar_bear.png
-Recipe,Recipe,Cookbook,cookbook.png
-Book,Recipe,Cookbook,cookbook.png
-DrawingFanon,Recipe,Cookbook,cookbook.png
-Angel,Love,Good,good.png
-Heat,Air,Warmth,warmth.png
-Heat,Human,Warmth,warmth.png
-Hot,Air,Warmth,warmth.png
-Hot,Human,Warmth,warmth.png
-Plant,Sea,Seaweed,seaweed.png
-Plant,Ocean,Seaweed,seaweed.png
-Butterfly,Moon,Moth,moth.png
-Butterfly,Night,Moth,moth.png
-Time,Electricity,Clock,clock.png
-Time,Wheel,Clock,clock.png
-Time,Tool,Clock,clock.png
-Human,Airplane,Pilot,pilot.png
-Human,Seaplane,Pilot,pilot.png
-Sand,Glass,Time,time.png
-Earth,Life,Soil,soil.png
-Earth,Organic matter,Soil,soil.png
-Land,Life,Soil,soil.png
-Land,Organic matter,Soil,soil.png
-Wood,Rope,Bow,bow.png
-Wood,Wire,Bow,bow.png
-Tool,Elf,Bow,bow.png
-Tool,Cupid,Bow,bow.png
-Sword,Light,Light sword,light_sword.png
-Sword,Electricity,Light sword,light_sword.png
-Sword,Energy,Light sword,light_sword.png
-Sword,Space,Light sword,light_sword.png
-Sword,Force knight,Light sword,light_sword.png
-Meat,Sun,Jerky,jerky.png
-Meat,Salt,Jerky,jerky.png
-Meat,Hot,Jerky,jerky.png
-Airplane,Robot,Drone,drone.png
-Milk,Bacteria,Yogurt,yogurt.png
-Planet,Small,Mercury,mercury.png
-Planet,Heat,Mercury,mercury.png
-Planet,Hot,Mercury,mercury.png
-Planet,DecompositionFanon,Mercury,mercury.png
-PlutoFanon,Big,Mercury,mercury.png
-Meteoroid,Atmosphere,Meteor,meteor.png
-Meteoroid,Sky,Meteor,meteor.png
-Star,Star,Constellation,constellation.png
-Broom,Electricity,Vacuum cleaner,vacuum_cleaner.png
-Metal,Cold,Fridge,fridge.png
-Electricity,Cold,Fridge,fridge.png
-Metal,Ice,Fridge,fridge.png
-Snow,Crystal ball,Snow globe,snow_globe.png
-Snow,Glass,Snow globe,snow_globe.png
-Glass,Christmas tree,Snow globe,snow_globe.png
-Glass,Snowman,Snow globe,snow_globe.png
-Big,Boulder,Hill,hill.png
-Earth,Boulder,Hill,hill.png
-Stone,Boulder,Hill,hill.png
-Boulder,Boulder,Hill,hill.png
-Mountain,Small,Hill,hill.png
-Snow,Motorcycle,Snowmobile,snowmobile.png
-Snow,Car,Snowmobile,snowmobile.png
-Car,Farmer,Tractor,tractor.png
-Car,Field,Tractor,tractor.png
-Monster,Seal,Selkie,selkie.png
-Love,Plant,Rose,rose.png
-Love,Flower,Rose,rose.png
-Bee,Flower,Honey,honey.png
-Bee,Beehive,Honey,honey.png
-Human,Story,Philosophy,philosophy.png
-Human,Idea,Philosophy,philosophy.png
-Egg,Chicken,Philosophy,philosophy.png
-Human,Gold,Alchemist,alchemist.png
-Gold,Philosophy,Alchemist,alchemist.png
-Lizard,Fire,Dragon,dragon.png
-Sailboat,Pirate,Pirate ship,pirate_ship.png
-Boat,Pirate,Pirate ship,pirate_ship.png
-Human,Blood,Vampire,vampire.png
-Human,Vampire,Vampire,vampire.png
-Farm,Ant,Ant farm,ant_farm.png
-Ant,Jar,Ant farm,ant_farm.png
-Ant,Glass,Ant farm,ant_farm.png
-Anthill,Farm,Ant farm,ant_farm.png
-Anthill,Jar,Ant farm,ant_farm.png
-Milk,Time,Cheese,cheese.png
-Fire,Wood,Campfire,campfire.png
-Rainbow,Rainbow,Double rainbow!,double_rainbow!.png
-Lizard,Swamp,Alligator,alligator.png
-Lizard,River,Alligator,alligator.png
-Paper,Pencil,Letter,letter.png
-Water,Earth,Mud,mud.png
-Tool,Container,Toolbox,toolbox.png
-Tool,Safe,Toolbox,toolbox.png
-Tool,Box,Toolbox,toolbox.png
-Hammer,Container,Toolbox,toolbox.png
-Hammer,Box,Toolbox,toolbox.png
-Ruler,Container,Toolbox,toolbox.png
-Ruler,Box,Toolbox,toolbox.png
-Steel wool,Container,Toolbox,toolbox.png
-Steel wool,Box,Toolbox,toolbox.png
-Chain,Box,Toolbox,toolbox.png
-Chain,Container,Toolbox,toolbox.png
-House,Lake,Swimming pool,swimming_pool.png
-House,Swimmer,Swimming pool,swimming_pool.png
-Aquarium,Big,Swimming pool,swimming_pool.png
+Tool,Light,Flashlight,flashlight.png
+Diamond,Metal,Ring,ring.png
+Diamond,Gold,Ring,ring.png
+Human,Sewing machine,Tailor,tailor.png
+Human,Needle,Tailor,tailor.png
+Human,Thread,Tailor,tailor.png
+Human,Clock,Watch,watch.png
+Sandwich,Fire,Toast,toast.png
+Bread,Fire,Toast,toast.png
 Storm,Storm,Tornado,tornado.png
 Storm,Wind,Tornado,tornado.png
 Storm,Motion,Tornado,tornado.png
 Wind,Big,Tornado,tornado.png
 Wind,Wind,Tornado,tornado.png
 Wind,Motion,Tornado,tornado.png
-Bacteria,Glass,Microscope,microscope.png
-Bacteria,Glasses,Microscope,microscope.png
-Snowman,Vegetable,Carrot,carrot.png
-Sun,Snowman,Carrot,carrot.png
-Dog,House,Doghouse,doghouse.png
-Volcano,Energy,Ash,ash.png
-Fire,Human,Ash,ash.png
-Human,Alcohol,Drunk,drunk.png
-Human,Beer,Drunk,drunk.png
-Human,Wine,Drunk,drunk.png
-Star,Sky,Space,space.png
-Star,Sun,Space,space.png
-Star,Moon,Space,space.png
-Human,Meat,Butcher,butcher.png
-Steam engine,Metal,Train,train.png
-Steam engine,Steel,Train,train.png
-Steam engine,Wheel,Train,train.png
-Steam engine,Wagon,Train,train.png
-Water,Sea,Ocean,ocean.png
-Sea,Sea,Ocean,ocean.png
-Airplane,Paper,Paper airplane,paper_airplane.png
-Sun,Plant,Sunflower,sunflower.png
-Sun,Flower,Sunflower,sunflower.png
-Ukraine,Flower,Sunflower,sunflower.png
-Tool,Metal,Armor,armor.png
-Tool,Steel,Armor,armor.png
-Wild animal,Dog,Wolf,wolf.png
-Wild animal,Moon,Wolf,wolf.png
-Dog,Forest,Wolf,wolf.png
-Grass,Livestock,Cow,cow.png
-Wheat,Container,Silo,silo.png
-Wheat,House,Silo,silo.png
-Wheat,Barn,Silo,silo.png
-Wheat,Wall,Silo,silo.png
-Wheat,Farm,Silo,silo.png
-Wheat,Safe,Silo,silo.png
-Wheat,Bank,Silo,silo.png
-Ice,Mountain,Glacier,glacier.png
-Earth,Idea,Solid,solid.png
-Earth,Science,Solid,solid.png
-Coffin,Earth,Grave,grave.png
-Corpse,Earth,Grave,grave.png
-Corpse,Time,Bone,bone.png
-Engineer,Mountain,Tunnel,tunnel.png
-Human,Tool,Engineer,engineer.png
-Life,Death,Organic matter,organic_matter.png
-Life,Science,Organic matter,organic_matter.png
-Bacteria,Death,Organic matter,organic_matter.png
-Corpse,Science,Organic matter,organic_matter.png
-Human,Hospital,Doctor,doctor.png
-Tobacco,Wood,Pipe,pipe.png
-Boiler,Tool,Steam engine,steam_engine.png
-Boiler,Wheel,Steam engine,steam_engine.png
-Stone,Space,Meteoroid,meteoroid.png
-Paper,Music,Sheet music,sheet_music.png
+Human,Bird,Angel,angel.png
+Farm,Ant,Ant farm,ant_farm.png
+Ant,Jar,Ant farm,ant_farm.png
+Ant,Glass,Ant farm,ant_farm.png
+Anthill,Farm,Ant farm,ant_farm.png
+Anthill,Jar,Ant farm,ant_farm.png
+Human,Rain,Sickness,sickness.png
+Human,Bacteria,Sickness,sickness.png
+Human,Sickness,Sickness,sickness.png
+Thread,Thread,Rope,rope.png
+Egg,Duck,Duckling,duckling.png
+Airplane,Robot,Drone,drone.png
+Wood,Rope,Bow,bow.png
+Wood,Wire,Bow,bow.png
+Tool,Elf,Bow,bow.png
+Tool,Cupid,Bow,bow.png
+Life,Rainbow,Magic,magic.png
+Life,Double rainbow!,Magic,magic.png
+Energy,Witch,Magic,magic.png
+Energy,Wizard,Magic,magic.png
+Sea,Wind,Wave,wave.png
+Ocean,Wind,Wave,wave.png
+Story,Mountain,Yeti,yeti.png
+Story,Mountain range,Yeti,yeti.png
+Snow,Crystal ball,Snow globe,snow_globe.png
+Snow,Glass,Snow globe,snow_globe.png
+Glass,Christmas tree,Snow globe,snow_globe.png
+Glass,Snowman,Snow globe,snow_globe.png
+Human,Library,Librarian,librarian.png
+Fruit,Immortality,Peach of immortality,peach_of_immortality.png
+Fruit tree,Immortality,Peach of immortality,peach_of_immortality.png
+Big,Boulder,Hill,hill.png
+Earth,Boulder,Hill,hill.png
+Stone,Boulder,Hill,hill.png
+Boulder,Boulder,Hill,hill.png
+Mountain,Small,Hill,hill.png
+Electricity,Light bulb,Light,light.png
+Electricity,Flashlight,Light,light.png
+Water,Life,Plankton,plankton.png
+Ocean,Life,Plankton,plankton.png
+Sea,Life,Plankton,plankton.png
+Day,Night,Dawn,dawn.png
+Time,Night,Dawn,dawn.png
+Earth,Earth,Pressure,pressure.png
+Air,Air,Pressure,pressure.png
+Human,Hay,Scarecrow,scarecrow.png
+Airplane,Alien,Ufo,ufo.png
+Rocket,Alien,Ufo,ufo.png
+Monster,Seal,Selkie,selkie.png
+Water,Pond,Lake,lake.png
+River,Dam,Lake,lake.png
+Water,Alligator,Lake,lake.png
+Spider,Thread,Web,web.png
+Land,Big,Continent,continent.png
+Land,Land,Continent,continent.png
+Land,Earth,Continent,continent.png
+Mountain range,Mountain range,Continent,continent.png
+File:Spray 2.svg Spray,Mountain,Continent,continent.png
+Country,Country,Continent,continent.png
+Organic matter,Stone,Mineral,mineral.png
+Organic matter,Rock,Mineral,mineral.png
+Organic matter,Earth,Mineral,mineral.png
+Organic matter,Boulder,Mineral,mineral.png
+Organic matter,Hill,Mineral,mineral.png
+Organic matter,Mountain,Mineral,mineral.png
+Chocolate,Milk,Chocolate milk,chocolate_milk.png
+Rust,Planet,Mars,mars.png
+Metal,Coal,Steel,steel.png
+Meat,Dinosaur,Tyrannosaurus rex,tyrannosaurus_rex.png
+Mountain,River,Waterfall,waterfall.png
 Wild animal,Pond,Frog,frog.png
-Plant,Fence,Hedge,hedge.png
-Leaf,Fence,Hedge,hedge.png
-Field,Fruit,Vegetable,vegetable.png
-Car,Letter,Mail truck,mail_truck.png
-Car,Mailman,Mail truck,mail_truck.png
-Car,Post office,Mail truck,mail_truck.png
-Metal,Money,Safe,safe.png
-Metal,Gold,Safe,safe.png
-Steel,Money,Safe,safe.png
-Steel,Gold,Safe,safe.png
-Plant,Sun,Oxygen,oxygen.png
-Plant,Carbon dioxide,Oxygen,oxygen.png
-Tool,Doctor,Stethoscope,stethoscope.png
-Paper,Wind,Kite,kite.png
-Paper,Sky,Kite,kite.png
-Horse,Leather,Saddle,saddle.png
-Human,Axe,Lumberjack,lumberjack.png
-Human,Chainsaw,Lumberjack,lumberjack.png
-Garden,Statue,Gnome,gnome.png
 Pig,Money,Piggy bank,piggy_bank.png
 Pottery,Pig,Piggy bank,piggy_bank.png
-Fruit tree,Fruit tree,Orchard,orchard.png
-Fruit tree,Field,Orchard,orchard.png
-Air,Wave,Sound,sound.png
-Beaver,River,Dam,dam.png
-Beaver,Tree,Dam,dam.png
-Beaver,Wood,Dam,dam.png
-Wall,River,Dam,dam.png
-Fabric,Cook,Apron,apron.png
-Fabric,Baker,Apron,apron.png
-Tool,Tree,Wood,wood.png
-Wild animal,Carrot,Rabbit,rabbit.png
-Witch,Glass,Crystal ball,crystal_ball.png
-Wizard,Glass,Crystal ball,crystal_ball.png
-Human,Blade,Blood,blood.png
-Fog,Grass,Dew,dew.png
-Water,Grass,Dew,dew.png
-Letter,Computer,Email,email.png
-Letter,Internet,Email,email.png
-Sickness,Sea,Seasickness,seasickness.png
-Sickness,Ocean,Seasickness,seasickness.png
-Sickness,Boat,Seasickness,seasickness.png
-Sickness,Sailboat,Seasickness,seasickness.png
-Sickness,Steamboat,Seasickness,seasickness.png
-Earth,Space,Planet,planet.png
-Fire,Mist,Air,air.png
-Planet,Acid rain,Venus,venus.png
-Planet,Smog,Venus,venus.png
-Planet,Volcano,Venus,venus.png
-Fruit,Energy,Sugar,sugar.png
-Juice,Energy,Sugar,sugar.png
-Juice,Fire,Sugar,sugar.png
-Tea,Ice,Iced tea,iced_tea.png
-Tea,Cold,Iced tea,iced_tea.png
-Graveyard,Night,Ghost,ghost.png
-Castle,Night,Ghost,ghost.png
-Carbon dioxide,Cold,Dry ice,dry_ice.png
-Carbon dioxide,Ice,Dry ice,dry_ice.png
-Car,Ice cream,Ice cream truck,ice_cream_truck.png
-Sun,Antarctica,Aurora,aurora.png
-Sky,Antarctica,Aurora,aurora.png
-Antarctica,Atmosphere,Aurora,aurora.png
-Air,Pressure,Atmosphere,atmosphere.png
-Sky,Pressure,Atmosphere,atmosphere.png
-Angler,Rope,Net,net.png
-Fishing rod,Rope,Net,net.png
-Fish,Rope,Net,net.png
-Swordfish,Rope,Net,net.png
-Flying fish,Rope,Net,net.png
-Car,Electricity,Electric car,electric_car.png
-Pig,Fire,Bacon,bacon.png
-Swamp,Plant,Peat,peat.png
-Swamp,Time,Peat,peat.png
-Swamp,Pressure,Peat,peat.png
-Time,Grass,Peat,peat.png
+Cow,Blade,Leather,leather.png
+Pig,Blade,Leather,leather.png
+Tree,Farmer,Fruit,fruit.png
+Tree,Sun,Fruit,fruit.png
+Thread,Tool,Fabric,fabric.png
+Pitchfork,Small,Fork,fork.png
+Airplane,Astronaut,Spaceship,spaceship.png
+Earthquake,Earth,Mountain,mountain.png
 Plant,Pond,Reed,reed.png
 Plant,Puddle,Reed,reed.png
 Plant,Swamp,Reed,reed.png
@@ -983,31 +567,86 @@ Grass,Pond,Reed,reed.png
 Grass,Puddle,Reed,reed.png
 Grass,Swamp,Reed,reed.png
 Grass,River,Reed,reed.png
-Bread,Time,Mold,mold.png
-Canvas,Paint,Painting,painting.png
-Canvas,Painter,Painting,painting.png
-Jam,Container,Jar,jar.png
-Jam,Bottle,Jar,jar.png
-Jam,Glass,Jar,jar.png
-Jam,Bucket,Jar,jar.png
-Rust,Planet,Mars,mars.png
-Human,Castle,Monarch,monarch.png
-Human,Crown,Monarch,monarch.png
-Human,Excalibur,Monarch,monarch.png
-Sun,Planet,Solar system,solar_system.png
-Time,Castle,Ruins,ruins.png
-Time,House,Ruins,ruins.png
-Fruit,Alcohol,Wine,wine.png
-Planet,Cloud,Jupiter,jupiter.png
-Planet,Storm,Jupiter,jupiter.png
-Planet,Big,Jupiter,jupiter.png
-Planet,Gas,Jupiter,jupiter.png
-Planet,Zeus,Jupiter,jupiter.png
-Saturn,Big,Jupiter,jupiter.png
-Human,Moon,Astronaut,astronaut.png
-Human,Rocket,Astronaut,astronaut.png
-Human,Space station,Astronaut,astronaut.png
-Human,Space,Astronaut,astronaut.png
+Human,Wave,Surfer,surfer.png
+Steam engine,Metal,Train,train.png
+Steam engine,Steel,Train,train.png
+Steam engine,Wheel,Train,train.png
+Steam engine,Wagon,Train,train.png
+Wood,Hay,Broom,broom.png
+Water,Sea,Ocean,ocean.png
+Sea,Sea,Ocean,ocean.png
+Human,Letter,Mailman,mailman.png
+Paper,Blade,Confetti,confetti.png
+Paper,Scissors,Confetti,confetti.png
+Car,House,Rv,rv.png
+River,Wood,Bridge,bridge.png
+River,Metal,Bridge,bridge.png
+River,Steel,Bridge,bridge.png
+Lizard,Swamp,Alligator,alligator.png
+Lizard,River,Alligator,alligator.png
+House,Good,Heaven,heaven.png
+House,Deity,Heaven,heaven.png
+Good,Hell,Heaven,heaven.png
+Metal,Rope,Chain,chain.png
+Steel,Rope,Chain,chain.png
+Shovel,Big,Excavator,excavator.png
+Shovel,Car,Excavator,excavator.png
+Stone,Sand,Sandstone,sandstone.png
+Blade,Heat,Katana,katana.png
+Blade,Hot,Katana,katana.png
+Blade,Shuriken,Katana,katana.png
+Blade,Ninja,Katana,katana.png
+Sword,Shuriken,Katana,katana.png
+Sword,Ninja,Katana,katana.png
+Water,Plant,Algae,algae.png
+Sea,Plant,Algae,algae.png
+Ocean,Plant,Algae,algae.png
+Paper,Computer,Printer,printer.png
+Tool,Nerd,Computer,computer.png
+Electricity,Nerd,Computer,computer.png
+Wire,Nerd,Computer,computer.png
+Pollen,Plant,Seed,seed.png
+Pollen,Bee,Seed,seed.png
+Time,Flower,Seed,seed.png
+House,Wolf,Cave,cave.png
+House,Lion,Cave,cave.png
+House,Fox,Cave,cave.png
+House,Bat,Cave,cave.png
+Container,Wolf,Cave,cave.png
+Container,Lion,Cave,cave.png
+Container,Fox,Cave,cave.png
+Container,Bat,Cave,cave.png
+Ice,Statue,Ice sculpture,ice_sculpture.png
+Water,Fire,Steam,steam.png
+Water,Energy,Steam,steam.png
+Water,Hot,Steam,steam.png
+Air,Pressure,Atmosphere,atmosphere.png
+Sky,Pressure,Atmosphere,atmosphere.png
+Engineer,Mountain,Tunnel,tunnel.png
+Wild animal,Pirate ship,Rat,rat.png
+Wild animal,Sailboat,Rat,rat.png
+Grave,Stone,Gravestone,gravestone.png
+Earth,Cloud,Fog,fog.png
+Water,Glass,Aquarium,aquarium.png
+Glass,Fish,Aquarium,aquarium.png
+Cheese,Dough,Pizza,pizza.png
+Flute,Flute,Pan flute,pan_flute.png
+Horse,Bird,Pegasus,pegasus.png
+Horse,Sky,Pegasus,pegasus.png
+Unicorn,Bird,Pegasus,pegasus.png
+House,Campfire,Fireplace,fireplace.png
+Campfire,Brick,Fireplace,fireplace.png
+Campfire,Wall,Fireplace,fireplace.png
+Plant,Sun,Oxygen,oxygen.png
+Plant,Carbon dioxide,Oxygen,oxygen.png
+Dough,Oil,Donut,donut.png
+Sword,Stone,Excalibur,excalibur.png
+Life,Land,Animal,animal.png
+Life,Forest,Animal,animal.png
+Life,Mountain,Animal,animal.png
+Life,Mountain range,Animal,animal.png
+Life,Beach,Animal,animal.png
+Life,Desert,Animal,animal.png
 Airplane,Container,Hangar,hangar.png
 Airplane,House,Hangar,hangar.png
 Airplane,Wall,Hangar,hangar.png
@@ -1028,365 +667,104 @@ Spaceship,Container,Hangar,hangar.png
 Spaceship,House,Hangar,hangar.png
 Spaceship,Wall,Hangar,hangar.png
 Spaceship,Barn,Hangar,hangar.png
-Giant,Axe,Paul bunyan,paul_bunyan.png
-Giant,Lumberjack,Paul bunyan,paul_bunyan.png
-Corpse,Legend,Frankenstein's monster,frankenstein's_monster.png
-Corpse,Lightning,Frankenstein's monster,frankenstein's_monster.png
-Corpse,Electricity,Frankenstein's monster,frankenstein's_monster.png
-Corpse,Story,Frankenstein's monster,frankenstein's_monster.png
-Zombie,Electricity,Frankenstein's monster,frankenstein's_monster.png
-Zombie,Lightning,Frankenstein's monster,frankenstein's_monster.png
-Monster,Story,Frankenstein's monster,frankenstein's_monster.png
-Monster,Corpse,Frankenstein's monster,frankenstein's_monster.png
-Star,Star,Galaxy,galaxy.png
-Water,Pond,Lake,lake.png
-River,Dam,Lake,lake.png
-Water,Alligator,Lake,lake.png
-Sugar,Campfire,Marshmallows,marshmallows.png
-Bird,Tree,Nest,nest.png
-Bird,Hay,Nest,nest.png
-Egg,Hay,Nest,nest.png
-Pitchfork,Small,Fork,fork.png
-Wood,Leather,Drum,drum.png
-Snow,Human,Snowball,snowball.png
-Human,Rain,Sickness,sickness.png
-Human,Bacteria,Sickness,sickness.png
-Human,Sickness,Sickness,sickness.png
-Life,Sky,Bird,bird.png
-Egg,Air,Bird,bird.png
-Egg,Sky,Bird,bird.png
-Air,Life,Bird,bird.png
-Palm,Fruit,Coconut,coconut.png
-Stone,Tool,Statue,statue.png
-Human,Medusa,Statue,statue.png
-Cat,Deity,Baast,baast.png
-Cat,Immortality,Baast,baast.png
-Sugar,Dough,Cookie,cookie.png
-Pasta,Thread,Spaghetti,spaghetti.png
-Glass,Sky,Telescope,telescope.png
-Glass,Star,Telescope,telescope.png
-Glass,Space,Telescope,telescope.png
-Livestock,Hay,Horse,horse.png
-House,House,Village,village.png
-Dinosaur,Time,Fossil,fossil.png
-Dinosaur,Earth,Fossil,fossil.png
-Dinosaur,Stone,Fossil,fossil.png
-Mermaid,Poseidon,Cyclops,cyclops.png
-Giant,Giant,Cyclops,cyclops.png
-Giant,Poseidon,Cyclops,cyclops.png
-Giant,Zeus,Cyclops,cyclops.png
-Grass,Sandwich,Picnic,picnic.png
-Beach,Sandwich,Picnic,picnic.png
-Oxygen,Oxygen,Ozone,ozone.png
-Electricity,Oxygen,Ozone,ozone.png
-Blade,Grass,Scythe,scythe.png
-Blade,Wheat,Scythe,scythe.png
-Fire,Sky,Sun,sun.png
-Metal,Bullet,Gun,gun.png
-Telescope,Telescope,Binoculars,binoculars.png
-Glasses,Glasses,Binoculars,binoculars.png
-Fire,Gun,Flamethrower,flamethrower.png
-Turtle,Ninja,Ninja turtle,ninja_turtle.png
-Village,Village,City,city.png
-Skyscraper,Skyscraper,City,city.png
-Water,Garden,Pond,pond.png
-Sugar,Christmas tree,Candy cane,candy_cane.png
-Gunpowder,Pirate ship,Cannon,cannon.png
-Gunpowder,Castle,Cannon,cannon.png
-Goat,Human,Faun,faun.png
-Human,Telescope,Science,science.png
-Human,Microscope,Science,science.png
-Human,Universe,Science,science.png
-Human,Shuriken,Ninja,ninja.png
-Wizard,Broom,Witch,witch.png
-Human,Broom,Witch,witch.png
-Crystal eggFanon,Human,Witch,witch.png
-Dog,Snow,Husky,husky.png
-Dog,Ice,Husky,husky.png
-Container,Wood,Bucket,bucket.png
-Container,Yogurt,Bucket,bucket.png
-Container,Paint,Bucket,bucket.png
-Bottle,River,Bucket,bucket.png
-Bottle,Paint,Bucket,bucket.png
-Chicken wing,Container,Bucket,bucket.png
-Chicken wing,Box,Bucket,bucket.png
-Rain,Ice,Hail,hail.png
-Storm,Ice,Hail,hail.png
-Cloud,Ice,Hail,hail.png
-Lizard,Time,Dinosaur,dinosaur.png
+Steam,Metal,Boiler,boiler.png
 House,Money,Bank,bank.png
 House,Gold,Bank,bank.png
 House,Safe,Bank,bank.png
-Thread,Thread,Rope,rope.png
-Cookie,Dough,Cookie dough,cookie_dough.png
-Wood,Fabric,Tent,tent.png
-House,Fabric,Tent,tent.png
-Grave,Grave,Graveyard,graveyard.png
-Gravestone,Gravestone,Graveyard,graveyard.png
-Mountain,Sheep,Alpaca,alpaca.png
-House,Chimney,Factory,factory.png
-House,Tool,Factory,factory.png
-Rain,Cold,Snow,snow.png
-Steam,Cold,Snow,snow.png
-Milk,Pressure,Butter,butter.png
-Milk,Energy,Butter,butter.png
-Explosion,Metal,Grenade,grenade.png
-Pinecone,BombFanon,Grenade,grenade.png
-Fire,Wood,Smoke,smoke.png
-Human,Letter,Mailman,mailman.png
-Metal,Rope,Chain,chain.png
-Steel,Rope,Chain,chain.png
-Cheese,Hamburger,Cheeseburger,cheeseburger.png
-Tool,Light,Flashlight,flashlight.png
-Pond,Motion,Stream,stream.png
-Rivulet,Big,Stream,stream.png
-River,Small,Stream,stream.png
-Bird,Scarecrow,Crow,crow.png
-Bird,Field,Crow,crow.png
-Glass,Blade,Blender,blender.png
-Blade,Electricity,Blender,blender.png
-Ant,House,Anthill,anthill.png
-Ant,Container,Anthill,anthill.png
-Ant,Hill,Anthill,anthill.png
-Ant,Earth,Anthill,anthill.png
-Ant,Land,Anthill,anthill.png
-Ant,Soil,Anthill,anthill.png
-Wild animal,Wood,Beaver,beaver.png
-Wild animal,Dam,Beaver,beaver.png
-OregonFanon,Wild animal,Beaver,beaver.png
-Tree,Pottery,Bonsai tree,bonsai_tree.png
-Tree,Scissors,Bonsai tree,bonsai_tree.png
-Sun,Ice,Puddle,puddle.png
-Sun,Snowman,Puddle,puddle.png
-Snowman,Flamethrower,Puddle,puddle.png
-Human,Armor,Knight,knight.png
-Dough,Candle,Cake,cake.png
-Metal,Witch,Cauldron,cauldron.png
-Steel,Witch,Cauldron,cauldron.png
-Fireplace,Witch,Cauldron,cauldron.png
-Campfire,Witch,Cauldron,cauldron.png
-Sand,Wind,Dune,dune.png
-Desert,Wind,Dune,dune.png
-Beach,Wind,Dune,dune.png
-Flower,Wild animal,Butterfly,butterfly.png
-Lizard,Rainbow,Chameleon,chameleon.png
-Lizard,Wizard,Chameleon,chameleon.png
-Human,Energy,Wizard,wizard.png
-Fireman,Car,Firetruck,firetruck.png
-Sun,Time,Day,day.png
-Sun,Night,Day,day.png
-Time,Night,Day,day.png
-Sky,Sun,Day,day.png
-Flour,Egg,Pasta,pasta.png
-Human,Wood,House,house.png
-Human,Brick,House,house.png
-Tool,Brick,House,house.png
-Wall,Wall,House,house.png
-Cow,Blade,Leather,leather.png
-Pig,Blade,Leather,leather.png
-Oil,Vegetable,French fries,french_fries.png
-Earth,Sky,Horizon,horizon.png
-Sea,Sky,Horizon,horizon.png
-Ocean,Sky,Horizon,horizon.png
-Sun,Glasses,Sunglasses,sunglasses.png
-Beach,Glasses,Sunglasses,sunglasses.png
-Horse,River,Hippo,hippo.png
-Horse,Water,Hippo,hippo.png
-Clay,Life,Golem,golem.png
-Christmas tree,Human,Santa,santa.png
-Ring,Planet,Saturn,saturn.png
-City,Forest,Park,park.png
-City,Garden,Park,park.png
-City,Grass,Park,park.png
-City,Field,Park,park.png
-Village,Forest,Park,park.png
-Village,Garden,Park,park.png
-Village,Grass,Park,park.png
-Village,Field,Park,park.png
-Farmer,Life,Livestock,livestock.png
-Farmer,Wild animal,Livestock,livestock.png
-Human,Wild animal,Livestock,livestock.png
-Night,Sky,Star,star.png
-Night,Telescope,Star,star.png
-Tree,Tree,Forest,forest.png
-Cow,Tool,Meat,meat.png
-Cow,Butcher,Meat,meat.png
-Pig,Tool,Meat,meat.png
-Pig,Butcher,Meat,meat.png
-Livestock,Blade,Meat,meat.png
-Livestock,Butcher,Meat,meat.png
-Story,Monarch,Fairy tale,fairy_tale.png
-Story,Castle,Fairy tale,fairy_tale.png
-Story,Knight,Fairy tale,fairy_tale.png
-Story,Dragon,Fairy tale,fairy_tale.png
-Tent,Big,Circus,circus.png
-Tent,Animal,Circus,circus.png
-Tent,Shaun the sheepFanon,Circus,circus.png
-Universe,Philosophy,Big,big.png
-Galaxy,Philosophy,Big,big.png
-Galaxy cluster,Philosophy,Big,big.png
-Solar system,Philosophy,Big,big.png
-Sun,Philosophy,Big,big.png
-Planet,Philosophy,Big,big.png
-Small,OppositeFanon,Big,big.png
-Hircocervus,Philosophy,Big,big.png
+Pirate,Treasure map,Treasure,treasure.png
 Water,Carbon dioxide,Soda,soda.png
 Juice,Carbon dioxide,Soda,soda.png
-Sand,Mud,Clay,clay.png
-Water,Wood,Boat,boat.png
-Water,Life,Plankton,plankton.png
-Ocean,Life,Plankton,plankton.png
-Sea,Life,Plankton,plankton.png
-Alcohol,Wheat,Beer,beer.png
-Glasses,Tool,Safety glasses,safety_glasses.png
-Glasses,Explosion,Safety glasses,safety_glasses.png
-Glasses,Engineer,Safety glasses,safety_glasses.png
-Bird,Rainbow,Peacock,peacock.png
-Tree,Blade,Sap,sap.png
-Bird,Metal,Airplane,airplane.png
-Bird,Steel,Airplane,airplane.png
-Swamp,Energy,Life,life.png
-Love,Time,Life,life.png
-Horse,Sea,Seahorse,seahorse.png
-Horse,Ocean,Seahorse,seahorse.png
-Horse,Fish,Seahorse,seahorse.png
-Isle,Isle,Archipelago,archipelago.png
-Human,Dust,Allergy,allergy.png
-Mouse,Bird,Bat,bat.png
-Mouse,Sky,Bat,bat.png
-House,Good,Heaven,heaven.png
-House,Deity,Heaven,heaven.png
-Good,Hell,Heaven,heaven.png
-Scuba tank,Human,Diver,diver.png
-Scuba tank,Swimmer,Diver,diver.png
-Scuba tank,Sea,Diver,diver.png
-Scuba tank,Ocean,Diver,diver.png
-Scuba tank,Lake,Diver,diver.png
-Wolf,Metal,Cage,cage.png
-Wolf,Steel,Cage,cage.png
-Wolf,Wall,Cage,cage.png
-Fox,Metal,Cage,cage.png
-Fox,Steel,Cage,cage.png
-Fox,Wall,Cage,cage.png
-Lion,Metal,Cage,cage.png
-Lion,Steel,Cage,cage.png
-Lion,Wall,Cage,cage.png
-Hamster,Container,Cage,cage.png
-Hamster,House,Cage,cage.png
-Hamster,Wall,Cage,cage.png
-Blade,Cook,Knife,knife.png
-Sword,Cook,Knife,knife.png
-Paper,Paper,Newspaper,newspaper.png
-Clock,Sun,Sundial,sundial.png
-Dough,Fruit,Pie,pie.png
-Earth,Tool,Field,field.png
-Earth,Farmer,Field,field.png
-Soil,Soil,Land,land.png
-Soil,Big,Land,land.png
-Continent,Small,Land,land.png
-Earth,Earth,Land,land.png
-Earth,Stone,Land,land.png
-Computer,Computer,Internet,internet.png
-Computer,Wire,Internet,internet.png
-Computer,Web,Internet,internet.png
-Water,Rainbow,Paint,paint.png
-Water,Pencil,Paint,paint.png
-Life,Space,Alien,alien.png
-Animal,Container,Zoo,zoo.png
-Animal,Cage,Zoo,zoo.png
-Wheel,Wheel,Bicycle,bicycle.png
-Milk,Ice cream,Milk shake,milk_shake.png
-Mountain,Water,River,river.png
-Mountain,Rain,River,river.png
-Glass,Metal,Mirror,mirror.png
-Sugar,Cloud,Cotton candy,cotton_candy.png
-Sugar,Electricity,Cotton candy,cotton_candy.png
-Horse,Human,Centaur,centaur.png
-Plant,Glass,Greenhouse,greenhouse.png
-Window,Window,Greenhouse,greenhouse.png
-Hay,Hay,Hay bale,hay_bale.png
-Earthquake,Earth,Mountain,mountain.png
-House,Firefighter,Firestation,firestation.png
-House,Firetruck,Firestation,firestation.png
-Firefighter,Land,Firestation,firestation.png
-Firefighter,Village,Firestation,firestation.png
-Firefighter,City,Firestation,firestation.png
-Fruit,Water,Juice,juice.png
-Fruit,Pressure,Juice,juice.png
+Wild animal,Thread,Spider,spider.png
+Human,Fish,Mermaid,mermaid.png
 Egg,Clock,Egg timer,egg_timer.png
 Egg,Watch,Egg timer,egg_timer.png
 Egg,TimerFanon,Egg timer,egg_timer.png
 Egg,StopwatchFanon,Egg timer,egg_timer.png
+Glass,Tool,Lens,lens.png
+Glass,Engineer,Lens,lens.png
+Plant,Glass,Greenhouse,greenhouse.png
+Window,Window,Greenhouse,greenhouse.png
+Fire,Wood,Smoke,smoke.png
+Palm,Fruit,Coconut,coconut.png
+Container,Pizza,Box,box.png
+Container,Pencil,Box,box.png
+Container,Cereal,Box,box.png
+Container,Cookie,Box,box.png
+Container,Donut,Box,box.png
+Container,Cake,Box,box.png
+Container,Crayon,Box,box.png
 Bullet,Armor,Bulletproof vest,bulletproof_vest.png
-Mouse,Wheel,Hamster,hamster.png
-Paper cup,Wire,String phone,string_phone.png
-Paper cup,Thread,String phone,string_phone.png
-Cup,Wire,String phone,string_phone.png
-Cup,Thread,String phone,string_phone.png
-Paper,Earth,Map,map.png
-Life,Dough,Gingerbread man,gingerbread_man.png
-Space,Container,Universe,universe.png
-Galaxy cluster,Galaxy cluster,Universe,universe.png
-Galaxy cluster,Container,Universe,universe.png
-Primordial soup,Cosmic egg,Universe,universe.png
-Airplane,Astronaut,Spaceship,spaceship.png
-Mailman,House,Post office,post_office.png
-Mailman,Wall,Post office,post_office.png
-Mailman,Container,Post office,post_office.png
-Mailman,Letter,Post office,post_office.png
-Letter,Letter,Post office,post_office.png
-Letter,House,Post office,post_office.png
-Letter,Wall,Post office,post_office.png
-Spider,Thread,Web,web.png
-Tree,Isle,Palm,palm.png
-Tree,Beach,Palm,palm.png
-Sound,Metal,Bell,bell.png
-Sound,Steel,Bell,bell.png
-Sound,Wood,Bell,bell.png
-Metal,Hammer,Bell,bell.png
-Steel,Hammer,Bell,bell.png
-Water,Glasses,Swim goggles,swim_goggles.png
-Snow,Human,Snowman,snowman.png
-Snowball,Snowball,Snowman,snowman.png
-Carrot,Snowball,Snowman,snowman.png
-Carrot,Snow,Snowman,snowman.png
-Pressure,Plant,Coal,coal.png
-Sun,Snowman,Coal,coal.png
-Cloud,Electricity,Storm,storm.png
-Cloud,Energy,Storm,storm.png
-Sugar,Confetti,Sprinkles,sprinkles.png
-Wood,Cook,Cutting board,cutting_board.png
+Grave,Grave,Graveyard,graveyard.png
+Gravestone,Gravestone,Graveyard,graveyard.png
+Human,Swim goggles,Swimmer,swimmer.png
+Day,Night,Twilight,twilight.png
+Electricity,Metal,Wire,wire.png
+Human,Ski goggles,Skier,skier.png
+Human,Mountain,Skier,skier.png
+Human,Mountain range,Skier,skier.png
+Oxygen,Oxygen,Ozone,ozone.png
+Electricity,Oxygen,Ozone,ozone.png
+Human,Dinosaur,Paleontologist,paleontologist.png
+Human,Fossil,Paleontologist,paleontologist.png
+Science,Dinosaur,Paleontologist,paleontologist.png
+Science,Fossil,Paleontologist,paleontologist.png
+Angel,Love,Good,good.png
+Coconut,Tool,Coconut milk,coconut_milk.png
+Coconut,Milk,Coconut milk,coconut_milk.png
+Meat,Bbq,Steak,steak.png
+Fire,Cow,Steak,steak.png
+Sun,Plant,Sunflower,sunflower.png
+Sun,Flower,Sunflower,sunflower.png
+Ukraine,Flower,Sunflower,sunflower.png
+Blade,Pencil,Pencil sharpener,pencil_sharpener.png
+Bread,Time,Mold,mold.png
+Human,Airplane,Pilot,pilot.png
+Human,Seaplane,Pilot,pilot.png
+Human,Bread,Baker,baker.png
+Human,Flour,Baker,baker.png
+Human,Dough,Baker,baker.png
+Sailboat,Pirate,Pirate ship,pirate_ship.png
+Boat,Pirate,Pirate ship,pirate_ship.png
+Steel,Wool,Steel wool,steel_wool.png
+Wire,Wool,Steel wool,steel_wool.png
+Wizard,Wood,Wand,wand.png
+Black magicFanon,Tool,Wand,wand.png
+Tool,Metal,Armor,armor.png
+Tool,Steel,Armor,armor.png
+Sword,Human,Warrior,warrior.png
+Glass,Rainbow,Prism,prism.png
+Village,Village,City,city.png
+Skyscraper,Skyscraper,City,city.png
+Livestock,Mud,Pig,pig.png
+Gun,Electricity,Stun gun,stun_gun.png
+Gun,Wire,Stun gun,stun_gun.png
+Gun,Energy,Stun gun,stun_gun.png
+Bow,Electricity,Stun gun,stun_gun.png
+Bow,Energy,Stun gun,stun_gun.png
+Oil,Vegetable,French fries,french_fries.png
+Kite,Big,Paraglider,paraglider.png
 Mud,Plant,Swamp,swamp.png
 Mud,Grass,Swamp,swamp.png
-Air,Water,Mist,mist.png
-Air,Steam,Mist,mist.png
-Air,Rain,Mist,mist.png
-Egg,Duck,Duckling,duckling.png
-Doctor,Mold,Penicillin,penicillin.png
-Fish,Seaweed,Sushi,sushi.png
-Caviar,Seaweed,Sushi,sushi.png
-Organic matter,Stone,Mineral,mineral.png
-Organic matter,Rock,Mineral,mineral.png
-Organic matter,Earth,Mineral,mineral.png
-Organic matter,Boulder,Mineral,mineral.png
-Organic matter,Hill,Mineral,mineral.png
-Organic matter,Mountain,Mineral,mineral.png
-Sand,Glass,Hourglass,hourglass.png
-Day,Night,Twilight,twilight.png
-Egg,Sand,Turtle,turtle.png
-Rainbow,Horse,Unicorn,unicorn.png
-Rainbow,Life,Unicorn,unicorn.png
-Double rainbow!,Horse,Unicorn,unicorn.png
-Double rainbow!,Life,Unicorn,unicorn.png
-Water,Rose,Perfume,perfume.png
-Water,Flower,Perfume,perfume.png
-Steam,Rose,Perfume,perfume.png
-Steam,Flower,Perfume,perfume.png
-Alcohol,Rose,Perfume,perfume.png
-Alcohol,Flower,Perfume,perfume.png
-House,Fireplace,Chimney,chimney.png
-Smoke,Brick,Chimney,chimney.png
-Fireplace,Brick,Chimney,chimney.png
+Fire,Ice,Water,water.png
+Hot,Ice,Water,water.png
+Mountain,Water,River,river.png
+Mountain,Rain,River,river.png
+Wild animal,Cheese,Mouse,mouse.png
+Water,Science,Liquid,liquid.png
+Water,Idea,Liquid,liquid.png
+Energy,Solid,Liquid,liquid.png
+Meteoroid,Atmosphere,Meteor,meteor.png
+Meteoroid,Sky,Meteor,meteor.png
+Plant,Earth,Grass,grass.png
+Quicksilver,Glass,Thermometer,thermometer.png
+Quicksilver,Tool,Thermometer,thermometer.png
+Quicksilver,Engineer,Thermometer,thermometer.png
+Witch,Glass,Crystal ball,crystal_ball.png
+Wizard,Glass,Crystal ball,crystal_ball.png
+Car,Car,Bus,bus.png
+Windmill,Knight,Don quixote,don_quixote.png
+Human,Robot,Cyborg,cyborg.png
+Human,Future time,Cyborg,cyborg.png
 Cart,Snow,Sleigh,sleigh.png
 Cart,Ice,Sleigh,sleigh.png
 Cart,Arctic,Sleigh,sleigh.png
@@ -1395,41 +773,175 @@ Wagon,Snow,Sleigh,sleigh.png
 Wagon,Ice,Sleigh,sleigh.png
 Wagon,Arctic,Sleigh,sleigh.png
 Wagon,Antarctica,Sleigh,sleigh.png
-Sand,Storm,Sandstorm,sandstorm.png
-Sand,Hurricane,Sandstorm,sandstorm.png
-Sand,Energy,Sandstorm,sandstorm.png
-Robot,Needle,Sewing machine,sewing_machine.png
-Electricity,Needle,Sewing machine,sewing_machine.png
-Human,Fire,Firefighter,firefighter.png
-Human,Firetruck,Firefighter,firefighter.png
-Human,Fire extinguisher,Firefighter,firefighter.png
-Moon,Sea,Tide,tide.png
-Moon,Ocean,Tide,tide.png
-Sheep,Tool,Wool,wool.png
-Sheep,Scissors,Wool,wool.png
-Egg,Fire,Omelette,omelette.png
-Egg,Hot,Omelette,omelette.png
-Chicken,House,Chicken coop,chicken_coop.png
-Chicken,Wall,Chicken coop,chicken_coop.png
-Chicken,Barn,Chicken coop,chicken_coop.png
-Chicken,Container,Chicken coop,chicken_coop.png
-Cockatrice,House,Chicken coop,chicken_coop.png
-Cockatrice,Barn,Chicken coop,chicken_coop.png
-Cockatrice,Container,Chicken coop,chicken_coop.png
-Air,Pressure,Wind,wind.png
-Air,Energy,Wind,wind.png
+Wood,Cheese,Mousetrap,mousetrap.png
+Metal,Cheese,Mousetrap,mousetrap.png
+Animal,Needle,Hedgehog,hedgehog.png
+Mouse,Needle,Hedgehog,hedgehog.png
+Rat,Needle,Hedgehog,hedgehog.png
+Wind,Surfer,Windsurfer,windsurfer.png
+Universe,Philosophy,Big,big.png
+Galaxy,Philosophy,Big,big.png
+Galaxy cluster,Philosophy,Big,big.png
+Solar system,Philosophy,Big,big.png
+Sun,Philosophy,Big,big.png
+Planet,Philosophy,Big,big.png
+Small,OppositeFanon,Big,big.png
+Hircocervus,Philosophy,Big,big.png
+Bird,Rainbow,Toucan,toucan.png
+Lava,Earth,Volcano,volcano.png
+Lava,Mountain,Volcano,volcano.png
+Fire,Mountain,Volcano,volcano.png
+Wild animal,Carrot,Rabbit,rabbit.png
+Energy,Explosion,Atomic bomb,atomic_bomb.png
+Fabric,Cook,Apron,apron.png
+Fabric,Baker,Apron,apron.png
+Human,Energy,Wizard,wizard.png
+Ant,House,Anthill,anthill.png
+Ant,Container,Anthill,anthill.png
+Ant,Hill,Anthill,anthill.png
+Ant,Earth,Anthill,anthill.png
+Ant,Land,Anthill,anthill.png
+Ant,Soil,Anthill,anthill.png
+Rain,Tool,Umbrella,umbrella.png
+Rain,Fabric,Umbrella,umbrella.png
+Blood,Container,Blood bag,blood_bag.png
+Blood,Sack,Blood bag,blood_bag.png
+Blood,Bottle,Blood bag,blood_bag.png
+Blood,BagFanon,Blood bag,blood_bag.png
+Canvas,Paint,Painting,painting.png
+Canvas,Painter,Painting,painting.png
+Hard roe,Human,Caviar,caviar.png
+Angel,Music,Harp,harp.png
+Fire,Idea,Heat,heat.png
+Fire,Science,Heat,heat.png
+Lava,Philosophy,Heat,heat.png
+Air,Energy,Heat,heat.png
+Water,Earth,Mud,mud.png
+Pirate,Map,Treasure map,treasure_map.png
+Star,Pressure,Black hole,black_hole.png
+Life,Sky,Bird,bird.png
+Egg,Air,Bird,bird.png
+Egg,Sky,Bird,bird.png
+Air,Life,Bird,bird.png
+Dinosaur,Air,Pterodactyl,pterodactyl.png
+Dinosaur,Bird,Pterodactyl,pterodactyl.png
+Human,Light bulb,Idea,idea.png
+Nerd,Light bulb,Idea,idea.png
+Sickness,Sea,Seasickness,seasickness.png
+Sickness,Ocean,Seasickness,seasickness.png
+Sickness,Boat,Seasickness,seasickness.png
+Sickness,Sailboat,Seasickness,seasickness.png
+Sickness,Steamboat,Seasickness,seasickness.png
+Stone,Tool,Statue,statue.png
+Human,Medusa,Statue,statue.png
+Snowboard,Wheel,Skateboard,skateboard.png
+Water,Sand,Beach,beach.png
+Sea,Sand,Beach,beach.png
+Ocean,Sand,Beach,beach.png
+Galaxy,Galaxy,Galaxy cluster,galaxy_cluster.png
+Galaxy,Container,Galaxy cluster,galaxy_cluster.png
+Train,Mountain,Roller coaster,roller_coaster.png
+Mountain,Cart,Roller coaster,roller_coaster.png
+Human,Cow,Minotaur,minotaur.png
+Dough,Candle,Cake,cake.png
+Grass,Livestock,Cow,cow.png
+Metal,Bullet,Gun,gun.png
+Soil,Soil,Land,land.png
+Soil,Big,Land,land.png
+Continent,Small,Land,land.png
+Earth,Earth,Land,land.png
+Earth,Stone,Land,land.png
+Sword,Sailor,Pirate,pirate.png
+Sailor,Pirate ship,Pirate,pirate.png
+Fish,Electricity,Electric eel,electric_eel.png
+Animal,Human,Domestication,domestication.png
+Animal,Farmer,Domestication,domestication.png
+Animal,Science,Domestication,domestication.png
+Farmer,Science,Domestication,domestication.png
+Air,Cloud,Sky,sky.png
+Cold,Sea,Arctic,arctic.png
+Cold,Ocean,Arctic,arctic.png
+House,Lake,Swimming pool,swimming_pool.png
+House,Swimmer,Swimming pool,swimming_pool.png
+Aquarium,Big,Swimming pool,swimming_pool.png
 Rain,Sun,Rainbow,rainbow.png
 Rain,Light,Rainbow,rainbow.png
-Explosion,Sky,Fireworks,fireworks.png
-Cup,Paper,Paper cup,paper_cup.png
-Juice,Cold,Popsicle,popsicle.png
-Juice,Ice,Popsicle,popsicle.png
-Human,Sewing machine,Tailor,tailor.png
-Human,Needle,Tailor,tailor.png
-Human,Thread,Tailor,tailor.png
-Blade,Doctor,Scalpel,scalpel.png
-Blade,Hospital,Scalpel,scalpel.png
-Electricity,Metal,Wire,wire.png
+Human,House,Family,family.png
+Human,Campfire,Story,story.png
+Human,Axe,Lumberjack,lumberjack.png
+Human,Chainsaw,Lumberjack,lumberjack.png
+Earth,Energy,Earthquake,earthquake.png
+Earth,Wave,Earthquake,earthquake.png
+Life,Dough,Gingerbread man,gingerbread_man.png
+Light,House,Lighthouse,lighthouse.png
+Light,Beach,Lighthouse,lighthouse.png
+Light,Sea,Lighthouse,lighthouse.png
+Light,Ocean,Lighthouse,lighthouse.png
+Snow,Energy,Avalanche,avalanche.png
+Philosophy,Safe,Container,container.png
+Philosophy,Pottery,Container,container.png
+Philosophy,House,Container,container.png
+Philosophy,Box,Container,container.png
+Philosophy,Bottle,Container,container.png
+Philosophy,Bucket,Container,container.png
+Human,Telescope,Astronomer,astronomer.png
+Science,Telescope,Astronomer,astronomer.png
+Wheel,Wheel,Bicycle,bicycle.png
+Small,Tablet,Smartphone,smartphone.png
+PcFanon,File:Smallest.pngSmallestFanon,Smartphone,smartphone.png
+Wine,Time,Vinegar,vinegar.png
+Wine,Air,Vinegar,vinegar.png
+Wine,Oxygen,Vinegar,vinegar.png
+Wire,Light,Optical fiber,optical_fiber.png
+Farmer,Field,Wheat,wheat.png
+Farmer,Plant,Wheat,wheat.png
+Grass,Scythe,Hay,hay.png
+Grass,Farmer,Hay,hay.png
+Grass,Sun,Hay,hay.png
+Paper,Pencil,Letter,letter.png
+Sand,Swamp,Quicksand,quicksand.png
+Big,Birdcage,Aviary,aviary.png
+Deity,Fruit,Dionysus,dionysus.png
+Deity,Wine,Dionysus,dionysus.png
+Deity,Beer,Dionysus,dionysus.png
+Deity,Alcohol,Dionysus,dionysus.png
+Deity,Drunk,Dionysus,dionysus.png
+Sand,Castle,Sand castle,sand_castle.png
+House,Wind,Windmill,windmill.png
+Wheel,Wind,Windmill,windmill.png
+Rain,Forest,Rainforest,rainforest.png
+Moon,Time,Night,night.png
+Time,Day,Night,night.png
+Sky,Moon,Night,night.png
+Fog,Smoke,Smog,smog.png
+Fog,City,Smog,smog.png
+Flower,Wild animal,Butterfly,butterfly.png
+Wood,Wind,Flute,flute.png
+Fire,Carbon dioxide,Fire extinguisher,fire_extinguisher.png
+Metal,Carbon dioxide,Fire extinguisher,fire_extinguisher.png
+Pressure,Carbon dioxide,Fire extinguisher,fire_extinguisher.png
+Magic,Evil,Curse,curse.png
+Black magicFanon,Human,Curse,curse.png
+Necromancer,Black magicFanon,Curse,curse.png
+Explosion,Star,Supernova,supernova.png
+Explosion,Sun,Supernova,supernova.png
+Explosion,Galaxy,Supernova,supernova.png
+Explosion,Space,Supernova,supernova.png
+Human,Rain,Cold,cold.png
+Tool,Wheel,Machine,machine.png
+Tool,Tool,Machine,machine.png
+Tool,Chain,Machine,machine.png
+Tool,Engineer,Machine,machine.png
+Boiler,Wheel,Machine,machine.png
+Boiler,Tool,Machine,machine.png
+Boiler,Chain,Machine,machine.png
+Blade,Blade,Scissors,scissors.png
+Tool,Fish,Fishing rod,fishing_rod.png
+Wood,Fish,Fishing rod,fishing_rod.png
+Sky,Night,Darkness,darkness.png
+Sky,Twilight,Darkness,darkness.png
+Fire,Stone,Metal,metal.png
+Stone,Hot,Metal,metal.png
 Philosophy,Bacteria,Small,small.png
 Philosophy,Oxygen,Small,small.png
 Philosophy,Carbon dioxide,Small,small.png
@@ -1443,97 +955,76 @@ Philosophy,Scorpion,Small,small.png
 Philosophy,Confetti,Small,small.png
 Philosophy,Seahorse,Small,small.png
 Big,OppositeFanon,Small,small.png
-Farmer,House,Farm,farm.png
-Farmer,Barn,Farm,farm.png
-Human,Rain,Cold,cold.png
-Wind,Energy,Hurricane,hurricane.png
-Sky,Night,Darkness,darkness.png
-Sky,Twilight,Darkness,darkness.png
-Plant,Garden,Flower,flower.png
-Cup,Immortality,Holy grail,holy_grail.png
-Cup,Good,Holy grail,holy_grail.png
-Electricity,Cloud,Lightning,lightning.png
-Electricity,Storm,Lightning,lightning.png
-Electricity,Rain,Lightning,lightning.png
-Energy,Cloud,Lightning,lightning.png
-Energy,Storm,Lightning,lightning.png
-Energy,Rain,Lightning,lightning.png
-Land,Storm,Lightning,lightning.png
-Zeus,Tool,Lightning,lightning.png
-Cyclops,Tool,Lightning,lightning.png
-Human,Flute,Musician,musician.png
-Human,Music,Musician,musician.png
-Human,Sheet music,Musician,musician.png
-Human,Drum,Musician,musician.png
-Human,Pan flute,Musician,musician.png
-Tool,Gardener,Shovel,shovel.png
-Metal,Stone,Blade,blade.png
-Fire,Stone,Metal,metal.png
-Stone,Hot,Metal,metal.png
-Wall,Wood,Fence,fence.png
-Moon,Car,Moon rover,moon_rover.png
-Moon,Electric car,Moon rover,moon_rover.png
-Paper,Blade,Confetti,confetti.png
-Paper,Scissors,Confetti,confetti.png
-Paper,Computer,Printer,printer.png
-Fog,Smoke,Smog,smog.png
-Fog,City,Smog,smog.png
-Glass,Rainbow,Prism,prism.png
-Desert,Horse,Camel,camel.png
-Desert,Wild animal,Camel,camel.png
-Desert,Livestock,Camel,camel.png
-Water,Glass,Aquarium,aquarium.png
-Glass,Fish,Aquarium,aquarium.png
-Fire,Idea,Heat,heat.png
-Fire,Science,Heat,heat.png
-Lava,Philosophy,Heat,heat.png
-Air,Energy,Heat,heat.png
-Blade,Pencil,Pencil sharpener,pencil_sharpener.png
-Chicken,Bone,Chicken wing,chicken_wing.png
-Earth,Earth,Pressure,pressure.png
-Air,Air,Pressure,pressure.png
-Snow,Snow,Blizzard,blizzard.png
-Snow,Wind,Blizzard,blizzard.png
-Snow,Storm,Blizzard,blizzard.png
-Gunpowder,Wire,Dynamite,dynamite.png
-Airplane,Alien,Ufo,ufo.png
-Rocket,Alien,Ufo,ufo.png
-Grass,Tool,Lawn mower,lawn_mower.png
-Electricity,Scythe,Lawn mower,lawn_mower.png
-Angel,Music,Harp,harp.png
-Air,Idea,Gas,gas.png
-Air,Science,Gas,gas.png
-Energy,Liquid,Gas,gas.png
-Lava,Pressure,Granite,granite.png
-Axe,Electricity,Chainsaw,chainsaw.png
 Human,Scythe,Grim reaper,grim_reaper.png
 Corpse,Scythe,Grim reaper,grim_reaper.png
-Wood,Corpse,Coffin,coffin.png
-House,Campfire,Fireplace,fireplace.png
-Campfire,Brick,Fireplace,fireplace.png
-Campfire,Wall,Fireplace,fireplace.png
-Human,Electricity,Electrician,electrician.png
-Human,Wire,Electrician,electrician.png
-Plant,Dust,Pollen,pollen.png
-Plant,Wind,Pollen,pollen.png
-Flower,Dust,Pollen,pollen.png
-Flower,Wind,Pollen,pollen.png
-Container,Broom,Closet,closet.png
-Container,Toolbox,Closet,closet.png
-Container,Umbrella,Closet,closet.png
-Container,Robot vacuum,Closet,closet.png
-Container,Vacuum cleaner,Closet,closet.png
-Philosophy,Safe,Container,container.png
-Philosophy,Pottery,Container,container.png
-Philosophy,House,Container,container.png
-Philosophy,Box,Container,container.png
-Philosophy,Bottle,Container,container.png
-Philosophy,Bucket,Container,container.png
-Star,Blade,Shuriken,shuriken.png
-Sun,Tool,Solar cell,solar_cell.png
-Wood,Pressure,Paper,paper.png
-Microscope,Glass,Bacteria,bacteria.png
-Swamp,Life,Bacteria,bacteria.png
+Air,Lava,Stone,stone.png
+Laptop,Small,Tablet,tablet.png
+Desert,Water,Oasis,oasis.png
+Desert,Tree,Oasis,oasis.png
+Desert,Palm,Oasis,oasis.png
+Fire,Mist,Air,air.png
+Wind,Energy,Hurricane,hurricane.png
+Wheel,Wood,Cart,cart.png
+Wild animal,Wood,Beaver,beaver.png
+Wild animal,Dam,Beaver,beaver.png
+OregonFanon,Wild animal,Beaver,beaver.png
+Human,Canvas,Painter,painter.png
+Human,Paint,Painter,painter.png
+Human,Painting,Painter,painter.png
+BristleFanon,Paint,Painter,painter.png
+Cat,Deity,Baast,baast.png
+Cat,Immortality,Baast,baast.png
+Stream,Small,Rivulet,rivulet.png
+Puddle,Motion,Rivulet,rivulet.png
+Fruit,Monkey,Banana,banana.png
+Wheel,Metal,Car,car.png
+Wood,Coal,Pencil,pencil.png
+Wood,Charcoal,Pencil,pencil.png
+Rainbow,Rainbow,Double rainbow!,double_rainbow!.png
+Clay,Life,Golem,golem.png
+Clock,Sound,Alarm clock,alarm_clock.png
+Boat,Wind,Sailboat,sailboat.png
+Boat,Fabric,Sailboat,sailboat.png
+Sand,Wind,Dune,dune.png
+Desert,Wind,Dune,dune.png
+Beach,Wind,Dune,dune.png
+Milk,Ice cream,Milk shake,milk_shake.png
+Big,Rock,Boulder,boulder.png
+Big,Stone,Boulder,boulder.png
+Small,Hill,Boulder,boulder.png
+Rock,Stone,Boulder,boulder.png
+Rock,Rock,Boulder,boulder.png
+Rock,Earth,Boulder,boulder.png
+Car,Ice cream,Ice cream truck,ice_cream_truck.png
+Paper,Earth,Map,map.png
+Airplane,Paper,Paper airplane,paper_airplane.png
+Sand,Storm,Sandstorm,sandstorm.png
+Sand,Hurricane,Sandstorm,sandstorm.png
+Sand,Energy,Sandstorm,sandstorm.png
+Fossil,Time,Petroleum,petroleum.png
+Fossil,Pressure,Petroleum,petroleum.png
+Metal,Light bulb,Lamp,lamp.png
+Livestock,House,Barn,barn.png
+Cow,House,Barn,barn.png
+House,Hay,Barn,barn.png
+Sun,Glasses,Sunglasses,sunglasses.png
+Beach,Glasses,Sunglasses,sunglasses.png
+Mouse,Tree,Squirrel,squirrel.png
+Sand,Glass,Time,time.png
+Plant,Cloud,Cotton,cotton.png
+Lizard,Time,Dinosaur,dinosaur.png
+Cheese,Hamburger,Cheeseburger,cheeseburger.png
+Metal,Liquid,Quicksilver,quicksilver.png
+Fireman,Car,Firetruck,firetruck.png
+Tree,Family,Family tree,family_tree.png
+Air,Steam,Cloud,cloud.png
+Mountain,Bird,Eagle,eagle.png
+Tool,Hay,Pitchfork,pitchfork.png
+Cookie,Dough,Cookie dough,cookie_dough.png
+Fruit,Energy,Sugar,sugar.png
+Juice,Energy,Sugar,sugar.png
+Juice,Fire,Sugar,sugar.png
+Bird,Corpse,Vulture,vulture.png
 Story,Time,Legend,legend.png
 Story,Story,Legend,legend.png
 Story,Big,Legend,legend.png
@@ -1541,35 +1032,22 @@ Story,Fairy tale,Legend,legend.png
 Fairy tale,Time,Legend,legend.png
 Fairy tale,Big,Legend,legend.png
 DrawingFanon,Story,Legend,legend.png
-Metal,Energy,Electricity,electricity.png
-Wind turbine,Wind,Electricity,electricity.png
-Solar cell,Sun,Electricity,electricity.png
-Solar cell,Light,Electricity,electricity.png
-Water,Sand,Beach,beach.png
-Sea,Sand,Beach,beach.png
-Ocean,Sand,Beach,beach.png
-Fruit,Blender,Smoothie,smoothie.png
-Wizard,Evil,Necromancer,necromancer.png
-Wizard,Curse,Necromancer,necromancer.png
-Witch,Evil,Necromancer,necromancer.png
-Witch,Curse,Necromancer,necromancer.png
-Black magicFanon,Human,Necromancer,necromancer.png
-Black magicFanon,Evil,Necromancer,necromancer.png
-Electricity,Glass,Light bulb,light_bulb.png
-Windmill,Electricity,Wind turbine,wind_turbine.png
-Tree,Farmer,Nuts,nuts.png
-Tree,Field,Nuts,nuts.png
-Tree,Domestication,Nuts,nuts.png
-Desert,Water,Oasis,oasis.png
-Desert,Tree,Oasis,oasis.png
-Desert,Palm,Oasis,oasis.png
-Nuts,Butter,Peanut butter,peanut_butter.png
-Nuts,Pressure,Peanut butter,peanut_butter.png
-Stream,Small,Rivulet,rivulet.png
-Puddle,Motion,Rivulet,rivulet.png
-Horse,Wood,Trojan horse,trojan_horse.png
-Tree,Fire,Charcoal,charcoal.png
-Wood,Fire,Charcoal,charcoal.png
+Life,Space,Alien,alien.png
+Wine,Container,Barrel,barrel.png
+Wine,Wood,Barrel,barrel.png
+Horse,Sea,Seahorse,seahorse.png
+Horse,Ocean,Seahorse,seahorse.png
+Horse,Fish,Seahorse,seahorse.png
+Rain,Cold,Snow,snow.png
+Steam,Cold,Snow,snow.png
+Tree,Wind,Leaf,leaf.png
+Wood,Pressure,Paper,paper.png
+Lava,Science,Magma,magma.png
+Volcano,Science,Magma,magma.png
+Hot,Science,Magma,magma.png
+Small,Earth,Pebble,pebble.png
+Small,Stone,Pebble,pebble.png
+Small,Rock,Pebble,pebble.png
 Ocean,Motion,Current,current.png
 Ocean,Heat,Current,current.png
 Ocean,Hot,Current,current.png
@@ -1580,173 +1058,492 @@ Sea,Heat,Current,current.png
 Sea,Hot,Current,current.png
 Sea,Cold,Current,current.png
 Sea,Science,Current,current.png
-Witch,Monster,Baba yaga,baba_yaga.png
 Metal,Thread,Needle,needle.png
 Metal,Hay,Needle,needle.png
-Earth,Rain,Plant,plant.png
-Flower,Bee,Plant,plant.png
-Train,Container,Trainyard,trainyard.png
-Train,House,Trainyard,trainyard.png
-Train,Wall,Trainyard,trainyard.png
-Train,Garage,Trainyard,trainyard.png
-Human,Robot,Cyborg,cyborg.png
-Human,Future time,Cyborg,cyborg.png
-River,Wood,Bridge,bridge.png
-River,Metal,Bridge,bridge.png
-River,Steel,Bridge,bridge.png
-Human,Canvas,Painter,painter.png
-Human,Paint,Painter,painter.png
-Human,Painting,Painter,painter.png
-BristleFanon,Paint,Painter,painter.png
-Meat,Dinosaur,Tyrannosaurus rex,tyrannosaurus_rex.png
-Human,Beehive,Beekeeper,beekeeper.png
-Human,Bee,Beekeeper,beekeeper.png
-Farmer,Beehive,Beekeeper,beekeeper.png
-Farmer,Bee,Beekeeper,beekeeper.png
-Bird,Rainbow,Toucan,toucan.png
-Faerie,Big,Elf,elf.png
-Metal,Sun,Gold,gold.png
-Metal,Rainbow,Gold,gold.png
-Airplane,Space,Rocket,rocket.png
-Human,Flute,Music,music.png
-Human,Sound,Music,music.png
-Electricity,Light bulb,Light,light.png
-Electricity,Flashlight,Light,light.png
-Earth,Air,Dust,dust.png
-Sun,Vampire,Dust,dust.png
-Day,Vampire,Dust,dust.png
-Laptop,Small,Tablet,tablet.png
-Sea,Sun,Salt,salt.png
-Ocean,Sun,Salt,salt.png
-Sea,Fire,Salt,salt.png
-Ocean,Fire,Salt,salt.png
-Cheese,Toast,Grilled cheese,grilled_cheese.png
-Human,Wolf,Werewolf,werewolf.png
-Human,Werewolf,Werewolf,werewolf.png
-Warrior,Holy grail,Paladin,paladin.png
-Warrior,Holy water,Paladin,paladin.png
-Warrior,Durendal,Paladin,paladin.png
-Warrior,Good,Paladin,paladin.png
-Knight,Holy grail,Paladin,paladin.png
-Knight,Holy water,Paladin,paladin.png
-Knight,Durendal,Paladin,paladin.png
-Knight,Good,Paladin,paladin.png
-Wood,Wind,Flute,flute.png
-Egg,Fish,Roe,roe.png
-Egg,Water,Roe,roe.png
-Egg,Ocean,Roe,roe.png
-Egg,Sea,Roe,roe.png
-Egg,Lake,Roe,roe.png
-Egg,Flying fish,Roe,roe.png
-Blade,Wood,Axe,axe.png
-Earth,Cloud,Fog,fog.png
-Fish,Bird,Flying fish,flying_fish.png
-Fish,Sky,Flying fish,flying_fish.png
-Boat,Wind,Sailboat,sailboat.png
-Boat,Fabric,Sailboat,sailboat.png
-Container,Pizza,Box,box.png
-Container,Pencil,Box,box.png
-Container,Cereal,Box,box.png
-Container,Cookie,Box,box.png
-Container,Donut,Box,box.png
-Container,Cake,Box,box.png
-Container,Crayon,Box,box.png
-Animal,Needle,Hedgehog,hedgehog.png
-Mouse,Needle,Hedgehog,hedgehog.png
-Rat,Needle,Hedgehog,hedgehog.png
-Blade,Dough,Cookie cutter,cookie_cutter.png
-Blade,Cookie dough,Cookie cutter,cookie_cutter.png
-Steam,Earth,Geyser,geyser.png
-Container,Smoothie,Cup,cup.png
-Container,Tea,Cup,cup.png
-Container,Milk shake,Cup,cup.png
-Bottle,Smoothie,Cup,cup.png
-Bottle,Tea,Cup,cup.png
-Bottle,Milk shake,Cup,cup.png
-Egg,Swamp,Lizard,lizard.png
-Rain,Rain,Flood,flood.png
-Rain,Time,Flood,flood.png
-Human,Boat,Sailor,sailor.png
-Human,Sailboat,Sailor,sailor.png
-Corpse,Curse,Jiangshi,jiangshi.png
-Corpse,Evil,Jiangshi,jiangshi.png
-Human,Campfire,Story,story.png
-Life,Land,Animal,animal.png
-Life,Forest,Animal,animal.png
-Life,Mountain,Animal,animal.png
-Life,Mountain range,Animal,animal.png
-Life,Beach,Animal,animal.png
-Life,Desert,Animal,animal.png
-Wool,Fireplace,Christmas stocking,christmas_stocking.png
-Human,Clay,Potter,potter.png
-Human,Pottery,Potter,potter.png
-Human,Book,Writer,writer.png
-Human,Pencil,Writer,writer.png
-Egg,Deity,Cosmic egg,cosmic_egg.png
-Universe,OvalFanon,Cosmic egg,cosmic_egg.png
-Water,Fire,Steam,steam.png
-Water,Energy,Steam,steam.png
-Water,Hot,Steam,steam.png
-Pottery,Plant,Vase,vase.png
-Pottery,Flower,Vase,vase.png
-Hammer,Boulder,Ore,ore.png
-Hammer,Earth,Ore,ore.png
-Hammer,Rock,Ore,ore.png
-Hammer,Stone,Ore,ore.png
-Hammer,Hill,Ore,ore.png
-Hammer,Mountain,Ore,ore.png
+Human,Tool,Engineer,engineer.png
+Earth,Metal,Plow,plow.png
+Earth,Steel,Plow,plow.png
+Earth,Wood,Plow,plow.png
+Field,Metal,Plow,plow.png
+Field,Steel,Plow,plow.png
+Field,Wood,Plow,plow.png
+Field,Tool,Plow,plow.png
+Ring,Planet,Saturn,saturn.png
+Air,Water,Mist,mist.png
+Air,Steam,Mist,mist.png
+Air,Rain,Mist,mist.png
 Steam engine,Boat,Steamboat,steamboat.png
 Steam engine,Water,Steamboat,steamboat.png
-Cotton,Tool,Thread,thread.png
-Wheel,Wool,Thread,thread.png
+Pilot,Fabric,Parachute,parachute.png
+Pilot,Umbrella,Parachute,parachute.png
+Angler,Rope,Net,net.png
+Fishing rod,Rope,Net,net.png
+Fish,Rope,Net,net.png
+Swordfish,Rope,Net,net.png
+Flying fish,Rope,Net,net.png
+Car,Letter,Mail truck,mail_truck.png
+Car,Mailman,Mail truck,mail_truck.png
+Car,Post office,Mail truck,mail_truck.png
+Deity,Sky,Zeus,zeus.png
+Deity,Mount olympus,Zeus,zeus.png
+Space,House,Space station,space_station.png
+Tree,Pottery,Bonsai tree,bonsai_tree.png
+Tree,Scissors,Bonsai tree,bonsai_tree.png
+Air,Idea,Gas,gas.png
+Air,Science,Gas,gas.png
+Energy,Liquid,Gas,gas.png
+Fish,Bird,Flying fish,flying_fish.png
+Fish,Sky,Flying fish,flying_fish.png
+Chicken,House,Chicken coop,chicken_coop.png
+Chicken,Wall,Chicken coop,chicken_coop.png
+Chicken,Barn,Chicken coop,chicken_coop.png
+Chicken,Container,Chicken coop,chicken_coop.png
+Cockatrice,House,Chicken coop,chicken_coop.png
+Cockatrice,Barn,Chicken coop,chicken_coop.png
+Cockatrice,Container,Chicken coop,chicken_coop.png
+Wild animal,Human,Dog,dog.png
+Wolf,Bone,Dog,dog.png
+Dinosaur,City,Kaiju,kaiju.png
+Dinosaur,Skyscraper,Kaiju,kaiju.png
+Dinosaur,Legend,Kaiju,kaiju.png
+Dinosaur,Story,Kaiju,kaiju.png
+Monster,City,Kaiju,kaiju.png
+Monster,Skyscraper,Kaiju,kaiju.png
+Oil,Ash,Soap,soap.png
+Bird,Scarecrow,Crow,crow.png
+Bird,Field,Crow,crow.png
+Volcano,Energy,Ash,ash.png
+Fire,Human,Ash,ash.png
+Plant,Plant,Garden,garden.png
+Plant,Grass,Garden,garden.png
+House,Grass,Garden,garden.png
+Flower,Flower,Garden,garden.png
+Hedge,Fence,Garden,garden.png
+Beaver,River,Dam,dam.png
+Beaver,Tree,Dam,dam.png
+Beaver,Wood,Dam,dam.png
+Wall,River,Dam,dam.png
+Water,Pipe,Water pipe,water_pipe.png
+Paper cup,Wire,String phone,string_phone.png
+Paper cup,Thread,String phone,string_phone.png
+Cup,Wire,String phone,string_phone.png
+Cup,Thread,String phone,string_phone.png
+Blade,Grass,Scythe,scythe.png
+Blade,Wheat,Scythe,scythe.png
+Blood,Ocean,Shark,shark.png
+Blood,Sea,Shark,shark.png
+Wild animal,Ocean,Shark,shark.png
+Wild animal,Sea,Shark,shark.png
+Air,Wave,Sound,sound.png
+Juice,Sugar,Jam,jam.png
+Fruit,Hot,Jam,jam.png
+Field,Fruit,Vegetable,vegetable.png
 Wax,Thread,Candle,candle.png
 Wax,Fire,Candle,candle.png
-Gift,Paper,Wrapping paper,wrapping_paper.png
-Cow,Paul bunyan,Babe the blue ox,babe_the_blue_ox.png
-Cow,Giant,Babe the blue ox,babe_the_blue_ox.png
-Livestock,Paul bunyan,Babe the blue ox,babe_the_blue_ox.png
-Livestock,Giant,Babe the blue ox,babe_the_blue_ox.png
-Metal,Light bulb,Lamp,lamp.png
-Water,Good,Holy water,holy_water.png
-Water,Heaven,Holy water,holy_water.png
-Container,Air,Scuba tank,scuba_tank.png
-Container,Atmosphere,Scuba tank,scuba_tank.png
-Container,Oxygen,Scuba tank,scuba_tank.png
-Water,Chicken,Chicken soup,chicken_soup.png
-Small,Tablet,Smartphone,smartphone.png
-PcFanon,File:Smallest.pngSmallestFanon,Smartphone,smartphone.png
-Love,Deity,Cupid,cupid.png
-Angel,Deity,Cupid,cupid.png
-Fire,Carbon dioxide,Fire extinguisher,fire_extinguisher.png
-Metal,Carbon dioxide,Fire extinguisher,fire_extinguisher.png
-Pressure,Carbon dioxide,Fire extinguisher,fire_extinguisher.png
-Car,Car,Bus,bus.png
+Sand,Plant,Cactus,cactus.png
+Desert,Plant,Cactus,cactus.png
+Knight,Dragon,Hero,hero.png
 Book,Immortality,Book of the dead,book_of_the_dead.png
 Book,Ra,Book of the dead,book_of_the_dead.png
 Book,Maahes,Book of the dead,book_of_the_dead.png
 Book,Tawaret,Book of the dead,book_of_the_dead.png
 Book,Baast,Book of the dead,book_of_the_dead.png
 Book,Urn,Book of the dead,book_of_the_dead.png
-Land,Big,Continent,continent.png
-Land,Land,Continent,continent.png
-Land,Earth,Continent,continent.png
-Mountain range,Mountain range,Continent,continent.png
-File:Spray 2.svg Spray,Mountain,Continent,continent.png
-Country,Country,Continent,continent.png
-Wild animal,Wire,Snake,snake.png
-Maui,Fishing rod,Maui's fishhook,maui's_fishhook.png
-Maui,Tool,Maui's fishhook,maui's_fishhook.png
-Human,Telescope,Astronomer,astronomer.png
-Science,Telescope,Astronomer,astronomer.png
+Butterfly,Moon,Moth,moth.png
+Butterfly,Night,Moth,moth.png
+Human,Flute,Music,music.png
+Human,Sound,Music,music.png
+Bird,House,Birdhouse,birdhouse.png
+Santa,Wild animal,Reindeer,reindeer.png
+Santa,Livestock,Reindeer,reindeer.png
+Earth,Life,Human,human.png
+MortalityFanon,Life,Human,human.png
+Black magicFanon,Corpse,Human,human.png
+Earth,Fire,Lava,lava.png
+Earth,Hot,Lava,lava.png
+Isle,Isle,Archipelago,archipelago.png
+Human,Book,Writer,writer.png
+Human,Pencil,Writer,writer.png
+Clock,Sun,Sundial,sundial.png
+Turtle,Ninja,Ninja turtle,ninja_turtle.png
+Water,Leaf,Tea,tea.png
+Wild animal,Armor,Armadillo,armadillo.png
+Tool,Wood,Wheel,wheel.png
+Chicken,Bone,Chicken wing,chicken_wing.png
+Human,Clay,Potter,potter.png
+Human,Pottery,Potter,potter.png
+Water,Air,Rain,rain.png
+Cloud,Water,Rain,rain.png
+Doctor,Needle,Syringe,syringe.png
+Tool,Needle,Syringe,syringe.png
+Water,Gun,Water gun,water_gun.png
+Sword,Fish,Swordfish,swordfish.png
+Beaver,Duck,Platypus,platypus.png
 Container,Flour,Sack,sack.png
 Container,Salt,Sack,sack.png
 Container,Letter,Sack,sack.png
-Steel,Wool,Steel wool,steel_wool.png
-Wire,Wool,Steel wool,steel_wool.png
-Corpse,Time,Skeleton,skeleton.png
-Bone,Bone,Skeleton,skeleton.png
-Soil,Philosophy,Earth,earth.png
-Sand,Swamp,Quicksand,quicksand.png
+Sugar,Cloud,Cotton candy,cotton_candy.png
+Sugar,Electricity,Cotton candy,cotton_candy.png
+Water,Cold,Ice,ice.png
+Sword,Light,Light sword,light_sword.png
+Sword,Electricity,Light sword,light_sword.png
+Sword,Energy,Light sword,light_sword.png
+Sword,Space,Light sword,light_sword.png
+Sword,Force knight,Light sword,light_sword.png
+Recipe,Recipe,Cookbook,cookbook.png
+Book,Recipe,Cookbook,cookbook.png
+DrawingFanon,Recipe,Cookbook,cookbook.png
+Blade,Doctor,Scalpel,scalpel.png
+Blade,Hospital,Scalpel,scalpel.png
+Squirrel,Bird,Flying squirrel,flying_squirrel.png
+Squirrel,Wind,Flying squirrel,flying_squirrel.png
+Squirrel,Airplane,Flying squirrel,flying_squirrel.png
+Sky,Squirrel,Flying squirrel,flying_squirrel.png
+Snow,Human,Snowball,snowball.png
+Evil,Immortality,Demon,demon.png
+Evil,Deity,Demon,demon.png
+Evil,Angel,Demon,demon.png
+Human,Hell,Demon,demon.png
+Desert,Horse,Camel,camel.png
+Desert,Wild animal,Camel,camel.png
+Desert,Livestock,Camel,camel.png
+Wheat,Stone,Flour,flour.png
+Windmill,Wheat,Flour,flour.png
+Wheat,Waterwheel,Flour,flour.png
+Steamboat,Iceberg,Titanic,titanic.png
+Gift,Paper,Wrapping paper,wrapping_paper.png
+Paper,Wind,Kite,kite.png
+Paper,Sky,Kite,kite.png
+Sand,Sand,Desert,desert.png
+Sand,Cactus,Desert,desert.png
+Fire,Sky,Sun,sun.png
+Horse,Human,Centaur,centaur.png
+Human,Fire,Firefighter,firefighter.png
+Human,Firetruck,Firefighter,firefighter.png
+Human,Fire extinguisher,Firefighter,firefighter.png
+Wolf,Metal,Cage,cage.png
+Wolf,Steel,Cage,cage.png
+Wolf,Wall,Cage,cage.png
+Fox,Metal,Cage,cage.png
+Fox,Steel,Cage,cage.png
+Fox,Wall,Cage,cage.png
+Lion,Metal,Cage,cage.png
+Lion,Steel,Cage,cage.png
+Lion,Wall,Cage,cage.png
+Hamster,Container,Cage,cage.png
+Hamster,House,Cage,cage.png
+Hamster,Wall,Cage,cage.png
+Light,Machine,Spotlight,spotlight.png
+Light,Metal,Spotlight,spotlight.png
+Light,Steel,Spotlight,spotlight.png
+Metal,Sun,Gold,gold.png
+Metal,Rainbow,Gold,gold.png
+Fish,Blood,Piranha,piranha.png
+Fruit,Alcohol,Wine,wine.png
+Heat,Air,Warmth,warmth.png
+Heat,Human,Warmth,warmth.png
+Hot,Air,Warmth,warmth.png
+Hot,Human,Warmth,warmth.png
+Water,Water,Sea,sea.png
+Unicorn,Water,Narwhal,narwhal.png
+Unicorn,Sea,Narwhal,narwhal.png
+Unicorn,Ocean,Narwhal,narwhal.png
+Wood,Corpse,Coffin,coffin.png
+Safe,Big,Vault,vault.png
+Earth,Life,Soil,soil.png
+Earth,Organic matter,Soil,soil.png
+Land,Life,Soil,soil.png
+Land,Organic matter,Soil,soil.png
+Air,Fire,Energy,energy.png
+Plant,Sun,Energy,energy.png
+Bird,Pirate,Parrot,parrot.png
+Cloud,Electricity,Storm,storm.png
+Cloud,Energy,Storm,storm.png
+Life,Stone,Egg,egg.png
+Bird,Bird,Egg,egg.png
+Turtle,Turtle,Egg,egg.png
+Lizard,Lizard,Egg,egg.png
+Bird,OvalFanon,Egg,egg.png
+Turtle,OvalFanon,Egg,egg.png
+Lizard,OvalFanon,Egg,egg.png
+Water,Garden,Pond,pond.png
+Human,Blade,Blood,blood.png
+Wild animal,Milk,Cat,cat.png
+Star,Star,Constellation,constellation.png
+Human,Old,Monkey,monkey.png
+Wild animal,Tree,Monkey,monkey.png
+Sky,Cheese,Moon,moon.png
+Sky,Stone,Moon,moon.png
+Tent,Big,Circus,circus.png
+Tent,Animal,Circus,circus.png
+Tent,Shaun the sheepFanon,Circus,circus.png
+Earth,Vegetable,Potato,potato.png
+Human,Boat,Sailor,sailor.png
+Human,Sailboat,Sailor,sailor.png
+Egg,Fish,Roe,roe.png
+Egg,Water,Roe,roe.png
+Egg,Ocean,Roe,roe.png
+Egg,Sea,Roe,roe.png
+Egg,Lake,Roe,roe.png
+Egg,Flying fish,Roe,roe.png
+Car,Farmer,Tractor,tractor.png
+Car,Field,Tractor,tractor.png
+Goat,Mountain,Mountain goat,mountain_goat.png
+Goat,Mountain range,Mountain goat,mountain_goat.png
+Boiler,Tool,Steam engine,steam_engine.png
+Boiler,Wheel,Steam engine,steam_engine.png
+Human,Armor,Knight,knight.png
+Corpse,Time,Bone,bone.png
+Blade,Wood,Axe,axe.png
+Corpse,Pyramid,Mummy,mummy.png
+Horse,River,Hippo,hippo.png
+Horse,Water,Hippo,hippo.png
+Star,Sky,Space,space.png
+Star,Sun,Space,space.png
+Star,Moon,Space,space.png
+Human,Fruit,Cook,cook.png
+Human,Vegetable,Cook,cook.png
+Human,Campfire,Cook,cook.png
+Human,Nuts,Cook,cook.png
+Metal,Cold,Fridge,fridge.png
+Electricity,Cold,Fridge,fridge.png
+Metal,Ice,Fridge,fridge.png
+Sap,Heat,Maple syrup,maple_syrup.png
+Sap,Hot,Maple syrup,maple_syrup.png
+Sap,Sugar,Maple syrup,maple_syrup.png
+Human,Blood,Vampire,vampire.png
+Human,Vampire,Vampire,vampire.png
+Airplane,Space,Rocket,rocket.png
+Rope,Cow,Lasso,lasso.png
+Rope,Horse,Lasso,lasso.png
+Egg,Swamp,Lizard,lizard.png
+Human,Beehive,Beekeeper,beekeeper.png
+Human,Bee,Beekeeper,beekeeper.png
+Farmer,Beehive,Beekeeper,beekeeper.png
+Farmer,Bee,Beekeeper,beekeeper.png
+Plant,Time,Tree,tree.png
+Campfire,Meat,Bbq,bbq.png
+Campfire,Garden,Bbq,bbq.png
+Witch,Monster,Baba yaga,baba_yaga.png
+Sugar,Dough,Cookie,cookie.png
+Ruins,Human,Archeologist,archeologist.png
+Ruins,Science,Archeologist,archeologist.png
+Graveyard,Night,Ghost,ghost.png
+Castle,Night,Ghost,ghost.png
+Metal,Stone,Blade,blade.png
+Animal,Container,Zoo,zoo.png
+Animal,Cage,Zoo,zoo.png
+Paper,Cookie,Fortune cookie,fortune_cookie.png
+Human,Wolf,Werewolf,werewolf.png
+Human,Werewolf,Werewolf,werewolf.png
+Bird,Sea,Seagull,seagull.png
+Bird,Ocean,Seagull,seagull.png
+Bird,Beach,Seagull,seagull.png
+Cheese,Pasta,Mac and cheese,mac_and_cheese.png
+House,Ice,Igloo,igloo.png
+House,Snow,Igloo,igloo.png
+Brick,Brick,Wall,wall.png
+Hard roe,Time,Fish,fish.png
+Clay,Fire,Brick,brick.png
+Mud,Fire,Brick,brick.png
+Clay,Sun,Brick,brick.png
+Mud,Sun,Brick,brick.png
+Blade,Cook,Knife,knife.png
+Sword,Cook,Knife,knife.png
+Sun,Ice,Puddle,puddle.png
+Sun,Snowman,Puddle,puddle.png
+Snowman,Flamethrower,Puddle,puddle.png
+Rain,Smoke,Acid rain,acid_rain.png
+Rain,Smog,Acid rain,acid_rain.png
+Cotton,Tool,Thread,thread.png
+Wheel,Wool,Thread,thread.png
+Pasta,Thread,Spaghetti,spaghetti.png
+House,Sickness,Hospital,hospital.png
+House,Ambulance,Hospital,hospital.png
+House,Doctor,Hospital,hospital.png
+Human,Snake,Medusa,medusa.png
+Livestock,Hay,Horse,horse.png
+Tea,Ice,Iced tea,iced_tea.png
+Tea,Cold,Iced tea,iced_tea.png
+Tool,Gardener,Shovel,shovel.png
+Fruit,Time,Alcohol,alcohol.png
+Juice,Time,Alcohol,alcohol.png
+Story,Lake,Nessie,nessie.png
+Human,Snowboard,Snowboarder,snowboarder.png
+Gunpowder,Fire,Explosion,explosion.png
+Cloud,Livestock,Sheep,sheep.png
+Livestock,Mountain,Goat,goat.png
+Bird,Night,Owl,owl.png
+Bird,Wizard,Owl,owl.png
+Petroleum,Machine,Combustion engine,combustion_engine.png
+Petroleum,Wheel,Combustion engine,combustion_engine.png
+Petroleum,Steam engine,Combustion engine,combustion_engine.png
+Explosion,Machine,Combustion engine,combustion_engine.png
+Explosion,Steam engine,Combustion engine,combustion_engine.png
+Human,Immortality,Deity,deity.png
+Human,Peach of immortality,Deity,deity.png
+Human,Philosopher's stone,Deity,deity.png
+Human,Fountain of youth,Deity,deity.png
+Human,Elixir of life,Deity,deity.png
+Human,Kaki,Deity,deity.png
+Human,Ichor,Deity,deity.png
+Container,Air,Scuba tank,scuba_tank.png
+Container,Atmosphere,Scuba tank,scuba_tank.png
+Container,Oxygen,Scuba tank,scuba_tank.png
+Snowman,Vegetable,Carrot,carrot.png
+Sun,Snowman,Carrot,carrot.png
+Jam,Container,Jar,jar.png
+Jam,Bottle,Jar,jar.png
+Jam,Glass,Jar,jar.png
+Jam,Bucket,Jar,jar.png
+Ring,Volcano,The one ring,the_one_ring.png
+Earth,Space,Planet,planet.png
+Dough,Fruit,Pie,pie.png
+Farmer,Life,Livestock,livestock.png
+Farmer,Wild animal,Livestock,livestock.png
+Human,Wild animal,Livestock,livestock.png
+Airplane,Water,Seaplane,seaplane.png
+Airplane,Sea,Seaplane,seaplane.png
+Airplane,Ocean,Seaplane,seaplane.png
+Blood,Fabric,Bandage,bandage.png
+Scuba tank,Human,Diver,diver.png
+Scuba tank,Swimmer,Diver,diver.png
+Scuba tank,Sea,Diver,diver.png
+Scuba tank,Ocean,Diver,diver.png
+Scuba tank,Lake,Diver,diver.png
+House,Chimney,Factory,factory.png
+House,Tool,Factory,factory.png
+House,Cook,Restaurant,restaurant.png
+Air,Cold,Chill,chill.png
+Human,Cold,Chill,chill.png
+Human,Ice,Chill,chill.png
+Milk,Time,Cheese,cheese.png
+Human,Metal,Tool,tool.png
+Mouse,Computer,Computer mouse,computer_mouse.png
+Wild animal,Wire,Snake,snake.png
+Metal,Life,Robot,robot.png
+Steel,Life,Robot,robot.png
+Life,Armor,Robot,robot.png
+Human,Future time,Robot,robot.png
+Cyborg,Future time,Robot,robot.png
+Paper,Wood,Book,book.png
+Paper,Story,Book,book.png
+Earth,Rain,Plant,plant.png
+Flower,Bee,Plant,plant.png
+Clock,Bird,Cuckoo,cuckoo.png
+Computer,Computer,Internet,internet.png
+Computer,Wire,Internet,internet.png
+Computer,Web,Internet,internet.png
+Star,Blade,Shuriken,shuriken.png
+Mouse,Bird,Bat,bat.png
+Mouse,Sky,Bat,bat.png
+Bird,Rainbow,Peacock,peacock.png
+Container,Smoothie,Cup,cup.png
+Container,Tea,Cup,cup.png
+Container,Milk shake,Cup,cup.png
+Bottle,Smoothie,Cup,cup.png
+Bottle,Tea,Cup,cup.png
+Bottle,Milk shake,Cup,cup.png
+Farmer,House,Farm,farm.png
+Farmer,Barn,Farm,farm.png
+Love,Deity,Cupid,cupid.png
+Angel,Deity,Cupid,cupid.png
+Wool,Tool,Sweater,sweater.png
+Wool,Human,Sweater,sweater.png
+Sun,Moon,Eclipse,eclipse.png
+Metal,Witch,Cauldron,cauldron.png
+Steel,Witch,Cauldron,cauldron.png
+Fireplace,Witch,Cauldron,cauldron.png
+Campfire,Witch,Cauldron,cauldron.png
+Tool,Doctor,Stethoscope,stethoscope.png
+Night,Sky,Star,star.png
+Night,Telescope,Star,star.png
+Plant,Sea,Seaweed,seaweed.png
+Plant,Ocean,Seaweed,seaweed.png
+Wood,House,Log cabin,log_cabin.png
+Flour,Milk,Batter,batter.png
+Glass,Sky,Telescope,telescope.png
+Glass,Star,Telescope,telescope.png
+Glass,Space,Telescope,telescope.png
+Rainbow,Pencil,Crayon,crayon.png
+Rainbow,Wax,Crayon,crayon.png
+Bee,House,Beehive,beehive.png
+Bee,Tree,Beehive,beehive.png
+Bee,OvalFanon,Beehive,beehive.png
+Chicken,Wild animal,Fox,fox.png
+Water,Chicken,Chicken soup,chicken_soup.png
+Fire,Dust,Gunpowder,gunpowder.png
+Yogurt,Cold,Frozen yogurt,frozen_yogurt.png
+Yogurt,Ice,Frozen yogurt,frozen_yogurt.png
+Garden,Statue,Gnome,gnome.png
+Train,Container,Trainyard,trainyard.png
+Train,House,Trainyard,trainyard.png
+Train,Wall,Trainyard,trainyard.png
+Train,Garage,Trainyard,trainyard.png
+Bird,Water,Duck,duck.png
+Bird,Pond,Duck,duck.png
+Bird,Lake,Duck,duck.png
+Time,Duckling,Duck,duck.png
+Moon,Sea,Tide,tide.png
+Moon,Ocean,Tide,tide.png
+Plant,Garden,Flower,flower.png
+Bird,Flower,Hummingbird,hummingbird.png
+Milk,Bacteria,Yogurt,yogurt.png
+Grass,Wild animal,Ant,ant.png
+Wild animal,Sugar,Ant,ant.png
+Metal,Horse,Horseshoe,horseshoe.png
+House,Book,Library,library.png
+Milk,Pressure,Butter,butter.png
+Milk,Energy,Butter,butter.png
+Meat,Sun,Jerky,jerky.png
+Meat,Salt,Jerky,jerky.png
+Meat,Hot,Jerky,jerky.png
+Human,Computer,Hacker,hacker.png
+Human,Computer mouse,Hacker,hacker.png
+Human,Glasses,Hacker,hacker.png
+Human,Internet,Hacker,hacker.png
+Broom,Electricity,Vacuum cleaner,vacuum_cleaner.png
+Wild animal,Time,Sloth,sloth.png
+Wood,Cook,Cutting board,cutting_board.png
+Tree,House,Treehouse,treehouse.png
+Sugar,Fire,Caramel,caramel.png
+Stone,Air,Sand,sand.png
+Stone,Wind,Sand,sand.png
+Human,Dust,Allergy,allergy.png
+Fruit,Water,Juice,juice.png
+Fruit,Pressure,Juice,juice.png
+Human,Alcohol,Drunk,drunk.png
+Human,Beer,Drunk,drunk.png
+Human,Wine,Drunk,drunk.png
+Bacteria,Glass,Microscope,microscope.png
+Bacteria,Glasses,Microscope,microscope.png
+Love,Plant,Rose,rose.png
+Love,Flower,Rose,rose.png
+Mountain,Sheep,Alpaca,alpaca.png
+Robot,Needle,Sewing machine,sewing_machine.png
+Electricity,Needle,Sewing machine,sewing_machine.png
+Goblin,Good,Faerie,faerie.png
+Christmas tree,Human,Santa,santa.png
+Paper,Paper,Newspaper,newspaper.png
+Sand,Paper,Sandpaper,sandpaper.png
+Campfire,Fabric,Smoke signal,smoke_signal.png
+Smoke,Fabric,Smoke signal,smoke_signal.png
+Human,Moon,Astronaut,astronaut.png
+Human,Rocket,Astronaut,astronaut.png
+Human,Space station,Astronaut,astronaut.png
+Human,Space,Astronaut,astronaut.png
+Livestock,Bird,Chicken,chicken.png
+Egg,Livestock,Chicken,chicken.png
+Bird,Farmer,Chicken,chicken.png
+Water,Wood,Boat,boat.png
+Wheat,Container,Silo,silo.png
+Wheat,House,Silo,silo.png
+Wheat,Barn,Silo,silo.png
+Wheat,Wall,Silo,silo.png
+Wheat,Farm,Silo,silo.png
+Wheat,Safe,Silo,silo.png
+Wheat,Bank,Silo,silo.png
+Axe,Electricity,Chainsaw,chainsaw.png
 Wind,Science,Motion,motion.png
 Wind,Idea,Motion,motion.png
 Wind,Philosophy,Motion,motion.png
@@ -1756,5 +1553,208 @@ Stream,Science,Motion,motion.png
 Stream,Philosophy,Motion,motion.png
 River,Science,Motion,motion.png
 River,Philosophy,Motion,motion.png
-Water,Water,Sea,sea.png
+Rain,Rain,Flood,flood.png
+Rain,Time,Flood,flood.png
+Egg,Oil,Mayonnaise,mayonnaise.png
+Human,Oxygen,Carbon dioxide,carbon_dioxide.png
+Plant,Night,Carbon dioxide,carbon_dioxide.png
+Tree,Night,Carbon dioxide,carbon_dioxide.png
+Plant,Dust,Pollen,pollen.png
+Plant,Wind,Pollen,pollen.png
+Flower,Dust,Pollen,pollen.png
+Flower,Wind,Pollen,pollen.png
+Air,Metal,Rust,rust.png
+Metal,Oxygen,Rust,rust.png
+Steel,Oxygen,Rust,rust.png
+Air,Steel,Rust,rust.png
+Planet,Acid rain,Venus,venus.png
+Planet,Smog,Venus,venus.png
+Planet,Volcano,Venus,venus.png
+Grass,Sandwich,Picnic,picnic.png
+Beach,Sandwich,Picnic,picnic.png
+Tobacco,Paper,Cigarette,cigarette.png
+Moon,Car,Moon rover,moon_rover.png
+Moon,Electric car,Moon rover,moon_rover.png
+Cow,Sea,Manatee,manatee.png
+Mouse,Wheel,Hamster,hamster.png
+Dinosaur,Time,Fossil,fossil.png
+Dinosaur,Earth,Fossil,fossil.png
+Dinosaur,Stone,Fossil,fossil.png
+Dog,Snow,Husky,husky.png
+Dog,Ice,Husky,husky.png
+Human,Flute,Musician,musician.png
+Human,Music,Musician,musician.png
+Human,Sheet music,Musician,musician.png
+Human,Drum,Musician,musician.png
+Human,Pan flute,Musician,musician.png
+Time,Life,Death,death.png
+Corpse,Philosophy,Death,death.png
+Skeleton,Philosophy,Death,death.png
+Meteor,Dinosaur,Death,death.png
+Grave,Philosophy,Death,death.png
+Graveyard,Philosophy,Death,death.png
+Cancer (disease)Fanon,Philosophy,Death,death.png
+Vegetable lamb,Time,Death,death.png
+Schrödinger's cat,Time,Death,death.png
+Snow,Wood,Snowboard,snowboard.png
+Snow,Surfer,Snowboard,snowboard.png
+Human,Field,Farmer,farmer.png
+Human,Plant,Farmer,farmer.png
+Human,Pitchfork,Farmer,farmer.png
+Bicycle,Energy,Motorcycle,motorcycle.png
+Bicycle,Steel,Motorcycle,motorcycle.png
+Lava,Ocean,Primordial soup,primordial_soup.png
+Lava,Sea,Primordial soup,primordial_soup.png
+Planet,Ocean,Primordial soup,primordial_soup.png
+Planet,Sea,Primordial soup,primordial_soup.png
+Earth,Ocean,Primordial soup,primordial_soup.png
+Earth,Sea,Primordial soup,primordial_soup.png
+Container,Milk,Bottle,bottle.png
+Container,Water,Bottle,bottle.png
+Container,Coconut milk,Bottle,bottle.png
+Container,Juice,Bottle,bottle.png
+Container,Oil,Bottle,bottle.png
+Container,Alcohol,Bottle,bottle.png
+Container,Wine,Bottle,bottle.png
+Container,Beer,Bottle,bottle.png
+Container,Chocolate milk,Bottle,bottle.png
+Container,Soda,Bottle,bottle.png
+Container,Perfume,Bottle,bottle.png
+Container,Liquid,Bottle,bottle.png
+Paper,Flour,Recipe,recipe.png
+Paper,Baker,Recipe,recipe.png
+Fruit,Tree,Fruit tree,fruit_tree.png
+Robot,Vacuum cleaner,Robot vacuum,robot_vacuum.png
+Robot,Broom,Robot vacuum,robot_vacuum.png
+Computer,Vacuum cleaner,Robot vacuum,robot_vacuum.png
+Computer,Broom,Robot vacuum,robot_vacuum.png
+Fire,Wall,Firewall,firewall.png
+Wood,Bullet,Arrow,arrow.png
+Wood,Bow,Arrow,arrow.png
+Coal,Pressure,Diamond,diamond.png
+Coal,Time,Diamond,diamond.png
+Cart,Horse,Wagon,wagon.png
+Water,Rainbow,Paint,paint.png
+Water,Pencil,Paint,paint.png
+Bird,Tree,Nest,nest.png
+Bird,Hay,Nest,nest.png
+Egg,Hay,Nest,nest.png
+Planet,Cloud,Jupiter,jupiter.png
+Planet,Storm,Jupiter,jupiter.png
+Planet,Big,Jupiter,jupiter.png
+Planet,Gas,Jupiter,jupiter.png
+Planet,Zeus,Jupiter,jupiter.png
+Saturn,Big,Jupiter,jupiter.png
+Small,Alchemist,Little alchemy (element),little_alchemy_(element).png
+AlchemyFanon,Small,Little alchemy (element),little_alchemy_(element).png
+Videogame,PolandFanon,Little alchemy (element),little_alchemy_(element).png
+Hay,Hay,Hay bale,hay_bale.png
+Star,Fish,Starfish,starfish.png
+Star,Ocean,Starfish,starfish.png
+Star,Sea,Starfish,starfish.png
+Fire,Alcohol,Fire,fire.png
+Fire,Coal,Fire,fire.png
+Rockstar,Lava,Fire,fire.png
+AppleFanon,File:Rocker 2.svg Rocker,Fire,fire.png
+Will-o'-the-wisp,RedFanon,Fire,fire.png
+Sheep,Tool,Wool,wool.png
+Sheep,Scissors,Wool,wool.png
+Story,Monarch,Fairy tale,fairy_tale.png
+Story,Castle,Fairy tale,fairy_tale.png
+Story,Knight,Fairy tale,fairy_tale.png
+Story,Dragon,Fairy tale,fairy_tale.png
+Human,Gun,Corpse,corpse.png
+Human,Grim reaper,Corpse,corpse.png
+Human,Cancer (disease)Fanon,Corpse,corpse.png
+Human,Future time,Corpse,corpse.png
+Metal,Money,Safe,safe.png
+Metal,Gold,Safe,safe.png
+Steel,Money,Safe,safe.png
+Steel,Gold,Safe,safe.png
+Bird,Fire,Phoenix,phoenix.png
+Farmer,Cow,Milk,milk.png
+Cow,Human,Milk,milk.png
+Human,Katana,Samurai,samurai.png
+Earth,Idea,Solid,solid.png
+Earth,Science,Solid,solid.png
+Willy wonka,River,Chocolate,chocolate.png
+Car,Electricity,Electric car,electric_car.png
+Pebble,Pebble,Rock,rock.png
+Pebble,Big,Rock,rock.png
+Boulder,Small,Rock,rock.png
+Human,Meat,Butcher,butcher.png
+Earth,Tool,Field,field.png
+Earth,Farmer,Field,field.png
+City,Forest,Park,park.png
+City,Garden,Park,park.png
+City,Grass,Park,park.png
+City,Field,Park,park.png
+Village,Forest,Park,park.png
+Village,Garden,Park,park.png
+Village,Grass,Park,park.png
+Village,Field,Park,park.png
+Cheese,Toast,Grilled cheese,grilled_cheese.png
+Soil,Philosophy,Earth,earth.png
+Windmill,Electricity,Wind turbine,wind_turbine.png
+Human,Fishing rod,Angler,angler.png
+Sun,Antarctica,Aurora,aurora.png
+Sky,Antarctica,Aurora,aurora.png
+Antarctica,Atmosphere,Aurora,aurora.png
 Dough,Fire,Bread,bread.png
+House,House,Village,village.png
+Flour,Egg,Pasta,pasta.png
+Wood,Pencil,Ruler,ruler.png
+Maui,Fishing rod,Maui's fishhook,maui's_fishhook.png
+Maui,Tool,Maui's fishhook,maui's_fishhook.png
+Blade,Dough,Cookie cutter,cookie_cutter.png
+Blade,Cookie dough,Cookie cutter,cookie_cutter.png
+Time,Castle,Ruins,ruins.png
+Time,House,Ruins,ruins.png
+Human,Garden,Gardener,gardener.png
+Human,Shuriken,Ninja,ninja.png
+Stone,Plant,Moss,moss.png
+Stone,Algae,Moss,moss.png
+Fish,Seaweed,Sushi,sushi.png
+Caviar,Seaweed,Sushi,sushi.png
+House,Bread,Bakery,bakery.png
+House,Baker,Bakery,bakery.png
+Pressure,Plant,Coal,coal.png
+Sun,Snowman,Coal,coal.png
+Sugar,Christmas tree,Candy cane,candy_cane.png
+Paper,Music,Sheet music,sheet_music.png
+Alcohol,Wheat,Beer,beer.png
+Tobacco,Wood,Pipe,pipe.png
+Carbon dioxide,Cold,Dry ice,dry_ice.png
+Carbon dioxide,Ice,Dry ice,dry_ice.png
+Earth,Sky,Horizon,horizon.png
+Sea,Sky,Horizon,horizon.png
+Ocean,Sky,Horizon,horizon.png
+Tree,Farmer,Nuts,nuts.png
+Tree,Field,Nuts,nuts.png
+Tree,Domestication,Nuts,nuts.png
+Tree,Isle,Palm,palm.png
+Tree,Beach,Palm,palm.png
+Flower,Wild animal,Bee,bee.png
+Dog,House,Doghouse,doghouse.png
+Tree,Sea,Coral,coral.png
+Tree,Ocean,Coral,coral.png
+Fossil,Sea,Coral,coral.png
+Fossil,Ocean,Coral,coral.png
+Bone,Sea,Coral,coral.png
+Bone,Ocean,Coral,coral.png
+Milk,Cold,Ice cream,ice_cream.png
+Milk,Ice,Ice cream,ice_cream.png
+Snow,Desert,Antarctica,antarctica.png
+Ice,Desert,Antarctica,antarctica.png
+Glass,Metal,Mirror,mirror.png
+Light bulb,Tree,Christmas tree,christmas_tree.png
+Star,Tree,Christmas tree,christmas_tree.png
+Plant,Fence,Hedge,hedge.png
+Leaf,Fence,Hedge,hedge.png
+Rainforest,Rope,Vine,vine.png
+Rainforest,Thread,Vine,vine.png
+Rainforest,Wire,Vine,vine.png
+Wood,Fabric,Tent,tent.png
+House,Fabric,Tent,tent.png
+Explosion,Metal,Grenade,grenade.png
+Pinecone,BombFanon,Grenade,grenade.png
