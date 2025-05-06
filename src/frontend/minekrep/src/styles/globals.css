@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minecraft font integration */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/Minecraft.woff2') format('woff2'),
+       url('/fonts/Minecraft.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Minecraft-style text with pixelated outline */
+.minecraft-text {
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+  letter-spacing: 1px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* React Flow customizations */
+.react-flow__node {
+  border-radius: 6px;
+  padding: 0;
+  cursor: default;
+}
+
+.react-flow__node-elementNode {
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  width: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.react-flow__handle {
+  background: #9ae6b4;
+  border: 2px solid #2f855a;
+  width: 8px;
+  height: 8px;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__controls {
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  border: 1px solid #4a5568;
+}
+
+.react-flow__controls-button {
+  background: #2d3748;
+  border-bottom: 1px solid #4a5568;
+  color: #a0aec0;
+}
+
+.react-flow__controls-button:hover {
+  background: #4a5568;
+}
+
+/* Animation for loading and transitions */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Custom styles for buttons */
+.btn-minecraft {
+  position: relative;
+  background-color: #8bc34a;
+  border: 2px solid #558b2f;
+  color: white;
+  font-family: 'Minecraft', sans-serif;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  box-shadow: inset 0 -4px 0 #558b2f;
+  transition: all 0.1s;
+}
+
+.btn-minecraft:hover {
+  background-color: #9ccc65;
+}
+
+.btn-minecraft:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
