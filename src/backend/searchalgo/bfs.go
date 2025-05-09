@@ -8,7 +8,22 @@ import (
 
 type Recipe map[string][][]string
 
-// masih ada json yg blm properly read (max visited nodes baru sampe 80)??? masih ada yg not found, ex: Wine, Vinegar
+type MultiVisited map[string]map[int]bool
+
+func isVisited(v MultiVisited, el string, step int) bool {
+	if v[el] == nil {
+		return false
+	}
+	return v[el][step]
+}
+
+func markVisited(v MultiVisited, el string, step int) {
+	if v[el] == nil {
+		v[el] = make(map[int]bool)
+	}
+	v[el][step] = true
+}
+
 func BFSSingle(startElements []string, target string, recipes Recipe) ([]string, int, bool) {
 	type Node struct {
 		element   string
@@ -19,7 +34,7 @@ func BFSSingle(startElements []string, target string, recipes Recipe) ([]string,
 	}
 
 	queue := []Node{}
-	visited := make(map[string]bool)
+	visited := MultiVisited{}
 	totalVisited := 0
 
 	initialAvailable := make(map[string]bool)
@@ -28,7 +43,6 @@ func BFSSingle(startElements []string, target string, recipes Recipe) ([]string,
 	}
 
 	for _, el := range startElements {
-		// initialize queue
 		queue = append(queue, Node{
 			element:   el,
 			path:      []string{el},
@@ -36,7 +50,7 @@ func BFSSingle(startElements []string, target string, recipes Recipe) ([]string,
 			available: copyMap(initialAvailable),
 			step:      0,
 		})
-		visited[el] = true
+		markVisited(visited, el, 0)
 	}
 
 	startTime := time.Now()
@@ -58,15 +72,15 @@ func BFSSingle(startElements []string, target string, recipes Recipe) ([]string,
 
 		for product, combos := range recipes {
 			for _, combo := range combos {
-				if current.available[combo[0]] && current.available[combo[1]] && !visited[product] {
+				if current.available[combo[0]] && current.available[combo[1]] &&
+					!isVisited(visited, product, current.step+1) {
+
 					recipeStep := fmt.Sprintf("%s + %s => %s", combo[0], combo[1], product)
 					fmt.Printf("%s→ Combine %s + %s => %s\n", strings.Repeat("  ", current.step), combo[0], combo[1], product)
 
-					// add recipe to the path
 					newPath := append([]string{}, current.path...)
 					newPath = append(newPath, product)
 
-					// record recipe used
 					newRecipes := append([]string{}, current.recipes...)
 					newRecipes = append(newRecipes, recipeStep)
 
@@ -80,7 +94,7 @@ func BFSSingle(startElements []string, target string, recipes Recipe) ([]string,
 						available: newAvailable,
 						step:      current.step + 1,
 					})
-					visited[product] = true
+					markVisited(visited, product, current.step+1)
 				}
 			}
 		}
@@ -92,7 +106,6 @@ func BFSSingle(startElements []string, target string, recipes Recipe) ([]string,
 	return nil, 0, false
 }
 
-// masih baca 1 json itu 1 recipe, pdhl kalo salah satu elemennya bisa dibentuk dr banyak cara = banyak recipe
 func BFSMultiple(startElements []string, target string, recipes Recipe, maxRecipes int) ([][]string, int) {
 	type Node struct {
 		element   string
@@ -101,7 +114,8 @@ func BFSMultiple(startElements []string, target string, recipes Recipe, maxRecip
 		available map[string]bool
 		step      int
 	}
-	visited := make(map[string]bool)
+
+	visited := MultiVisited{}
 	queue := []Node{}
 	var foundRecipes [][]string
 	var foundRecipePaths [][]string
@@ -120,16 +134,14 @@ func BFSMultiple(startElements []string, target string, recipes Recipe, maxRecip
 			available: copyMap(initialAvailable),
 			step:      0,
 		})
-		visited[el] = true
+		markVisited(visited, el, 0)
 	}
 
 	startTime := time.Now()
 
-	steps := 0
 	for len(queue) > 0 && len(foundRecipes) < maxRecipes {
 		current := queue[0]
 		queue = queue[1:]
-		steps++
 
 		totalVisited++
 
@@ -140,7 +152,9 @@ func BFSMultiple(startElements []string, target string, recipes Recipe, maxRecip
 
 		for product, combos := range recipes {
 			for _, combo := range combos {
-				if current.available[combo[0]] && current.available[combo[1]] && !visited[product] {
+				if current.available[combo[0]] && current.available[combo[1]] &&
+					!isVisited(visited, product, current.step+1) {
+
 					recipeStep := fmt.Sprintf("%s + %s => %s", combo[0], combo[1], product)
 					fmt.Printf("%s→ Combine %s + %s => %s\n", strings.Repeat("  ", current.step), combo[0], combo[1], product)
 
@@ -160,7 +174,7 @@ func BFSMultiple(startElements []string, target string, recipes Recipe, maxRecip
 						available: newAvailable,
 						step:      current.step + 1,
 					})
-					visited[product] = true
+					markVisited(visited, product, current.step+1)
 				}
 			}
 		}

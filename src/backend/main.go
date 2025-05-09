@@ -42,6 +42,6 @@ func main() {
 	startElements := []string{"Water", "Earth", "Fire", "Air"}
 	target := "Brick" // change to desired target
 
-	searchalgo.BFSSingle(startElements, target, recipeMap)
-	// searchalgo.BFSMultiple(startElements, target, recipeMap, 3)
+	// searchalgo.BFSSingle(startElements, target, recipeMap)
+	searchalgo.BFSMultiple(startElements, target, recipeMap, 10)
 }
