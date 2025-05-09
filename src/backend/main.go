@@ -3,8 +3,9 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
+	"fmt"
 	"log"
-	"tubes2/searchalgo"
+	"tubes2_minekrep/src/backend/searchalgo"
 )
 
 type Combination struct {
@@ -36,12 +37,18 @@ func BuildRecipeMap(combos []Combination) searchalgo.Recipe {
 }
 
 func main() {
-	combos := LoadCombinations("../../data/recipes.json")
-	recipeMap := BuildRecipeMap(combos)
+    combos := LoadCombinations("C:/Users/62812/Stima/Tubes2_Minekrep/src/data/recipes.json")
+    recipeMap := BuildRecipeMap(combos)
 
-	startElements := []string{"Water", "Earth", "Fire", "Air"}
-	target := "Brick" // change to desired target
+    startElements := []string{"Water", "Earth", "Fire", "Air"}
+    target := "Brick" // Ganti dengan target yang diinginkan
 
-	searchalgo.BFSSingle(startElements, target, recipeMap)
-	// searchalgo.BFSMultiple(startElements, target, recipeMap, 3)
+    // Panggil fungsi DFSSingle
+    path, steps, found := searchalgo.DFSSingle(startElements, target, recipeMap)
+    if found {
+        fmt.Printf("Path to target: %v\n", path)
+        fmt.Printf("Steps taken: %d\n", steps)
+    } else {
+        fmt.Println("Target not found.")
+    }
 }
