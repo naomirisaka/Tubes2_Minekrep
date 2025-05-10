@@ -59,3 +59,41 @@ func Max(a, b int) int {
 	}
 	return b
 }
+
+func IsSameRecipeTree(tree1, tree2 RecipeTree) bool {
+    if tree1.Element != tree2.Element {
+        return false
+    }
+    
+    if len(tree1.Ingredients) != len(tree2.Ingredients) {
+        return false
+    }
+    
+    if len(tree1.Ingredients) == 2 && len(tree2.Ingredients) == 2 {
+        normalOrder := IsSameRecipeTree(tree1.Ingredients[0], tree2.Ingredients[0]) &&
+                       IsSameRecipeTree(tree1.Ingredients[1], tree2.Ingredients[1])
+        
+        reversedOrder := IsSameRecipeTree(tree1.Ingredients[0], tree2.Ingredients[1]) &&
+                         IsSameRecipeTree(tree1.Ingredients[1], tree2.Ingredients[0])
+        
+        return normalOrder || reversedOrder
+    }
+    
+    for i := range tree1.Ingredients {
+        if !IsSameRecipeTree(tree1.Ingredients[i], tree2.Ingredients[i]) {
+            return false
+        }
+    }
+    
+    return true
+}
+
+func CopyMap(original map[string][]string) map[string][]string {
+    newMap := make(map[string][]string)
+    for k, v := range original {
+        newSlice := make([]string, len(v))
+        copy(newSlice, v)
+        newMap[k] = newSlice
+    }
+    return newMap
+}

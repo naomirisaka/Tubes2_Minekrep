@@ -12,8 +12,8 @@ import (
 
 func main() {
     recipesFile := "data/recipes.json" // Default file path
-    targetElement := "Brick" 
-	maxRecipes := 0
+    targetElement := "French fries" 
+	maxRecipes := 8
 	startTime := time.Now()
 	// Load recipes
 	err := scraper.LoadRecipes(recipesFile)
