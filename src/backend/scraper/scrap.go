@@ -199,7 +199,7 @@ func initializeTiers() {
             
             for _, recipe := range recipeList {
                 if (recipe.Element1 == current || recipe.Element2 == current) {
-                    // Only compute tier if both ingredients have tiers
+ 
                     if tier1, ok1 := utilities.Tiers[recipe.Element1]; ok1 {
                         if tier2, ok2 := utilities.Tiers[recipe.Element2]; ok2 {
                             resultTier := utilities.Max(tier1, tier2) + 1
