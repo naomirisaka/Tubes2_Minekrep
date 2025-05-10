@@ -3,18 +3,18 @@ package main
 import (
 	"fmt"
 	"time"
-	"tubes2/utilities"
 	"tubes2/scraper"
 	"tubes2/searchalgo"
+	"tubes2/utilities"
 )
 
 func main() {
-	recipesFile := "../../data/recipes.json" // Default file path
-	targetElement := "Brick" 
-	maxRecipes := 10
+	recipesFile := "../../data/recipes.json" // default file path
+	targetElement := "Wine"
+	maxRecipes := 20 // number of recipes to find
 	startTime := time.Now()
 
-	// Load recipes
+	// load recipes
 	err := scraper.LoadRecipes(recipesFile)
 	if err != nil {
 		fmt.Printf("Error loading recipes: %v\n", err)
@@ -22,9 +22,11 @@ func main() {
 	}
 
 	fmt.Printf("Searching for recipes to create '%s'...\n", targetElement)
-	fmt.Printf("Algorithm: BFS\n") 
 
+	fmt.Printf("Algorithm: BFS\n")
 	results, visitedNodes := searchalgo.BFSSearch(targetElement, maxRecipes)
+
+	// fmt.Printf("Algorithm: DFS\n")
 	// results, visitedNodes := searchalgo.DFSSearch(targetElement, maxRecipes)
 
 	duration := time.Since(startTime)
