@@ -7,6 +7,7 @@ import AlgorithmSelector from '@/components/AlgorithmSelector';
 import SearchForm from '@/components/SearchForm';
 import RecipeVisualizer from '@/components/RecipeVisualizer';
 import { searchRecipes } from '@/utils/api';
+import MinecraftButton from '@/components/MinecraftButton';
 
 export default function SearchPage() {
   const [algorithm, setAlgorithm] = useState('bfs');
@@ -17,6 +18,12 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [metrics, setMetrics] = useState({ time: 0, nodesVisited: 0 });
+  
+  // Live Update State
+  const [liveUpdateEnabled, setLiveUpdateEnabled] = useState(true);
+  const [liveUpdateDelay, setLiveUpdateDelay] = useState(2000); // Default delay
+  const [liveUpdateData, setLiveUpdateData] = useState(null);
+  const [isLiveUpdateComplete, setIsLiveUpdateComplete] = useState(false);
   
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -29,6 +36,8 @@ export default function SearchPage() {
     setLoading(true);
     setError(null);
     setSearchResults(null);
+    setLiveUpdateData(null);
+    setIsLiveUpdateComplete(false);
     
     try {
       const results = await searchRecipes({
@@ -38,11 +47,20 @@ export default function SearchPage() {
         recipeCount: shortestPath ? 1 : recipeCount
       });
       
+      // Set the search results
       setSearchResults(results.recipes);
+      
+      // Set metrics
       setMetrics({
-        time: results.metrics.time,
-        nodesVisited: results.metrics.nodesVisited
+        time: results.metrics?.time || 0,
+        nodesVisited: results.metrics?.nodesVisited || 0
       });
+      
+      // Handle live update data
+      if (results.liveUpdateSteps && results.liveUpdateSteps.length > 0) {
+        setLiveUpdateData(results.liveUpdateSteps);
+      }
+      
     } catch (err) {
       console.error('Search error:', err);
       setError(err.message || 'Failed to search for recipes. Please try again.');
@@ -50,6 +68,23 @@ export default function SearchPage() {
       setLoading(false);
     }
   };
+  
+  // Notify when live update visualization is complete
+  useEffect(() => {
+    if (liveUpdateData && liveUpdateData.length > 0 && searchResults) {
+      const timer = setTimeout(() => {
+        setIsLiveUpdateComplete(true);
+      }, liveUpdateData.length * liveUpdateDelay + 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [liveUpdateData, searchResults, liveUpdateDelay]);
+  
+  // Reset live update data if algorithm or target element changes
+  useEffect(() => {
+    setLiveUpdateData(null);
+    setIsLiveUpdateComplete(false);
+  }, [algorithm, targetElement]);
   
   return (
     <div className="min-h-screen bg-gray-900 text-white"
@@ -90,13 +125,75 @@ export default function SearchPage() {
             </div>
           </div>
           
+          {/* Live Update Options */}
+          <div className="bg-gray-800 bg-opacity-80 p-4 rounded-lg border border-gray-700 mb-6">
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="text-xl font-semibold text-green-400">Visualization Options</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <div className="flex items-center mb-3">
+                  <div 
+                    onClick={() => setLiveUpdateEnabled(!liveUpdateEnabled)}
+                    className={`w-10 h-5 flex items-center rounded-full p-1 cursor-pointer mr-3
+                                ${liveUpdateEnabled ? 'bg-green-500' : 'bg-gray-600'}`}
+                  >
+                    <div className={`bg-white w-4 h-4 rounded-full transform transition duration-300 ease-in-out
+                                    ${liveUpdateEnabled ? 'translate-x-5' : 'translate-x-0'}`}>
+                    </div>
+                  </div>
+                  <label className="text-gray-300">Live Update Visualization</label>
+                </div>
+                
+                <p className="text-gray-400 text-xs mb-3">
+                  Watch the search process in real-time as the algorithm builds the recipe tree step by step.
+                </p>
+                
+                {liveUpdateEnabled && (
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-1">
+                      Update Delay: {liveUpdateDelay}ms
+                    </label>
+                    <input
+                      type="range"
+                      min="1000"
+                      max="5000"
+                      step="500"
+                      value={liveUpdateDelay}
+                      onChange={(e) => setLiveUpdateDelay(Number(e.target.value))}
+                      className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-600"
+                    />
+                    <div className="flex justify-between text-xs text-gray-400 mt-1">
+                      <span>Faster (1s)</span>
+                      <span>Medium (3s)</span>
+                      <span>Slower (5s)</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              <div className="text-gray-300 text-sm">
+                <p className="mb-2">
+                  <span className="text-green-400 font-semibold">Basic elements</span> are shown in green
+                </p>
+                <p className="mb-2">
+                  <span className="text-amber-400 font-semibold">Intermediate elements</span> are shown in amber
+                </p>
+                <p>
+                  <span className="text-blue-400 font-semibold">Target elements</span> are shown in blue
+                </p>
+              </div>
+            </div>
+          </div>
+          
           {error && (
             <div className="bg-red-900 bg-opacity-80 p-4 rounded-lg border border-red-700 mb-6 text-white">
               {error}
             </div>
           )}
           
-          {loading && (
+          {loading && !liveUpdateEnabled && (
             <div className="flex justify-center items-center p-12">
               <div className="animate-bounce text-xl text-green-400">
                 Searching recipes...
@@ -104,17 +201,34 @@ export default function SearchPage() {
             </div>
           )}
           
-          {searchResults && !loading && (
+          {(searchResults || (loading && liveUpdateEnabled && liveUpdateData)) && (
             <div className="bg-gray-800 bg-opacity-80 p-4 rounded-lg border border-gray-700 mt-6">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold text-green-400">Recipe Results</h2>
-                <div className="text-sm text-gray-400">
-                  <div>Time: {metrics.time.toFixed(2)}ms</div>
-                  <div>Nodes visited: {metrics.nodesVisited}</div>
-                </div>
+                {(!loading || isLiveUpdateComplete) && (
+                  <div className="text-sm text-gray-400">
+                    <div>Time: {metrics.time.toFixed(2)}ms</div>
+                    <div>Nodes visited: {metrics.nodesVisited}</div>
+                  </div>
+                )}
               </div>
               
-              <RecipeVisualizer recipes={searchResults} />
+              <RecipeVisualizer 
+                recipes={liveUpdateEnabled ? null : searchResults}
+                liveUpdate={liveUpdateEnabled}
+                liveUpdateData={liveUpdateEnabled ? liveUpdateData : null}
+                liveUpdateDelay={liveUpdateDelay}
+              />
+              
+              {liveUpdateEnabled && liveUpdateData && isLiveUpdateComplete && searchResults && (
+                <div className="mt-4 text-center">
+                  <MinecraftButton
+                    text="Show Complete Recipe Tree"
+                    variant="primary"
+                    onClick={() => setLiveUpdateEnabled(false)}
+                  />
+                </div>
+              )}
             </div>
           )}
         </div>

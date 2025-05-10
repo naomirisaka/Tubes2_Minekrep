@@ -1,102 +1,94 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"runtime"
-	"time"
-	"tubes2/searchalgo"
+	"net/http"
+	"os"
+	"path/filepath"
+	"tubes2/backend/api"
 )
 
-type Combination struct {
-	Element1     string `json:"element1"`
-	Element2     string `json:"element2"`
-	Result       string `json:"result"`
-	IconFilename string `json:"icon_filename"`
-}
-
-func LoadCombinations(filepath string) []Combination {
-	data, err := ioutil.ReadFile(filepath)
-	if err != nil {
-		log.Fatalf("Failed to read JSON: %v", err)
-	}
-	var combos []Combination
-	if err := json.Unmarshal(data, &combos); err != nil {
-		log.Fatalf("Failed to parse JSON: %v", err)
-	}
-	return combos
-}
-
-func BuildRecipeMap(combos []Combination) searchalgo.Recipe {
-	recipe := make(searchalgo.Recipe)
-	for _, c := range combos {
-		ingredients := []string{c.Element1, c.Element2}
-		recipe[c.Result] = append(recipe[c.Result], ingredients)
-	}
-	return recipe
-}
-
 func main() {
-	// flag for testing
-	targetPtr := flag.String("target", "Vinegar", "Target element to search for") // change target here
-	algorithmPtr := flag.String("algo", "bfs", "Search algorithm to use (bfs or dfs)")
-	modePtr := flag.String("mode", "multiple", "Search mode (single or multiple)")
-	maxRecipesPtr := flag.Int("max", 3, "Maximum number of recipes to find in multiple mode")
-	workersPtr := flag.Int("workers", 0, "Number of worker goroutines") // 0 for auto
-	timeoutPtr := flag.Int("timeout", 60, "Search timeout in seconds")
+	// Command line flags
+	portPtr := flag.String("port", "8081", "Port for the server to listen on")
+	modePtr := flag.String("mode", "server", "Mode to run (server or test)")
+	targetPtr := flag.String("target", "Brick", "Target element to search for in test mode")
+	algoPtr := flag.String("algo", "bfs", "Algorithm to use in test mode (bfs or dfs)")
 	flag.Parse()
 
-	combos := LoadCombinations("../../data/recipes.json")
-	recipeMap := BuildRecipeMap(combos)
-	startElements := []string{"Water", "Earth", "Fire", "Air"}
-	target := *targetPtr
-
-	workers := *workersPtr
-	if workers <= 0 {
-		workers = runtime.NumCPU()
+	// Ensure data directory exists
+	workDir, _ := os.Getwd()
+	recipesPath := filepath.Join(workDir, "data", "recipes.json")
+	if _, err := os.Stat(recipesPath); os.IsNotExist(err) {
+		log.Fatalf("Recipes file not found: %s\nMake sure the 'data' directory with 'recipes.json' exists", recipesPath)
 	}
 
-	fmt.Printf("Searching for '%s' using %s algorithm in %s mode\n",
-		target, *algorithmPtr, *modePtr)
+	// Run in the specified mode
+	if *modePtr == "server" {
+		// Start the server
+		runServer(*portPtr)
+	} else if *modePtr == "test" {
+		// Run a test search
+		runTest(*targetPtr, *algoPtr)
+	} else {
+		log.Fatalf("Invalid mode: %s. Use 'server' or 'test'", *modePtr)
+	}
+}
 
-	startTime := time.Now()
+func runServer(port string) {
+	// Set up API routes
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/search", api.SearchHandler)
+	mux.HandleFunc("/api/elements", api.ElementsHandler)
+	mux.HandleFunc("/api/elements/basic", api.BasicElementsHandler)
 
-	if *algorithmPtr == "bfs" {
-		if *modePtr == "single" {
-			path, steps, found := searchalgo.BFSSingle(startElements, target, recipeMap)
-			if found {
-				fmt.Printf("Found path in %d steps\n", steps)
-				for i, step := range path {
-					fmt.Printf("%d. %s\n", i+1, step)
-				}
-			} else {
-				fmt.Printf("No path found to %s\n", target)
-			}
+	// Serve static files for the frontend
+	workDir, _ := os.Getwd()
+	staticDir := filepath.Join(workDir, "static")
+	fileServer := http.FileServer(http.Dir(staticDir))
+	mux.Handle("/", fileServer)
+
+	// Start the server
+	addr := ":" + port
+	log.Printf("Server started on http://localhost%s", addr)
+	log.Printf("API endpoints: /api/search, /api/elements, /api/elements/basic")
+	log.Fatal(http.ListenAndServe(addr, mux))
+}
+
+func runTest(target, algorithm string) {
+	log.Printf("Running test search for target '%s' using algorithm '%s'", target, algorithm)
+
+	// Load recipes from JSON file
+	workDir, _ := os.Getwd()
+	recipesPath := filepath.Join(workDir, "data", "recipes.json")
+	recipes, err := api.LoadRecipesFromJSON(recipesPath)
+	if err != nil {
+		log.Fatalf("Failed to load recipes: %v", err)
+	}
+
+	log.Printf("Loaded %d recipes from %s", len(recipes), recipesPath)
+
+	// Convert to algorithm format
+	algoRecipes := api.ConvertToAlgoFormat(recipes)
+
+	// Define start elements
+	startElements := []string{"Air", "Earth", "Fire", "Water"}
+
+	fmt.Printf("Searching for '%s' starting with %v...\n", target, startElements)
+
+	if algorithm == "bfs" {
+		path, nodesVisited, success := api.RunBFSTest(startElements, target, algoRecipes)
+		if success {
+			fmt.Printf("Path found: %v\n", path)
+			fmt.Printf("Nodes visited: %d\n", nodesVisited)
 		} else {
-			recipes, visited, success := searchalgo.BFSMultiple(
-				startElements, target, recipeMap, *maxRecipesPtr,
-				workers, *timeoutPtr)
-
-			if success {
-				fmt.Printf("\nRecipes found (%d):\n", len(recipes))
-				for i, recipe := range recipes {
-					fmt.Printf("\nRecipe %d:\n", i+1)
-					for j, step := range recipe {
-						fmt.Printf("  %d. %s\n", j+1, step)
-					}
-				}
-				fmt.Printf("\nTotal nodes visited: %d\n", visited)
-			} else {
-				fmt.Println("Search timed out")
-			}
+			fmt.Printf("No path found for target '%s'\n", target)
 		}
-	} else if *algorithmPtr == "dfs" {
-		fmt.Println("work in progress")
+	} else if algorithm == "dfs" {
+		fmt.Println("DFS algorithm not implemented yet")
+	} else {
+		fmt.Printf("Unknown algorithm: %s\n", algorithm)
 	}
-
-	duration := time.Since(startTime)
-	fmt.Printf("\nTotal execution time: %v\n", duration)
 }
