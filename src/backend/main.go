@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
-	"fmt"
 	"log"
+	"fmt"
 	"tubes2_minekrep/src/backend/searchalgo"
 )
 
@@ -27,8 +27,8 @@ func LoadCombinations(filepath string) []Combination {
 	return combos
 }
 
-func BuildRecipeMap(combos []Combination) searchalgo.Recipe {
-	recipe := make(searchalgo.Recipe)
+func BuildRecipeMap(combos []Combination) searchalgo.Recipes {
+	recipe := make(searchalgo.Recipes)
 	for _, c := range combos {
 		ingredients := []string{c.Element1, c.Element2}
 		recipe[c.Result] = append(recipe[c.Result], ingredients)
@@ -38,17 +38,21 @@ func BuildRecipeMap(combos []Combination) searchalgo.Recipe {
 
 func main() {
     combos := LoadCombinations("C:/Users/62812/Stima/Tubes2_Minekrep/src/data/recipes.json")
-    recipeMap := BuildRecipeMap(combos)
+    recipes := BuildRecipeMap(combos)
+
+    fmt.Printf("Recipes: %v\n", recipes)
 
     startElements := []string{"Water", "Earth", "Fire", "Air"}
-    target := "Brick" // Ganti dengan target yang diinginkan
+    target := "Brick" 
 
-    // Panggil fungsi DFSSingle
-    path, steps, found := searchalgo.DFSSingle(startElements, target, recipeMap)
-    if found {
-        fmt.Printf("Path to target: %v\n", path)
-        fmt.Printf("Steps taken: %d\n", steps)
+    tiers := searchalgo.CalculateTiers(recipes, startElements)
+
+    fmt.Println("\n=== DFS Test ===")
+    pathDFS, stepsDFS, foundDFS := searchalgo.DFSSingle(startElements, target, recipes, tiers)
+    if foundDFS {
+        fmt.Printf("Path to target (DFS): %v\n", pathDFS)
+        fmt.Printf("Steps taken (DFS): %d\n", stepsDFS)
     } else {
-        fmt.Println("Target not found.")
+        fmt.Println("Target not found (DFS).")
     }
 }
