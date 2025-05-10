@@ -2,7 +2,7 @@ package searchalgo
 
 import(
 	"fmt"
-    "tubes2_minekrep/src/backend/utilities"
+    "tubes2/utilities"
 )
 
 var visited int

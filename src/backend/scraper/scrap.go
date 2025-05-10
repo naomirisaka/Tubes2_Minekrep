@@ -9,7 +9,7 @@ import (
 	//"strings"
 	"io/ioutil"
 	//"sync"
-	"tubes2_minekrep/src/backend/utilities"
+	"tubes2/utilities"
 	// "github.com/PuerkitoBio/goquery"
 )
 
@@ -181,46 +181,54 @@ func initializeTiers() {
 	for _, element := range utilities.BaseElements {
 		utilities.Tiers[element] = 1
 	}
+
 	queue := make([]string, 0)
-    queue = append(queue, utilities.BaseElements...)
-    processed := make(map[string]bool)
-    
-    for _, elem := range utilities.BaseElements {
-        processed[elem] = true
-    }
+	queue = append(queue, utilities.BaseElements...)
+	processed := make(map[string]bool)
+	
+	// Mark the base elements as processed
+	for _, elem := range utilities.BaseElements {
+		processed[elem] = true
+	}
+
+	// Iterate over the queue to calculate tiers
 	for len(queue) > 0 {
-        current := queue[0]
-        queue = queue[1:]
-        
-        for result, recipeList := range utilities.Recipes {
-            if processed[result] {
-                continue 
-            }
-            
-            for _, recipe := range recipeList {
-                if (recipe.Element1 == current || recipe.Element2 == current) {
- 
-                    if tier1, ok1 := utilities.Tiers[recipe.Element1]; ok1 {
-                        if tier2, ok2 := utilities.Tiers[recipe.Element2]; ok2 {
-                            resultTier := utilities.Max(tier1, tier2) + 1
-                            existingTier, exists := utilities.Tiers[result]
-                            
-                            // Update tier kalau ada yagn lebih pendek
-                            if !exists || resultTier < existingTier {
-                                utilities.Tiers[result] = resultTier
-                                if !processed[result] {
-                                    queue = append(queue, result)
-                                }
-                            }
-                            
-                            processed[result] = true
-                        }
-                    }
-                }
-            }
-        }
-    }
+		current := queue[0]
+		queue = queue[1:]
+
+		// Explore recipes that can create the current element
+		for result, recipeList := range utilities.Recipes {
+			if processed[result] {
+				continue 
+			}
+			
+			// Check each recipe for the result
+			for _, recipe := range recipeList {
+				if recipe.Element1 == current || recipe.Element2 == current {
+					// Calculate the tier for this recipe
+					if tier1, ok1 := utilities.Tiers[recipe.Element1]; ok1 {
+						if tier2, ok2 := utilities.Tiers[recipe.Element2]; ok2 {
+							resultTier := utilities.Max(tier1, tier2) + 1
+							existingTier, exists := utilities.Tiers[result]
+							
+							// Update tier if a shorter tier is found
+							if !exists || resultTier < existingTier {
+								utilities.Tiers[result] = resultTier
+								if !processed[result] {
+									queue = append(queue, result) // Revisit the element
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		// Mark the current element as processed
+		processed[current] = true
+	}
 }
+
 
 func LoadRecipes(filename string) error {
 	data, err := ioutil.ReadFile(filename)
