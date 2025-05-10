@@ -86,24 +86,6 @@ func LoadRecipesFromJSON(filePath string) ([]Recipe, error) {
 
 	return recipes, nil
 }
-
-// ConvertToAlgoFormat converts recipes to the format used by the search algorithm
-func ConvertToAlgoFormat(recipes []Recipe) searchalgo.Recipe {
-	result := make(searchalgo.Recipe)
-
-	for _, recipe := range recipes {
-		combo := []string{recipe.Element1, recipe.Element2}
-
-		if result[recipe.Result] == nil {
-			result[recipe.Result] = [][]string{}
-		}
-
-		result[recipe.Result] = append(result[recipe.Result], combo)
-	}
-
-	return result
-}
-
 // FindRecipe searches for a recipe that matches the given elements
 func FindRecipe(recipes []Recipe, element1, element2, result string) *Recipe {
 	for _, recipe := range recipes {
@@ -113,57 +95,6 @@ func FindRecipe(recipes []Recipe, element1, element2, result string) *Recipe {
 		}
 	}
 	return nil
-}
-
-// BuildRecipePath constructs the recipe steps from the path returned by the search algorithm
-func BuildRecipePath(path []string, recipes []Recipe, algoRecipes searchalgo.Recipe) []ResultStep {
-	var steps []ResultStep
-
-	if len(path) <= 1 {
-		return steps // No steps if only one element in path or empty
-	}
-
-	// For each step in the path, find the recipe that produces the next element
-	for i := 0; i < len(path)-1; i++ {
-		currentElement := path[i]
-		nextElement := path[i+1]
-
-		// Find the combo that produces nextElement
-		if combos, exists := algoRecipes[nextElement]; exists {
-			for _, combo := range combos {
-				// Check if the current element is in this combo
-				if combo[0] == currentElement || combo[1] == currentElement {
-					// Found a matching combo
-					otherElement := combo[0]
-					if otherElement == currentElement {
-						otherElement = combo[1]
-					}
-
-					// Find the corresponding recipe
-					foundRecipe := FindRecipe(recipes, currentElement, otherElement, nextElement)
-					if foundRecipe != nil {
-						steps = append(steps, ResultStep{
-							Element1:     foundRecipe.Element1,
-							Element2:     foundRecipe.Element2,
-							Result:       foundRecipe.Result,
-							IconFilename: foundRecipe.IconFilename,
-						})
-					} else {
-						// If recipe not found in original data, create one with default values
-						steps = append(steps, ResultStep{
-							Element1:     currentElement,
-							Element2:     otherElement,
-							Result:       nextElement,
-							IconFilename: strings.ToLower(nextElement) + ".png",
-						})
-					}
-					break
-				}
-			}
-		}
-	}
-
-	return steps
 }
 
 // BuildRecipeFromString builds recipe steps from recipe strings (e.g., "Fire + Water => Steam")
@@ -236,17 +167,8 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Load recipes from JSON file
-	workDir, _ := os.Getwd()
-	recipesPath := filepath.Join(workDir, "data", "recipes.json")
-	recipes, err := LoadRecipesFromJSON(recipesPath)
-	if err != nil {
-		http.Error(w, "Failed to load recipes: "+err.Error(), http.StatusInternalServerError)
-		log.Printf("Error loading recipes: %v", err)
-		return
-	}
-
-	algoRecipes := ConvertToAlgoFormat(recipes)
+	// Log the incoming request for debugging
+	log.Printf("Search Request: %+v\n", searchReq)
 
 	// Define basic elements if not provided
 	if len(searchReq.StartElements) == 0 {
@@ -259,73 +181,36 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Execute the appropriate search algorithm
 	if searchReq.Algorithm == "bfs" {
-		if searchReq.MultipleRecipes {
-			// Multiple recipes search with BFS
-			maxWorkers := 4      // Adjust based on your server capacity
-			timeoutSeconds := 30 // Maximum execution time
-			recipePaths, nodesVisited, success := searchalgo.BFSMultiple(
-				searchReq.StartElements,
-				searchReq.TargetElement,
-				algoRecipes,
-				searchReq.RecipeCount,
-				maxWorkers,
-				timeoutSeconds,
-			)
-
-			if !success {
-				result.Success = false
-			} else {
-				for i, path := range recipePaths {
-					if i >= searchReq.RecipeCount {
-						break
-					}
-
-					steps := BuildRecipeFromString(path, recipes)
-
-					startElement := searchReq.StartElements[0]
-					if len(steps) > 0 {
-						startElement = steps[0].Element1
-					}
-
-					recipe := RecipeResult{
-						Steps:           steps,
-						TargetElement:   searchReq.TargetElement,
-						StartingElement: startElement,
-					}
-
-					result.Recipes = append(result.Recipes, recipe)
-				}
-
-				result.Metrics.NodesVisited = nodesVisited
+		    trees, visited := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
+			if len(trees) == 0 {
+				http.Error(w, "No valid recipe found using BFS", http.StatusNotFound)
+				return
 			}
-		} else {
-			// Single shortest path search with BFS
-			path, nodesVisited, success := searchalgo.BFSSingle(
-				searchReq.StartElements,
-				searchReq.TargetElement,
-				algoRecipes,
-			)
 
-			if !success || len(path) == 0 {
-				result.Success = false
+			fmt.Printf("[BFS] Visited: %d nodes\n", visited)
+
+			if !searchReq.MultipleRecipes {
+				json.NewEncoder(w).Encode(trees[0])
 			} else {
-				// Build the recipe steps from the path
-				steps := BuildRecipePath(path, recipes, algoRecipes)
-
-				recipe := RecipeResult{
-					Path:            path,
-					Steps:           steps,
-					TargetElement:   searchReq.TargetElement,
-					StartingElement: path[0],
-				}
-
-				result.Recipes = append(result.Recipes, recipe)
-				result.Metrics.NodesVisited = nodesVisited
+				json.NewEncoder(w).Encode(trees)
 			}
-		}
+			return
 	} else if searchReq.Algorithm == "dfs" {
-		// Add DFS implementation here if available
-		http.Error(w, "DFS algorithm not implemented yet", http.StatusNotImplemented)
+		trees, visited := searchalgo.DFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
+
+		if len(trees) == 0 {
+			http.Error(w, "No valid recipe found using DFS", http.StatusNotFound)
+			return
+		}
+
+		fmt.Printf("[DFS] Visited: %d nodes\n", visited)
+
+		// Kalau hanya satu yang mau dikembalikan
+		if !searchReq.MultipleRecipes {
+			json.NewEncoder(w).Encode(trees[0])
+		} else {
+			json.NewEncoder(w).Encode(trees)
+		}
 		return
 	} else {
 		// Invalid algorithm
@@ -412,10 +297,4 @@ func BasicElementsHandler(w http.ResponseWriter, r *http.Request) {
 	// Send the response
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(basicElements)
-}
-
-// RunBFSTest runs a BFS test search
-func RunBFSTest(startElements []string, target string, algoRecipes searchalgo.Recipe) ([]string, int, bool) {
-	fmt.Printf("Running BFS search for target '%s'...\n", target)
-	return searchalgo.BFSSingle(startElements, target, algoRecipes)
 }

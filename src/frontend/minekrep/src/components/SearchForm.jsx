@@ -3,6 +3,46 @@
 import { useState } from 'react';
 import MinecraftButton from './MinecraftButton';
 
+const handleSearch = async (e) => {
+  e.preventDefault();
+
+  if (!targetElement) {
+    setError('Please enter an element name to search for');
+    return;
+  }
+
+  setLoading(true);
+  setError(null);
+  setSearchResults(null);
+  setLiveUpdateData(null);
+  setIsLiveUpdateComplete(false);
+
+  try {
+    const results = await searchRecipes({
+      algorithm,
+      targetElement,
+      multipleRecipes: !shortestPath,
+      recipeCount: shortestPath ? 1 : recipeCount
+    });
+
+    setSearchResults(results.recipes);
+    setMetrics({
+      time: results.metrics?.time || 0,
+      nodesVisited: results.metrics?.nodesVisited || 0
+    });
+
+    if (results.liveUpdateSteps && results.liveUpdateSteps.length > 0) {
+      setLiveUpdateData(results.liveUpdateSteps);
+    }
+    
+  } catch (err) {
+    console.error('Search error:', err);
+    setError(err.message || 'Failed to search for recipes. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
+
 const SearchForm = ({ 
   targetElement, 
   setTargetElement, 
@@ -24,7 +64,7 @@ const SearchForm = ({
           type="text"
           value={targetElement}
           onChange={(e) => setTargetElement(e.target.value)}
-          placeholder="Enter element name (e.g., brick, metal, human)"
+          placeholder="Enter element name (e.g., Brick, Metal, Human)"
           className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md 
                     focus:ring-2 focus:ring-green-500 focus:border-transparent
                     placeholder-gray-400 text-white"

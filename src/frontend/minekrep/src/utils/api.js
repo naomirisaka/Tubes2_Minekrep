@@ -20,11 +20,12 @@ export const searchRecipes = async (options) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        algorithm: options.algorithm,
-        target: options.targetElement,
-        multiple: options.multipleRecipes,
-        count: options.recipeCount,
-      }),
+      algorithm: options.algorithm,
+      targetElement: options.targetElement, 
+      multipleRecipes: options.multipleRecipes, 
+      recipeCount: options.recipeCount, 
+      startElements: options.startElements || [],
+    }),
     });
 
     if (!response.ok) {

@@ -2,290 +2,173 @@ package searchalgo
 
 import (
 	"fmt"
-	"strings"
 	"sync"
-	"time"
+	"tubes2/backend/utilities"
 )
 
-type Result struct {
-	Path    []string
-	Recipes []string
-}
+func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {
+	visited := 0
 
-type Recipe map[string][][]string
-
-type MultiVisited map[string]map[int]bool
-
-func BFSSingle(startElements []string, target string, recipes Recipe) ([]string, int, bool) {
-	type Node struct {
-		element   string
-		path      []string
-		recipes   []string
-		available map[string]bool
-		step      int
+	if utilities.IsBaseElement(target) {
+		tree := utilities.RecipeTree{Element: target}
+		return []utilities.RecipeTree{tree}, visited
 	}
 
-	queue := []Node{}
-	visited := MultiVisited{}
-	totalVisited := 0
-
-	initialAvailable := make(map[string]bool)
-	for _, el := range startElements {
-		initialAvailable[el] = true
+	recipeList, exists := utilities.Recipes[target]
+	if !exists || len(recipeList) == 0 {
+		fmt.Printf("Target element '%s' doesn't exist or can't be created\n", target)
+		return nil, visited
 	}
 
-	for _, el := range startElements {
-		queue = append(queue, Node{
-			element:   el,
-			path:      []string{el},
-			recipes:   []string{},
-			available: copyMap(initialAvailable),
-			step:      0,
-		})
-		markVisited(visited, el, 0)
-	}
+	var allResults []utilities.RecipeTree
+	foundCount := 0
 
-	startTime := time.Now()
+	if maxRecipes <= 1 {
+		for _, recipe := range recipeList {
+			if maxRecipes > 0 && foundCount >= maxRecipes {
+				break
+			}
 
-	for len(queue) > 0 {
-		current := queue[0]
-		queue = queue[1:]
+			e1 := recipe.Element1
+			e2 := recipe.Element2
 
-		totalVisited++
+			found := make(map[string][]string)
+			found[target] = []string{e1, e2}
 
-		if current.element == target {
-			duration := time.Since(startTime)
-			// fmt.Printf("\nShortest path found: %v\n", current.path)
-			fmt.Printf("Recipes used: %v\n", current.recipes)
-			fmt.Printf("Total nodes visited: %d\n", totalVisited)
-			fmt.Printf("Processing time: %v\n", duration)
-			return current.path, current.step, true
-		}
-
-		for product, combos := range recipes {
-			for _, combo := range combos {
-				if current.available[combo[0]] && current.available[combo[1]] &&
-					!isVisited(visited, product, current.step+1) {
-
-					recipeStep := fmt.Sprintf("%s + %s => %s", combo[0], combo[1], product)
-					fmt.Printf("%s→ Combine %s + %s => %s\n", strings.Repeat("  ", current.step), combo[0], combo[1], product)
-
-					newPath := append([]string{}, current.path...)
-					newPath = append(newPath, product)
-
-					newRecipes := append([]string{}, current.recipes...)
-					newRecipes = append(newRecipes, recipeStep)
-
-					newAvailable := copyMap(current.available)
-					newAvailable[product] = true
-
-					if product == target {
-						duration := time.Since(startTime)
-						// fmt.Printf("\nShortest path found: %v\n", newPath)
-						fmt.Printf("Recipes used: %v\n", newRecipes)
-						fmt.Printf("Total nodes visited: %d\n", totalVisited+1)
-						fmt.Printf("Processing time: %v\n", duration)
-						return newPath, current.step + 1, true
-					}
-
-					queue = append(queue, Node{
-						element:   product,
-						path:      newPath,
-						recipes:   newRecipes,
-						available: newAvailable,
-						step:      current.step + 1,
-					})
-					markVisited(visited, product, current.step+1)
-				}
+			visitCount := 0
+			if processRecipe(e1, e2, found, &visitCount) {
+				visited += visitCount
+				recipeTree := utilities.BuildRecipeTree(target, found)
+				allResults = append(allResults, recipeTree)
+				foundCount++
+			} else {
+				visited += visitCount
 			}
 		}
-	}
+	} else {
+		var wg sync.WaitGroup
+		var mu sync.Mutex
+		resultCount := 0
 
-	duration := time.Since(startTime)
-	fmt.Printf("\nTarget not found. Total nodes visited: %d\n", totalVisited)
-	fmt.Printf("Processing time: %v\n", duration)
-	return nil, 0, false
-}
+		for _, recipe := range recipeList {
+			if resultCount >= maxRecipes {
+				break
+			}
 
+			wg.Add(1)
+			go func(r utilities.Recipe) {
+				defer wg.Done()
 
-func BFSMultipleParallel(startElements []string, target string, recipes Recipe, maxRecipes int, maxWorkers int) ([][]string, int) {
-	type Node struct {
-		element   string
-		path      []string
-		recipes   []string
-		available map[string]bool
-		step      int
-	}
-
-	var mutex sync.Mutex
-	var foundResults []Result
-	totalVisited := 0
-	var visitedMutex sync.Mutex
-	visited := MultiVisited{}
-
-	workQueue := make(chan Node, 1000)
-	resultChan := make(chan Result, maxRecipes)
-	done := make(chan struct{})
-	var wg sync.WaitGroup // WaitGroup for worker goroutines
-	
-	initialAvailable := make(map[string]bool)
-	for _, el := range startElements {
-		initialAvailable[el] = true
-	}
-
-	for _, el := range startElements {
-		workQueue <- Node{
-			element:   el,
-			path:      []string{el},
-			recipes:   []string{},
-			available: copyMap(initialAvailable),
-			step:      0,
-		}
-		
-		mutex.Lock()
-		markVisited(visited, el, 0)
-		mutex.Unlock()
-	}
-
-	for i := 0; i < maxWorkers; i++ {
-		wg.Add(1)
-		go func(workerID int) {
-			defer wg.Done()
-			
-			for {
-				select {
-				case <-done:
+				mu.Lock()
+				if resultCount >= maxRecipes {
+					mu.Unlock()
 					return
-				case current, ok := <-workQueue:
-					if !ok {
+				}
+				mu.Unlock()
+
+				e1 := r.Element1
+				e2 := r.Element2
+
+				found := make(map[string][]string)
+				found[target] = []string{e1, e2}
+
+				localVisitCount := 0
+				if processRecipe(e1, e2, found, &localVisitCount) {
+					mu.Lock()
+					defer mu.Unlock()
+
+					if resultCount >= maxRecipes {
 						return
 					}
 
-					visitedMutex.Lock()
-					totalVisited++
-					visitedMutex.Unlock()
-
-					if current.element == target {
-						resultChan <- Result{
-							Path:    current.path,
-							Recipes: current.recipes,
-						}
-					}
-
-					for product, combos := range recipes {
-						for _, combo := range combos {
-							if current.available[combo[0]] && current.available[combo[1]] {
-								visitedMutex.Lock()
-								isVisitedAlready := isVisited(visited, product, current.step+1)
-								visitedMutex.Unlock()
-								
-								if !isVisitedAlready {
-									recipeStep := fmt.Sprintf("%s + %s => %s", combo[0], combo[1], product)
-									
-									newPath := append([]string{}, current.path...)
-									newPath = append(newPath, product)
-									
-									newRecipes := append([]string{}, current.recipes...)
-									newRecipes = append(newRecipes, recipeStep)
-									
-									newAvailable := copyMap(current.available)
-									newAvailable[product] = true
-									
-									visitedMutex.Lock()
-									markVisited(visited, product, current.step+1)
-									visitedMutex.Unlock()
-									
-									fmt.Printf("[Worker %d] %s→ Combine %s + %s => %s\n", 
-										workerID,
-										strings.Repeat("  ", current.step), 
-										combo[0], combo[1], product)
-									
-									select {
-									case workQueue <- Node{
-										element:   product,
-										path:      newPath,
-										recipes:   newRecipes,
-										available: newAvailable,
-										step:      current.step + 1,
-									}:
-									case <-done:
-										return
-									}
-								}
-							}
-						}
-					}
+					visited += localVisitCount
+					recipeTree := utilities.BuildRecipeTree(target, found)
+					allResults = append(allResults, recipeTree)
+					resultCount++
+				} else {
+					mu.Lock()
+					visited += localVisitCount
+					mu.Unlock()
 				}
-			}
-		}(i)
-	}
-	
-	// collect results in a separate goroutine
-	go func() {
-		for result := range resultChan {
-			mutex.Lock()
-			foundResults = append(foundResults, result)
-			
-			if len(foundResults) >= maxRecipes {
-				close(done) 
-			}
-			mutex.Unlock()
+			}(recipe)
 		}
-	}()
 
-	wg.Wait()
-	close(workQueue)
-	close(resultChan)
-
-	var foundRecipePaths [][]string
-	for _, result := range foundResults {
-		foundRecipePaths = append(foundRecipePaths, result.Recipes)
+		wg.Wait()
+		foundCount = resultCount
 	}
 
-	return foundRecipePaths, totalVisited
+	if maxRecipes > 0 && foundCount < maxRecipes {
+		fmt.Printf("Note: Only found %d recipe(s) for '%s' while %d were requested.\n", 
+			foundCount, target, maxRecipes)
+	}
+
+	return allResults, visited
 }
 
-func BFSMultiple(startElements []string, target string, recipes Recipe, maxRecipes int, maxWorkers int, timeoutSeconds int) ([][]string, int, bool) {
-	startTime := time.Now()
-	resultChan := make(chan [][]string, 1)
-	visitedChan := make(chan int, 1)
-	
-	go func() {
-		results, visited := BFSMultipleParallel(startElements, target, recipes, maxRecipes, maxWorkers)
-		resultChan <- results
-		visitedChan <- visited
-	}()
-	
-	select {
-	case results := <-resultChan:
-		visited := <-visitedChan
-		duration := time.Since(startTime)
-		fmt.Printf("\nFound %d recipes in %v\n", len(results), duration)
-		return results, visited, true
-	case <-time.After(time.Duration(timeoutSeconds) * time.Second):
-		duration := time.Since(startTime)
-		fmt.Printf("\nSearch timed out after %v\n", duration)
-		return nil, 0, false
-	}
-}
+func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *int) bool {
+	queue := []string{}
 
-func copyMap(original map[string]bool) map[string]bool {
-	newMap := make(map[string]bool)
-	for k, v := range original {
-		newMap[k] = v
+	if !utilities.IsBaseElement(e1) && found[e1] == nil {
+		queue = append(queue, e1)
 	}
-	return newMap
-}
-func isVisited(v MultiVisited, el string, step int) bool {
-	if v[el] == nil {
-		return false
-	}
-	return v[el][step]
-}
 
-func markVisited(v MultiVisited, el string, step int) {
-	if v[el] == nil {
-		v[el] = make(map[int]bool)
+	if !utilities.IsBaseElement(e2) && found[e2] == nil {
+		queue = append(queue, e2)
 	}
-	v[el][step] = true
+
+	if len(queue) == 0 {
+		return true
+	}
+
+	for len(queue) > 0 {
+		element := queue[0]
+		queue = queue[1:]
+		*visitCount++
+
+		if found[element] != nil {
+			continue
+		}
+
+		recipeList, exists := utilities.Recipes[element]
+		if !exists {
+			return false
+		}
+
+		elementProcessed := false
+		for _, recipe := range recipeList {
+			ing1 := recipe.Element1
+			ing2 := recipe.Element2
+
+			found[element] = []string{ing1, ing2}
+
+			if !utilities.IsBaseElement(ing1) && found[ing1] == nil {
+				queue = append(queue, ing1)
+			}
+
+			if !utilities.IsBaseElement(ing2) && found[ing2] == nil {
+				queue = append(queue, ing2)
+			}
+
+			elementProcessed = true
+			break
+		}
+
+		if !elementProcessed {
+			return false
+		}
+	}
+
+	for elem, ingredients := range found {
+		if utilities.IsBaseElement(elem) {
+			continue
+		}
+
+		for _, ing := range ingredients {
+			if !utilities.IsBaseElement(ing) && found[ing] == nil {
+				return false
+			}
+		}
+	}
+
+	return true
 }
