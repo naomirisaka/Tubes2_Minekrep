@@ -6,9 +6,11 @@ import ReactFlow, {
   Background,
   useNodesState,
   useEdgesState,
+  MiniMap,
   MarkerType,
   Edge,
   addEdge,
+  ReactFlowProvider
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 

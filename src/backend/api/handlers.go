@@ -61,12 +61,10 @@ type SearchResult struct {
 
 // LiveUpdateStep represents a step in the live update visualization
 type LiveUpdateStep struct {
-	CurrentElement string        `json:"currentElement"`
-	Path           []string      `json:"path"`
-	Available      []string      `json:"available"`
-	Steps          []ResultStep  `json:"steps"`
-	NewNodes       []interface{} `json:"newNodes"`
-	Step           int           `json:"step"`
+	Step          int            `json:"step"`
+	Message       string         `json:"message"`
+	PartialTree   *RecipeResult  `json:"partial_tree,omitempty"`
+	HighlightNodes []string      `json:"highlight_nodes"`
 }
 
 // LoadRecipesFromJSON loads recipes from the JSON file
@@ -312,23 +310,54 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 			newNodes = append(newNodes, map[string]string{"id": element, "type": "element"})
 
 			// Add the update step
-			liveUpdateSteps = append(liveUpdateSteps, LiveUpdateStep{
-				CurrentElement: element,
-				Path:           path,
-				Available:      available,
-				Steps:          recipeSteps,
-				NewNodes:       newNodes,
-				Step:           currentStep,
-			})
-
+			for elem, ingredients := range found {
+			if len(ingredients) == 2 {
+				liveUpdateSteps = append(liveUpdateSteps, LiveUpdateStep{
+					Step:    len(liveUpdateSteps) + 1,
+					Message: fmt.Sprintf("Found combination: %s + %s = %s", ingredients[0], ingredients[1], elem),
+					PartialTree: &RecipeResult{
+						TargetElement: elem,
+						Steps: []ResultStep{
+							{
+								Element1:     ingredients[0],
+								Element2:     ingredients[1],
+								Result:       elem,
+								IconFilename: utilities.FindIconForRecipe(ingredients[0], ingredients[1], elem),
+							},
+						},
+					},
+					HighlightNodes: []string{ingredients[0], ingredients[1], elem},
+				})
+			}
+		}
 			currentStep++
 		}
 	})
 
 	// Execute the appropriate search algorithm
 	if searchReq.Algorithm == "bfs" {
-		trees, visited := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
-
+		trees, visited, rawSteps := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
+		var liveUpdateSteps []LiveUpdateStep
+		stepNumber := 1
+		for _, s := range rawSteps {
+		liveUpdateSteps = append(liveUpdateSteps, LiveUpdateStep{
+			Step:    len(liveUpdateSteps) + 1,
+			Message: fmt.Sprintf("Found combination: %s + %s = %s", s.Element1, s.Element2, s.Result),
+			PartialTree: &RecipeResult{
+				TargetElement: s.Result,
+				Steps: []ResultStep{
+					{
+						Element1:     s.Element1,
+						Element2:     s.Element2,
+						Result:       s.Result,
+						IconFilename: utilities.FindIconForRecipe(s.Element1, s.Element2, s.Result),
+					},
+				},
+			},
+			HighlightNodes: []string{s.Element1, s.Element2, s.Result},
+		})
+			stepNumber++
+		}
 		// Reset callback after search
 		utilities.SetLiveUpdateCallback(nil)
 
@@ -353,6 +382,8 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 		// Add live update steps to the result
 		result.LiveUpdateSteps = liveUpdateSteps
+		log.Printf("tree: %+v\n", trees)
+		log.Printf("Live update steps: %+v\n", liveUpdateSteps)
 
 	} else if searchReq.Algorithm == "dfs" {
 		trees, visited := searchalgo.DFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
@@ -381,6 +412,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 		// Add live update steps to the result
 		result.LiveUpdateSteps = liveUpdateSteps
+		log.Printf("Live update steps: %+v\n", liveUpdateSteps)
 
 	} else if searchReq.Algorithm == "bidirectional" {
 		// Execute the bidirectional search algorithm
@@ -410,6 +442,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 		// Add live update steps to the result
 		result.LiveUpdateSteps = liveUpdateSteps
+		log.Printf("Live update steps: %+v\n", liveUpdateSteps)
 
 	} else {
 		// Invalid algorithm
