@@ -6,14 +6,14 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"tubes2/backend/utilities"
-	"tubes2/backend/api"
+	"tubes2/utilities"
+	"tubes2/api"
 )
 
 func main() {
 	// Command line flags
 	utilities.LoadRecipes("data/recipes.json")
-	portPtr := flag.String("port", "8081", "Port for the server to listen on")
+	portPtr := flag.String("port", "8080", "Port for the server to listen on")
 	modePtr := flag.String("mode", "server", "Mode to run (server or test)")
 	flag.Parse()
 

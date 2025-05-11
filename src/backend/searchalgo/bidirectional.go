@@ -3,7 +3,7 @@ package searchalgo
 import (
 	"fmt"
 	"sync"
-	"tubes2/backend/utilities"
+	"tubes2/utilities"
 )
 
 // BiDirectionalSearch implements the bidirectional search algorithm for recipe finding

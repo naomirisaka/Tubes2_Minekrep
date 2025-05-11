@@ -3,7 +3,7 @@ package searchalgo
 import (
 	"fmt"
 	"sync"
-	"tubes2/backend/utilities"
+	"tubes2/utilities"
 )
 
 func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {

@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"tubes2/backend/searchalgo"
-	"tubes2/backend/utilities"
+	"tubes2/searchalgo"
+	"tubes2/utilities"
 )
 
 // Recipe represents a recipe from recipes.json
