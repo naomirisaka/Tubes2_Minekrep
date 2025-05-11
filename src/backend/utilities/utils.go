@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"sync"
 )
+
 func IsBaseElement(element string) bool {
 	for _, base := range BaseElements {
 		if element == base {
@@ -121,4 +123,24 @@ func LoadRecipes(filePath string) {
 	}
 
 	fmt.Printf("Loaded %d recipes.\n", len(loadedRecipes))
+}
+
+// LiveUpdateCallback is a function type for tracking search progress
+var LiveUpdateCallback func(element string, path []string, found map[string][]string)
+var liveUpdateMutex sync.Mutex
+
+// SetLiveUpdateCallback sets the callback function for live updates
+func SetLiveUpdateCallback(callback func(element string, path []string, found map[string][]string)) {
+    liveUpdateMutex.Lock()
+    defer liveUpdateMutex.Unlock()
+    LiveUpdateCallback = callback
+}
+
+// TrackLiveUpdate calls the callback function if it's set
+func TrackLiveUpdate(element string, path []string, found map[string][]string) {
+	liveUpdateMutex.Lock()
+	defer liveUpdateMutex.Unlock()
+	if LiveUpdateCallback != nil {
+		LiveUpdateCallback(element, path, found)
+	}
 }

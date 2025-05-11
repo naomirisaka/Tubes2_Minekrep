@@ -199,7 +199,7 @@ export default function SearchPage() {
                 Searching recipes...
               </div>
             </div>
-          )}
+          )}  
           
           {(searchResults || (loading && liveUpdateEnabled && liveUpdateData)) && (
             <div className="bg-gray-800 bg-opacity-80 p-4 rounded-lg border border-gray-700 mt-6">

@@ -3,49 +3,11 @@
 import { useState } from 'react';
 import MinecraftButton from './MinecraftButton';
 
-const handleSearch = async (e) => {
-  e.preventDefault();
-
-  if (!targetElement) {
-    setError('Please enter an element name to search for');
-    return;
-  }
-
-  setLoading(true);
-  setError(null);
-  setSearchResults(null);
-  setLiveUpdateData(null);
-  setIsLiveUpdateComplete(false);
-
-  try {
-    const results = await searchRecipes({
-      algorithm,
-      targetElement,
-      multipleRecipes: !shortestPath,
-      recipeCount: shortestPath ? 1 : recipeCount
-    });
-
-    setSearchResults(results.recipes);
-    setMetrics({
-      time: results.metrics?.time || 0,
-      nodesVisited: results.metrics?.nodesVisited || 0
-    });
-
-    if (results.liveUpdateSteps && results.liveUpdateSteps.length > 0) {
-      setLiveUpdateData(results.liveUpdateSteps);
-    }
-    
-  } catch (err) {
-    console.error('Search error:', err);
-    setError(err.message || 'Failed to search for recipes. Please try again.');
-  } finally {
-    setLoading(false);
-  }
-};
-
 const SearchForm = ({ 
   targetElement, 
   setTargetElement, 
+  algorithm,
+  setAlgorithm,
   shortestPath, 
   setShortestPath, 
   recipeCount, 
@@ -102,8 +64,8 @@ const SearchForm = ({
                 )}
               </div>
               <div>
-                <h4 className="font-medium text-sm">Shortest Path</h4>
-                <p className="text-xs text-gray-400">Find one optimal recipe</p>
+                <h4 className="font-medium text-sm">One Recipe</h4>
+                <p className="text-xs text-gray-400">Find one way to create</p>
               </div>
             </div>
           </div>
@@ -165,6 +127,7 @@ const SearchForm = ({
           variant="primary"
           className="w-full"
           disabled={loading}
+          type="submit"
         />
       </div>
     </form>

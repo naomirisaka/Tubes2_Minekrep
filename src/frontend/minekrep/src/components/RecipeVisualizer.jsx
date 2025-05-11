@@ -138,93 +138,180 @@ const RecipeVisualizer = ({
     // Bangun struktur tree dari elemen target
     return buildRecipeHierarchy(targetElement);
   };
-  
+  const ElementNode = ({ data }) => {
+    return (
+      <div className={`
+        p-2 rounded-md min-w-32 text-center font-semibold transition-all duration-300
+        ${data.highlighted ? 'ring-4 ring-yellow-300 scale-110 z-50' : ''}
+        ${data.isBasicElement 
+          ? 'bg-green-700 border-2 border-green-500' 
+          : data.isCombineNode 
+            ? 'bg-gray-600 border-2 border-gray-500' 
+            : data.isTargetElement
+              ? 'bg-blue-700 border-2 border-blue-500'
+              : 'bg-amber-700 border-2 border-amber-500'}
+      `}>
+        <div className="flex items-center justify-center">
+          {data.icon && !data.isCombineNode && (
+            <img src={`/images/elements/${data.icon}`} alt={data.label} className="w-6 h-6 mr-2" />
+          )}
+          <div>{data.label}</div>
+        </div>
+      </div>
+    );
+  };
   // Generate nodes dan edges untuk ReactFlow berdasarkan struktur tree
   const generateNodesAndEdges = (treeData, highlightNodes = []) => {
-    if (!treeData) return { nodes: [], edges: [] };
+  if (!treeData) return { nodes: [], edges: [] };
+  
+  const nodes = [];
+  const edges = [];
+  let nodeId = 0;
+  
+  // Fungsi rekursif untuk membuat nodes dan edges
+  const processNode = (node, level, parentId = null, position = { x: 0, y: 0 }, isLeftChild = false) => {
+    const currentId = `node_${nodeId++}`;
+    const isBasic = isBasicElement(node.name);
+    const isTarget = level === 0; // Root node adalah target element
+    const isHighlighted = highlightNodes.includes(node.name);
     
-    const nodes = [];
-    const edges = [];
-    let nodeId = 0;
+    // Tambahkan node
+    nodes.push({
+      id: currentId,
+      type: 'elementNode',
+      position,
+      data: {
+        label: node.name,
+        icon: node.icon,
+        isBasicElement: isBasic,
+        isCombineNode: false,
+        isTargetElement: isTarget,
+        highlighted: isHighlighted
+      },
+      sourcePosition: 'bottom',
+      targetPosition: 'top',
+      className: isHighlighted ? 'highlighted-node' : ''
+    });
     
-    // Fungsi rekursif untuk membuat nodes dan edges
-    const processNode = (node, level, parentId = null, position = { x: 0, y: 0 }) => {
-      const currentId = `node_${nodeId++}`;
-      const isBasic = isBasicElement(node.name);
-      const isTarget = level === 0; // Root node adalah target element
-      const isHighlighted = highlightNodes.includes(node.name);
+    // Jika ada parent, tambahkan edge
+    if (parentId) {
+      edges.push({
+        id: `edge_${parentId}_${currentId}`,
+        source: parentId,
+        target: currentId,
+        type: 'default',
+        animated: isHighlighted,
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          width: 25,
+          height: 25,
+          color: isHighlighted ? '#FFD700' : '#ffffff',
+        },
+        style: { 
+          stroke: isHighlighted ? '#FFD700' : '#ffffff',
+          strokeWidth: isHighlighted ? 5 : 4
+        },
+        zIndex: 1000
+      });
+    }
+    
+    // Jika ada children, tambahkan node kombinasi dan proses children
+    if (node.children && node.children.length === 2) {
+      // Konstanta untuk layout
+      const verticalSpacing = 200;
+      const horizontalSpacing = 350;
       
-      // Tambahkan node
+      // Posisi untuk node kombinasi
+      const combineNodePos = {
+        x: position.x,
+        y: position.y + verticalSpacing/2
+      };
+      
+      // Posisi untuk children nodes
+      const leftChildPos = {
+        x: position.x - horizontalSpacing/2,
+        y: position.y + verticalSpacing
+      };
+      
+      const rightChildPos = {
+        x: position.x + horizontalSpacing/2,
+        y: position.y + verticalSpacing
+      };
+      
+      // Buat node kombinasi
+      const combineNodeId = `combine_${nodeId++}`;
       nodes.push({
-        id: currentId,
+        id: combineNodeId,
         type: 'elementNode',
-        position,
+        position: combineNodePos,
         data: {
-          label: node.name,
-          icon: node.icon,
-          isBasicElement: isBasic,
-          isCombineNode: false,
-          isTargetElement: isTarget,
+          label: '+',
+          isCombineNode: true,
           highlighted: isHighlighted
         },
-        // PERUBAHAN: Ubah sourcePosition dan targetPosition
         sourcePosition: 'bottom',
         targetPosition: 'top',
-        // Tambahkan class untuk styling CSS
-        className: isHighlighted ? 'highlighted-node' : ''
+        className: 'combine-node'
       });
       
-      // Jika ada parent, tambahkan edge
-      if (parentId) {
-        // PERUBAHAN: Ubah edge properties untuk meningkatkan visibility
+      // Hubungkan parent dengan node kombinasi
+      edges.push({
+        id: `edge_${currentId}_${combineNodeId}`,
+        source: currentId,
+        target: combineNodeId,
+        type: 'default',
+        animated: isHighlighted,
+        style: { 
+          stroke: isHighlighted ? '#FFD700' : '#ffffff',
+          strokeWidth: isHighlighted ? 5 : 4
+        },
+        zIndex: 999
+      });
+      
+      // Proses masing-masing child
+      const leftChildId = processNode(node.children[0], level + 1, combineNodeId, leftChildPos, true);
+      const rightChildId = processNode(node.children[1], level + 1, combineNodeId, rightChildPos, false);
+      
+      // Tambahkan garis penghubung horizontal antar input elements jika diperlukan
+      if (level > 0) {
         edges.push({
-          id: `edge_${parentId}_${currentId}`,
-          source: parentId,
-          target: currentId,
-          // Gunakan edge bezier untuk visualisasi yang lebih baik
-          type: 'default',
-          animated: isHighlighted,
-          // Gunakan marker yang lebih besar
-          markerEnd: {
-            type: MarkerType.ArrowClosed,
-            width: 25,
-            height: 25,
-            color: isHighlighted ? '#FFD700' : '#ffffff',
-          },
-          // Styling yang lebih kontras
+          id: `connector_${leftChildId}_${rightChildId}`,
+          source: leftChildId,
+          target: rightChildId,
+          type: 'straight',
           style: { 
-            stroke: isHighlighted ? '#FFD700' : '#ffffff',
-            strokeWidth: isHighlighted ? 5 : 4
+            stroke: '#777777',
+            strokeWidth: 2,
+            strokeDasharray: '5,5' // Garis putus-putus
           },
-          // Force edge placement
-          zIndex: 1000
+          sourceHandle: 'right',
+          targetHandle: 'left',
+          zIndex: 500
         });
       }
-      
-      // Jika ada children, proses secara rekursif
-      if (node.children && node.children.length > 0) {
-        // PERUBAHAN: Tambah spacing untuk menghindari tumpang tindih
-        const childSpacing = 250; 
-        const startX = position.x - ((node.children.length - 1) * childSpacing) / 2;
+    } else if (node.children && node.children.length > 0) {
+      // Fallback for more than 2 children (if ever needed)
+      const childSpacing = 400; // Dari 250 -> 400
+      const startX = position.x - ((node.children.length - 1) * childSpacing) / 2;
+
+      node.children.forEach((child, index) => {
+        const childPos = {
+          x: startX + (index * childSpacing),
+          y: position.y + 250 // Dari 150 -> 250, tambah jarak vertikal
+        };
         
-        node.children.forEach((child, index) => {
-          const childPos = {
-            x: startX + (index * childSpacing),
-            y: position.y + 150 // Tambah jarak vertikal
-          };
-          
-          processNode(child, level + 1, currentId, childPos);
-        });
-      }
-      
-      return currentId;
-    };
+        processNode(child, level + 1, currentId, childPos);
+      });
+    }
     
-    // Mulai dari root (elemen target)
-    processNode(treeData, 0, null, { x: 350, y: 50 });
-    
-    return { nodes, edges };
+    return currentId;
   };
+  
+  // Mulai dari root (elemen target)
+  processNode(treeData, 0, null, { x: 350, y: 50 });
+  
+  return { nodes, edges };
+};
 
   // PERUBAHAN: Fungsi khusus untuk memaksa render ulang edges
   const forceRenderEdges = (flowNodes, flowEdges) => {
@@ -634,6 +721,10 @@ const RecipeVisualizer = ({
             <div className="w-4 h-4 bg-blue-700 border-2 border-blue-500 rounded-sm mr-2"></div>
             <span className="text-gray-300">Target Element</span>
           </div>
+          <div className="flex items-center mr-4 mb-2">
+            <div className="w-4 h-4 bg-gray-600 border-2 border-gray-500 rounded-sm mr-2"></div>
+            <span className="text-gray-300">Combine Node (+)</span>
+          </div>
           <div className="flex items-center mb-2">
             <div className="w-4 h-4 bg-amber-700 border-2 border-amber-500 rounded-sm ring-2 ring-yellow-300 mr-2"></div>
             <span className="text-gray-300">Newly Discovered</span>
@@ -643,5 +734,9 @@ const RecipeVisualizer = ({
     </div>
   );
 };
+
+<div style={{ height: '70vh' }} className="border border-gray-700 rounded-md overflow-hidden">
+  {/* ReactFlow */}
+</div>
 
 export default RecipeVisualizer;

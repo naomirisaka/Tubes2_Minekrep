@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"tubes2/backend/searchalgo"
+	"tubes2/backend/utilities"
 )
 
 // Recipe represents a recipe from recipes.json
@@ -86,6 +87,7 @@ func LoadRecipesFromJSON(filePath string) ([]Recipe, error) {
 
 	return recipes, nil
 }
+
 // FindRecipe searches for a recipe that matches the given elements
 func FindRecipe(recipes []Recipe, element1, element2, result string) *Recipe {
 	for _, recipe := range recipes {
@@ -142,6 +144,75 @@ func BuildRecipeFromString(recipeStrings []string, allRecipes []Recipe) []Result
 	return steps
 }
 
+// Helper function to extract recipe strings from a recipe tree
+func extractRecipeStrings(tree utilities.RecipeTree) []string {
+	var recipes []string
+
+	// Modified to use Ingredients instead of Children
+	if tree.Ingredients != nil && len(tree.Ingredients) == 2 {
+		child1 := tree.Ingredients[0].Element
+		child2 := tree.Ingredients[1].Element
+		recipe := fmt.Sprintf("%s + %s => %s", child1, child2, tree.Element)
+		recipes = append(recipes, recipe)
+
+		// Recursively extract recipes from children
+		recipes = append(recipes, extractRecipeStrings(tree.Ingredients[0])...)
+		recipes = append(recipes, extractRecipeStrings(tree.Ingredients[1])...)
+	}
+
+	return recipes
+}
+
+// Helper function to extract path elements from recipe tree
+func extractPathElements(tree utilities.RecipeTree) []string {
+	var path []string
+
+	// Add the current element
+	path = append(path, tree.Element)
+
+	// Modified to use Ingredients instead of Children
+	if tree.Ingredients != nil && len(tree.Ingredients) == 2 {
+		// Add elements from first child's path
+		path = append(path, extractPathElements(tree.Ingredients[0])...)
+		// Add elements from second child's path
+		path = append(path, extractPathElements(tree.Ingredients[1])...)
+	}
+
+	return path
+}
+
+// Helper function to convert RecipeTrees to RecipeResults for frontend
+func convertTreesToRecipeResults(trees []utilities.RecipeTree, targetElement string, allRecipes []Recipe) []RecipeResult {
+	var results []RecipeResult
+
+	for _, tree := range trees {
+		// Extract the recipe steps from the tree
+		recipeStrings := extractRecipeStrings(tree)
+
+		// Convert to ResultStep format
+		steps := BuildRecipeFromString(recipeStrings, allRecipes)
+
+		// Find all the elements in the path
+		var path []string
+		path = extractPathElements(tree)
+
+		// Find starting element (should be a base element)
+		startingElement := "Unknown"
+		if len(path) > 0 {
+			startingElement = path[0]
+		}
+
+		results = append(results, RecipeResult{
+			Path:            path,
+			Steps:           steps,
+			TargetElement:   targetElement,
+			StartingElement: startingElement,
+		})
+	}
+
+	return results
+}
+
 // SearchHandler handles the /api/search endpoint
 func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	// Enable CORS
@@ -179,47 +250,172 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	var result SearchResult
 	result.Success = true
 
+	// Load recipes for building recipe steps
+	workDir, _ := os.Getwd()
+	recipesPath := filepath.Join(workDir, "data", "recipes.json")
+	allRecipes, err := LoadRecipesFromJSON(recipesPath)
+	if err != nil {
+		http.Error(w, "Failed to load recipes", http.StatusInternalServerError)
+		log.Printf("Error loading recipes: %v", err)
+		return
+	}
+
+	// Track visited nodes for live update
+	visitedElements := make(map[string]bool)
+	var liveUpdateSteps []LiveUpdateStep
+	currentStep := 0
+
+	// Setup live update tracking function
+	utilities.SetLiveUpdateCallback(func(element string, path []string, found map[string][]string) {
+		if !visitedElements[element] {
+			visitedElements[element] = true
+
+			// Create list of available elements (base elements + already found)
+			var available []string
+			for _, e := range searchReq.StartElements {
+				available = append(available, e)
+			}
+			for e := range found {
+				if !utilities.IsBaseElement(e) {
+					available = append(available, e)
+				}
+			}
+
+			// Create recipe steps for visualization
+			var recipeSteps []ResultStep
+			for elem, ingredients := range found {
+				if len(ingredients) == 2 {
+					// Find icon filename from allRecipes
+					iconFilename := strings.ToLower(elem) + ".png" // Default
+
+					for _, recipe := range allRecipes {
+						if (recipe.Element1 == ingredients[0] && recipe.Element2 == ingredients[1]) ||
+							(recipe.Element1 == ingredients[1] && recipe.Element2 == ingredients[0]) {
+							if recipe.Result == elem {
+								iconFilename = recipe.IconFilename
+								break
+							}
+						}
+					}
+
+					recipeSteps = append(recipeSteps, ResultStep{
+						Element1:     ingredients[0],
+						Element2:     ingredients[1],
+						Result:       elem,
+						IconFilename: iconFilename,
+					})
+				}
+			}
+
+			// Create new nodes for visualization
+			var newNodes []interface{}
+			newNodes = append(newNodes, map[string]string{"id": element, "type": "element"})
+
+			// Add the update step
+			liveUpdateSteps = append(liveUpdateSteps, LiveUpdateStep{
+				CurrentElement: element,
+				Path:           path,
+				Available:      available,
+				Steps:          recipeSteps,
+				NewNodes:       newNodes,
+				Step:           currentStep,
+			})
+
+			currentStep++
+		}
+	})
+
 	// Execute the appropriate search algorithm
 	if searchReq.Algorithm == "bfs" {
-		    trees, visited := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
-			if len(trees) == 0 {
-				http.Error(w, "No valid recipe found using BFS", http.StatusNotFound)
-				return
-			}
+		trees, visited := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
 
-			fmt.Printf("[BFS] Visited: %d nodes\n", visited)
+		// Reset callback after search
+		utilities.SetLiveUpdateCallback(nil)
 
-			if !searchReq.MultipleRecipes {
-				json.NewEncoder(w).Encode(trees[0])
-			} else {
-				json.NewEncoder(w).Encode(trees)
-			}
+		if len(trees) == 0 {
+			// Return an empty but successful response instead of error
+			result.Success = false
+			result.Recipes = []RecipeResult{}
+			result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
+			result.Metrics.NodesVisited = visited
+
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(result)
 			return
+		}
+
+		fmt.Printf("[BFS] Visited: %d nodes\n", visited)
+
+		// Convert trees to RecipeResult format for frontend
+		result.Recipes = convertTreesToRecipeResults(trees, searchReq.TargetElement, allRecipes)
+		result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
+		result.Metrics.NodesVisited = visited
+
+		// Add live update steps to the result
+		result.LiveUpdateSteps = liveUpdateSteps
+
 	} else if searchReq.Algorithm == "dfs" {
 		trees, visited := searchalgo.DFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
 
+		// Reset callback after search
+		utilities.SetLiveUpdateCallback(nil)
+
 		if len(trees) == 0 {
-			http.Error(w, "No valid recipe found using DFS", http.StatusNotFound)
+			// Return an empty but successful response instead of error
+			result.Success = false
+			result.Recipes = []RecipeResult{}
+			result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
+			result.Metrics.NodesVisited = visited
+
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(result)
 			return
 		}
 
 		fmt.Printf("[DFS] Visited: %d nodes\n", visited)
 
-		// Kalau hanya satu yang mau dikembalikan
-		if !searchReq.MultipleRecipes {
-			json.NewEncoder(w).Encode(trees[0])
-		} else {
-			json.NewEncoder(w).Encode(trees)
+		// Convert trees to RecipeResult format for frontend
+		result.Recipes = convertTreesToRecipeResults(trees, searchReq.TargetElement, allRecipes)
+		result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
+		result.Metrics.NodesVisited = visited
+
+		// Add live update steps to the result
+		result.LiveUpdateSteps = liveUpdateSteps
+
+	} else if searchReq.Algorithm == "bidirectional" {
+		// Execute the bidirectional search algorithm
+		trees, visited := searchalgo.BiDirectionalSearch(searchReq.TargetElement, searchReq.RecipeCount)
+
+		// Reset callback after search
+		utilities.SetLiveUpdateCallback(nil)
+
+		if len(trees) == 0 {
+			// Return an empty but successful response instead of error
+			result.Success = false
+			result.Recipes = []RecipeResult{}
+			result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
+			result.Metrics.NodesVisited = visited
+
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(result)
+			return
 		}
-		return
+
+		fmt.Printf("[Bidirectional] Visited: %d nodes\n", visited)
+
+		// Convert trees to RecipeResult format for frontend
+		result.Recipes = convertTreesToRecipeResults(trees, searchReq.TargetElement, allRecipes)
+		result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
+		result.Metrics.NodesVisited = visited
+
+		// Add live update steps to the result
+		result.LiveUpdateSteps = liveUpdateSteps
+
 	} else {
 		// Invalid algorithm
 		http.Error(w, "Unsupported algorithm", http.StatusBadRequest)
 		return
 	}
-
-	result.Metrics.Time = float64(time.Since(startTime).Milliseconds())
-	result.Success = len(result.Recipes) > 0
 
 	// Send the response
 	w.Header().Set("Content-Type", "application/json")
