@@ -1,8 +1,7 @@
-package main
+package scraper
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -19,71 +18,68 @@ type Recipe struct {
 	IconFilename string `json:"icon_filename"`
 }
 
-func main() {
+func ScrapeIfNeeded(filepath string) {
+	if _, err := os.Stat(filepath); err == nil {
+		log.Println("recipes.json already exists, skipping scraping.")
+		return
+	}
+
+	log.Println("recipes.json not found, starting scraping...")
+
 	baseURL := "https://little-alchemy.fandom.com"
 	elementPageURL := baseURL + "/wiki/Elements_(Little_Alchemy_2)"
-
 	os.MkdirAll("data", os.ModePerm)
+
+	mythsSet := make(map[string]bool)
 
 	elementLinks := getElementLinks(elementPageURL, baseURL)
 
 	var allRecipes []Recipe
 	var mutex sync.Mutex
 	var wg sync.WaitGroup
-
-	semaphore := make(chan struct{}, 10) // 10 goroutine bersamaan
+	semaphore := make(chan struct{}, 10)
 
 	for _, link := range elementLinks {
 		wg.Add(1)
-		semaphore <- struct{}{} // Acquire semaphore
+		semaphore <- struct{}{}
 
 		go func(url string) {
 			defer wg.Done()
-			defer func() { <-semaphore }() // Release semaphore
+			defer func() { <-semaphore }()
 
-			recipes := scrapeElementPage(url)
-
+			recipes := scrapeElementPage(url, mythsSet)
 			mutex.Lock()
 			allRecipes = append(allRecipes, recipes...)
 			mutex.Unlock()
 		}(link)
 	}
+	wg.Wait()
 
-	wg.Wait() // Tunggu semua goroutine selesai
+	var filteredRecipes []Recipe
+	for _, r := range allRecipes {
+		if mythsSet[r.Element1] || mythsSet[r.Element2] || mythsSet[r.Result] {
+			continue
+		}
+		filteredRecipes = append(filteredRecipes, r)
+	}
 
-	err1 := saveToJSON(allRecipes, "data/recipes.json")
-	// err2 := saveToCSV(allRecipes, "data/recipes.csv")
-
-	if err1 != nil { // || err2 != nil {
-		log.Println("Terjadi kesalahan saat menyimpan data.")
+	err := saveToJSON(filteredRecipes, filepath)
+	if err != nil {
+		log.Println("Error saving scraped data:", err)
 	} else {
-		fmt.Println("Selesai! Data disimpan ke folder 'data/'.")
+		log.Println("Scraping complete, data saved to", filepath)
 	}
 }
 
 func getElementLinks(url, baseURL string) []string {
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		log.Fatal("Error creating request:", err)
-	}
+	req, _ := http.NewRequest("GET", url, nil)
+	req.Header.Set("User-Agent", "Mozilla/5.0")
 
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
-
-	res, err := client.Do(req)
-	if err != nil {
-		log.Fatal("Gagal akses halaman utama:", err)
-	}
+	res, _ := client.Do(req)
 	defer res.Body.Close()
 
-	if res.StatusCode != 200 {
-		log.Fatalf("Status code error: %d %s", res.StatusCode, res.Status)
-	}
-
-	doc, err := goquery.NewDocumentFromReader(res.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
+	doc, _ := goquery.NewDocumentFromReader(res.Body)
 
 	links := make(map[string]bool)
 	doc.Find("a").Each(func(_ int, s *goquery.Selection) {
@@ -97,41 +93,41 @@ func getElementLinks(url, baseURL string) []string {
 
 	var uniqueLinks []string
 	for link := range links {
+		// Skip Myth and Monsters (blm keexclude)
+		if strings.Contains(strings.ToLower(link), "myths_and_monsters") {
+			continue
+		}
 		uniqueLinks = append(uniqueLinks, link)
 	}
-
 	return uniqueLinks
 }
 
-func scrapeElementPage(url string) []Recipe {
+func scrapeElementPage(url string, mythsSet map[string]bool) []Recipe {
 	var recipes []Recipe
-
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return recipes
-	}
+	req, _ := http.NewRequest("GET", url, nil)
+	req.Header.Set("User-Agent", "Mozilla/5.0")
 
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
-
-	res, err := client.Do(req)
-	if err != nil {
-		return recipes
-	}
+	res, _ := client.Do(req)
 	defer res.Body.Close()
 
-	if res.StatusCode != 200 {
+	doc, _ := goquery.NewDocumentFromReader(res.Body)
+
+	// Skip if categorized under "Myths and Monsters"
+	isMyths := false
+	doc.Find("#articleCategories a").Each(func(_ int, s *goquery.Selection) {
+		if strings.Contains(strings.ToLower(s.Text()), "myths and monsters") {
+			isMyths = true
+		}
+	})
+
+	pageTitle := strings.TrimSpace(doc.Find("h1.page-header__title").Text())
+	if isMyths {
+		mythsSet[pageTitle] = true
 		return recipes
 	}
 
-	doc, err := goquery.NewDocumentFromReader(res.Body)
-	if err != nil {
-		return recipes
-	}
-
-	pageTitle := doc.Find("h1.page-header__title").Text()
-	result := strings.TrimSpace(pageTitle)
-	iconFilename := strings.ToLower(strings.ReplaceAll(result, " ", "_")) + ".png"
+	iconFilename := strings.ToLower(strings.ReplaceAll(pageTitle, " ", "_")) + ".png"
 
 	found := false
 	doc.Find(".mw-parser-output").Children().Each(func(i int, s *goquery.Selection) {
@@ -151,7 +147,7 @@ func scrapeElementPage(url string) []Recipe {
 						recipes = append(recipes, Recipe{
 							Element1:     element1,
 							Element2:     element2,
-							Result:       result,
+							Result:       pageTitle,
 							IconFilename: iconFilename,
 						})
 					}
@@ -160,7 +156,6 @@ func scrapeElementPage(url string) []Recipe {
 			found = false
 		}
 	})
-
 	return recipes
 }
 
@@ -175,22 +170,3 @@ func saveToJSON(data []Recipe, filename string) error {
 	encoder.SetIndent("", "  ")
 	return encoder.Encode(data)
 }
-
-// func saveToCSV(data []Recipe, filename string) error {
-// 	file, err := os.Create(filename)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	defer file.Close()
-
-// 	writer := csv.NewWriter(file)
-// 	defer writer.Flush()
-
-// 	writer.Write([]string{"Element1", "Element2", "Result", "IconFilename"})
-
-// 	for _, r := range data {
-// 		writer.Write([]string{r.Element1, r.Element2, r.Result, r.IconFilename})
-// 	}
-
-// 	return nil
-// }
