@@ -169,8 +169,8 @@ export default function SearchPage() {
                     />
                     <div className="flex justify-between text-xs text-gray-400 mt-1">
                       <span>Faster (1s)</span>
-                      <span>Medium (3s)</span>
-                      <span>Slower (5s)</span>
+                      <span>Medium (5s)</span>
+                      <span>Slower (10s)</span>
                     </div>
                   </div>
                 )}

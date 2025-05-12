@@ -11,17 +11,17 @@ const teamMembers = [
     id: 1,
     name: "Indah Novita Tangdililing",
     nim: "13523047",
-    role: "Algorithm Engineer",
-    description: "Worked on implementing BFS algorithm and data structures",
-    image: "/images/team/member1.png",
+    role: "Skibidi Certified Programmer",
+    description: "Kata-kata hari ininya kak, skibidi bop bop yes yes yes",
+    image: "/images/team/member1.jpg",
     github: "https://github.com/indahtangdililing"
   },
   {
     id: 2,
     name: "Bevinda Vivian",
     nim: "13523120",
-    role: "Frontend Developer",
-    description: "Developed the user interface and recipe visualization component",
+    role: "Delulu with No Solulu Programmer",
+    description: "Kata-kata hari ininya kak, delulu delulu delulu with no solulu",
     image: "/images/team/member2.png",
     github: "https://github.com/bevindav"
   },
@@ -29,8 +29,8 @@ const teamMembers = [
     id: 3,
     name: "Naomi Risaka Sitorus",
     nim: "13523122",
-    role: "Backend Developer",
-    description: "Created the API endpoints and implemented DFS algorithm",
+    role: "Rizz Overload Programmer",
+    description: "Kata-kata hari ininya kak, for {giveRizz()}",
     image: "/images/team/member3.jpg",
     github: "https://github.com/naomirisaka"
   }
@@ -66,13 +66,14 @@ export default function ProfilePage() {
             <h2 className="text-xl font-semibold mb-4 text-green-400 text-center">
               About Our Project
             </h2>
-            <p className="text-gray-300 mb-4">
-              This project implements a recipe finder for Little Alchemy 2 game elements using BFS and DFS algorithms.
-              Users can search for crafting paths from basic elements to any target element, with visualization
+            <p className="text-gray-300 mb-4 text-center">
+              Welcome to Minekrep, a project to fulfill "Tugas Besar 2 Stima" that helps you to enjoy Little Alchemy 2.
+              This project implements a recipe finder for Little Alchemy 2 game elements using BFS, DFS, and Bidirectional algorithms.
+              You can search for crafting paths from basic elements to any target element, with visualization
               of the search process and recipe trees.
             </p>
-            <p className="text-gray-300">
-              Developed as a final project for IF2211 Algorithm Strategies course at Institut Teknologi Bandung.
+            <p className="text-gray-300 text-center">
+              Developed as a big project 2 for IF2211 Algorithm Strategies course at Institut Teknologi Bandung.
             </p>
           </div>
           
@@ -117,7 +118,7 @@ export default function ProfilePage() {
                     </p>
                     
                     {expandedMember === member.id && (
-                      <div className="mt-4 text-gray-300 text-sm">
+                      <div className="mt-4 text-gray-300 text-sm text-center">
                         <p className="mb-3">{member.description}</p>
                         <a 
                           href={member.github} 
