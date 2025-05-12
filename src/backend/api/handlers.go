@@ -262,7 +262,12 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	if searchReq.Algorithm == "bfs" {
 		trees, visited, _ := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
 		baseElements := searchReq.StartElements
-		result.LiveUpdateSteps = buildLiveUpdateStepsFromTree(trees[0], allRecipes, baseElements)
+		var allSteps []LiveUpdateStep
+		for _, tree := range trees {
+			steps := buildLiveUpdateStepsFromTree(tree, allRecipes, baseElements)
+			allSteps = append(allSteps, steps...)
+		}
+		result.LiveUpdateSteps = allSteps
 		// Reset callback after search
 		utilities.SetLiveUpdateCallback(nil)
 
@@ -292,7 +297,12 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 	} else if searchReq.Algorithm == "dfs" {
 		trees, visited := searchalgo.DFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
 		baseElements := searchReq.StartElements
-		result.LiveUpdateSteps = buildLiveUpdateStepsFromTree(trees[0], allRecipes, baseElements)
+		var allSteps []LiveUpdateStep
+		for _, tree := range trees {
+			steps := buildLiveUpdateStepsFromTree(tree, allRecipes, baseElements)
+			allSteps = append(allSteps, steps...)
+		}
+		result.LiveUpdateSteps = allSteps
 		// Reset callback after search
 		utilities.SetLiveUpdateCallback(nil)
 
@@ -346,7 +356,12 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 		// Add live update steps to the result
 		baseElements := searchReq.StartElements
-		result.LiveUpdateSteps = buildLiveUpdateStepsFromTree(trees[0], allRecipes, baseElements)
+		var allSteps []LiveUpdateStep
+		for _, tree := range trees {
+			steps := buildLiveUpdateStepsFromTree(tree, allRecipes, baseElements)
+			allSteps = append(allSteps, steps...)
+		}
+		result.LiveUpdateSteps = allSteps
 		log.Printf("Live update steps: %+v\n", result.LiveUpdateSteps)
 
 	} else {

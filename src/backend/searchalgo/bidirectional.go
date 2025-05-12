@@ -28,8 +28,8 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 	forwardQueue := []*utilities.Node{}
 	backwardQueue := []*utilities.Node{}
 
-	forwardVisitedMap := map[string]map[string][]string{}
-	backwardVisitedMap := map[string]map[string][]string{}
+	var forwardVisitedMap sync.Map // map[string]map[string][]string
+	var backwardVisitedMap sync.Map
 
 	globalForwardVisited := map[string]bool{}
 	globalBackwardVisited := map[string]bool{}
@@ -54,12 +54,13 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 		}
 		backwardQueue = append(backwardQueue, node)
 		globalBackwardVisited[base] = true
-		backwardVisitedMap[base] = map[string][]string{}
+		backwardVisitedMap.Store(base, map[string][]string{})
 	}
 
 	recipesFound := 0
 
 	for len(forwardQueue) > 0 && len(backwardQueue) > 0 && (maxRecipes <= 0 || recipesFound < maxRecipes) {
+		// Forward phase
 		fq := forwardQueue
 		forwardQueue = []*utilities.Node{}
 		for _, node := range fq {
@@ -70,14 +71,16 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 			if recipes, ok := utilities.Recipes[node.Element]; ok {
 				for _, recipe := range recipes {
 					e1, e2 := recipe.Element1, recipe.Element2
-					if forwardVisitedMap[node.Element] == nil {
-						forwardVisitedMap[node.Element] = map[string][]string{}
-					}
-					forwardVisitedMap[node.Element][fmt.Sprintf("%s+%s", e1, e2)] = []string{e1, e2}
+
+					v, _ := forwardVisitedMap.LoadOrStore(node.Element, map[string][]string{})
+					elemMap := v.(map[string][]string)
+					elemMap[fmt.Sprintf("%s+%s", e1, e2)] = []string{e1, e2}
+					forwardVisitedMap.Store(node.Element, elemMap)
+
 					utilities.TrackLiveUpdate(node.Element, node.Path, map[string][]string{node.Element: {e1, e2}})
 
-					if backwardVisitedMap[e1] != nil || backwardVisitedMap[e2] != nil {
-						complete := buildCompleteRecipe(target, []string{e1, e2}, e1, e2, forwardVisitedMap, backwardVisitedMap)
+					if hasInMap(&backwardVisitedMap, e1) || hasInMap(&backwardVisitedMap, e2) {
+						complete := buildCompleteRecipe(target, []string{e1, e2}, e1, e2, mapFromSync(&forwardVisitedMap), mapFromSync(&backwardVisitedMap))
 						tree := utilities.BuildRecipeTree(target, complete)
 
 						mutex.Lock()
@@ -85,7 +88,6 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 						recipesFound++
 						mutex.Unlock()
 
-						fmt.Printf("Found recipe #%d for %s\n", recipesFound, target)
 						if maxRecipes > 0 && recipesFound >= maxRecipes {
 							return allResults, counter.Value()
 						}
@@ -97,18 +99,16 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 							forwardQueue = append(forwardQueue, &utilities.Node{
 								Element:     elem,
 								Path:        append(copySlice(node.Path), elem),
-								Visited:     nil,
 								Depth:       node.Depth + 1,
 								Ingredients: copyIngredients(node.Ingredients),
 							})
-							fmt.Printf("Added to forwardQueue: %s, Depth: %d, Path: %v\n", elem, node.Depth+1, append(copySlice(node.Path), elem))
-
 						}
 					}
 				}
 			}
 		}
 
+		// Backward phase
 		bq := backwardQueue
 		backwardQueue = []*utilities.Node{}
 		for _, node := range bq {
@@ -125,7 +125,6 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 					if recipe.Element2 == node.Element {
 						other = recipe.Element1
 					}
-
 					if globalBackwardVisited[result] {
 						continue
 					}
@@ -133,16 +132,16 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 
 					newIng := copyIngredients(node.Ingredients)
 					newIng[result] = []string{node.Element, other}
-					if backwardVisitedMap[result] == nil {
-						backwardVisitedMap[result] = map[string][]string{}
-					}
-					backwardVisitedMap[result][fmt.Sprintf("%s+%s", node.Element, other)] = []string{node.Element, other}
+
+					v, _ := backwardVisitedMap.LoadOrStore(result, map[string][]string{})
+					elemMap := v.(map[string][]string)
+					elemMap[fmt.Sprintf("%s+%s", node.Element, other)] = []string{node.Element, other}
+					backwardVisitedMap.Store(result, elemMap)
+
 					utilities.TrackLiveUpdate(result, append(copySlice(node.Path), result), map[string][]string{result: {node.Element, other}})
 
-					fmt.Printf("globalForwardVisited: %v\n", globalForwardVisited)
-					fmt.Printf("globalBackwardVisited: %v\n", globalBackwardVisited)
-					if forwardVisitedMap[result] != nil {
-						complete := buildCompleteRecipe(target, []string{recipe.Element1, recipe.Element2}, node.Element, other, forwardVisitedMap, backwardVisitedMap)
+					if hasInMap(&forwardVisitedMap, result) {
+						complete := buildCompleteRecipe(target, []string{recipe.Element1, recipe.Element2}, node.Element, other, mapFromSync(&forwardVisitedMap), mapFromSync(&backwardVisitedMap))
 						tree := utilities.BuildRecipeTree(target, complete)
 
 						mutex.Lock()
@@ -150,46 +149,39 @@ func BiDirectionalSearch(target string, maxRecipes int) ([]utilities.RecipeTree,
 						recipesFound++
 						mutex.Unlock()
 
-						fmt.Printf("Found recipe #%d for %s\n", recipesFound, target)
 						if maxRecipes > 0 && recipesFound >= maxRecipes {
 							return allResults, counter.Value()
 						}
 					}
 
-					fmt.Printf("globalForwardVisited: %v\n", globalForwardVisited)
-					fmt.Printf("globalBackwardVisited: %v\n", globalBackwardVisited)
 					if !globalBackwardVisited[other] && !utilities.IsBaseElement(other) {
 						backwardQueue = append(backwardQueue, &utilities.Node{
 							Element:     other,
 							Path:        append(copySlice(node.Path), result),
-							Visited:     nil,
 							Depth:       node.Depth + 1,
 							Ingredients: newIng,
 						})
-						fmt.Printf("Added to backwardQueue: %s, Depth: %d, Path: %v\n", other, node.Depth+1, append(copySlice(node.Path), result))
 					}
 				}
 			}
 		}
 	}
 
-	fmt.Printf("Bidirectional search complete. Found %d recipes for %s\n", len(allResults), target)
 	return allResults, counter.Value()
 }
 
-func buildCompleteRecipe(target string, forwardIngredients []string, backwardE1, backwardE2 string,
-	forwardVisited, backwardVisited map[string]map[string][]string) map[string][]string {
-
+func buildCompleteRecipe(
+	target string,
+	forwardIngredients []string,
+	backwardE1, backwardE2 string,
+	forwardVisited, backwardVisited map[string]map[string][]string,
+) map[string][]string {
 	complete := map[string][]string{}
 	complete[target] = forwardIngredients
 
 	var expand func(string)
 	expand = func(elem string) {
-		if _, exists := complete[elem]; exists {
-			return
-		}
-
-		if utilities.IsBaseElement(elem) {
+		if _, exists := complete[elem]; exists || utilities.IsBaseElement(elem) {
 			return
 		}
 
@@ -199,7 +191,7 @@ func buildCompleteRecipe(target string, forwardIngredients []string, backwardE1,
 				ingredients = v
 				break
 			}
-		} 
+		}
 		if len(ingredients) == 0 {
 			if m, ok := forwardVisited[elem]; ok {
 				for _, v := range m {
@@ -214,7 +206,18 @@ func buildCompleteRecipe(target string, forwardIngredients []string, backwardE1,
 			expand(ingredients[0])
 			expand(ingredients[1])
 		} else {
-			fmt.Printf("Warning: Could not find ingredients for element %s\n", elem)
+			// Coba cari secara eksplisit dari resep jika masih belum ketemu
+			if recipes, ok := utilities.Recipes[elem]; ok {
+				for _, r := range recipes {
+					ingredients = []string{r.Element1, r.Element2}
+					complete[elem] = ingredients
+					expand(ingredients[0])
+					expand(ingredients[1])
+					break
+				}
+			} else {
+				fmt.Printf("Warning: Could not find ingredients for element %s\n", elem)
+			}
 		}
 	}
 
@@ -225,16 +228,32 @@ func buildCompleteRecipe(target string, forwardIngredients []string, backwardE1,
 	return complete
 }
 
-func copySlice(src []string) []string {
-	dst := make([]string, len(src))
-	copy(dst, src)
-	return dst
+func hasInMap(m *sync.Map, key string) bool {
+	_, ok := m.Load(key)
+	return ok
 }
 
-func copyIngredients(src map[string][]string) map[string][]string {
-	dst := make(map[string][]string)
-	for k, v := range src {
-		dst[k] = append([]string{}, v...)
+func mapFromSync(m *sync.Map) map[string]map[string][]string {
+	result := make(map[string]map[string][]string)
+	m.Range(func(key, value any) bool {
+		k := key.(string)
+		v := value.(map[string][]string)
+		result[k] = v
+		return true
+	})
+	return result
+}
+
+func copySlice(slice []string) []string {
+	result := make([]string, len(slice))
+	copy(result, slice)
+	return result
+}
+
+func copyIngredients(original map[string][]string) map[string][]string {
+	copyMap := make(map[string][]string)
+	for k, v := range original {
+		copyMap[k] = append([]string{}, v...)
 	}
-	return dst
+	return copyMap
 }

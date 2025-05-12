@@ -24,6 +24,8 @@ export default function SearchPage() {
   const [liveUpdateDelay, setLiveUpdateDelay] = useState(3000); // Default delay
   const [liveUpdateData, setLiveUpdateData] = useState(null);
   const [isLiveUpdateComplete, setIsLiveUpdateComplete] = useState(false);
+  const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
+
   
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -58,7 +60,8 @@ export default function SearchPage() {
       
       // Handle live update data
       if (results.liveUpdateSteps && results.liveUpdateSteps.length > 0) {
-        setLiveUpdateData(results.liveUpdateSteps);
+        setLiveUpdateData(results.liveUpdateSteps); // pastikan ini adalah list of lists
+        setCurrentRecipeIndex(0);
       }
       
     } catch (err) {
@@ -219,16 +222,6 @@ export default function SearchPage() {
                 liveUpdateData={liveUpdateEnabled ? liveUpdateData : null}
                 liveUpdateDelay={liveUpdateDelay}
               />
-              
-              {liveUpdateEnabled && liveUpdateData && isLiveUpdateComplete && searchResults && (
-                <div className="mt-4 text-center">
-                  <MinecraftButton
-                    text="Show Complete Recipe Tree"
-                    variant="primary"
-                    onClick={() => setLiveUpdateEnabled(false)}
-                  />
-                </div>
-              )}
             </div>
           )}
         </div>
