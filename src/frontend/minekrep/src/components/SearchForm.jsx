@@ -24,6 +24,7 @@ const SearchForm = ({
   const [allElements, setAllElements] = useState([]);
   const dropdownRef = useRef(null);
   const inputRef = useRef(null);
+  const basicElements = ["Air", "Earth", "Fire", "Water"];
 
   // Extract all unique elements from recipes data on component mount
   useEffect(() => {
@@ -88,7 +89,7 @@ const SearchForm = ({
     if (value === "" || /^\d+$/.test(value)) {
       setRecipeCountError("");
     } else {
-      setRecipeCountError("Hanya angka yang diperbolehkan");
+      setRecipeCountError("Only numbers are allowed ^^");
     }
   };
   
@@ -116,10 +117,15 @@ const SearchForm = ({
     
     // Validate element exists
     if (allElements.length > 0 && !allElements.includes(targetElement)) {
-      setElementError(`"${targetElement}" tidak ada dalam daftar elemen Little Alchemy 2`);
+      setElementError(`"${targetElement}" is not on the Little Alchemy 2 element list ^^`);
       return;
     }
     
+    if (basicElements.includes(targetElement)) {
+      setElementError(`"${targetElement}" is a basic element and cannot be searched because it has no recipes ^^`);
+      return;
+    }
+
     // Clear any errors and submit
     setElementError("");
     handleSearch(e);

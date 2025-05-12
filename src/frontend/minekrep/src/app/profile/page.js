@@ -23,7 +23,7 @@ const teamMembers = [
     role: "Frontend Developer",
     description: "Developed the user interface and recipe visualization component",
     image: "/images/team/member2.png",
-    github: "https://github.com/teammember2"
+    github: "https://github.com/bevindav"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const teamMembers = [
     role: "Backend Developer",
     description: "Created the API endpoints and implemented DFS algorithm",
     image: "/images/team/member3.jpg",
-    github: "https://github.com/teammember3"
+    github: "https://github.com/naomirisaka"
   }
 ];
 

@@ -61,9 +61,9 @@ type SearchResult struct {
 
 // LiveUpdateStep represents a step in the live update visualization
 type LiveUpdateStep struct {
-	Step          int            `json:"step"`
-	Message       string         `json:"message"`
-	PartialTree   *RecipeResult  `json:"partial_tree,omitempty"`
+	Step           int           `json:"step"`
+	Message        string        `json:"message"`
+	PartialTree    *RecipeResult `json:"partial_tree,omitempty"`
 	HighlightNodes []string      `json:"highlight_nodes"`
 }
 
@@ -258,106 +258,11 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Track visited nodes for live update
-	visitedElements := make(map[string]bool)
-	var liveUpdateSteps []LiveUpdateStep
-	currentStep := 0
-
-	// Setup live update tracking function
-	utilities.SetLiveUpdateCallback(func(element string, path []string, found map[string][]string) {
-		if !visitedElements[element] {
-			visitedElements[element] = true
-
-			// Create list of available elements (base elements + already found)
-			var available []string
-			for _, e := range searchReq.StartElements {
-				available = append(available, e)
-			}
-			for e := range found {
-				if !utilities.IsBaseElement(e) {
-					available = append(available, e)
-				}
-			}
-
-			// Create recipe steps for visualization
-			var recipeSteps []ResultStep
-			for elem, ingredients := range found {
-				if len(ingredients) == 2 {
-					// Find icon filename from allRecipes
-					iconFilename := strings.ToLower(elem) + ".png" // Default
-
-					for _, recipe := range allRecipes {
-						if (recipe.Element1 == ingredients[0] && recipe.Element2 == ingredients[1]) ||
-							(recipe.Element1 == ingredients[1] && recipe.Element2 == ingredients[0]) {
-							if recipe.Result == elem {
-								iconFilename = recipe.IconFilename
-								break
-							}
-						}
-					}
-
-					recipeSteps = append(recipeSteps, ResultStep{
-						Element1:     ingredients[0],
-						Element2:     ingredients[1],
-						Result:       elem,
-						IconFilename: iconFilename,
-					})
-				}
-			}
-
-			// Create new nodes for visualization
-			var newNodes []interface{}
-			newNodes = append(newNodes, map[string]string{"id": element, "type": "element"})
-
-			// Add the update step
-			for elem, ingredients := range found {
-			if len(ingredients) == 2 {
-				liveUpdateSteps = append(liveUpdateSteps, LiveUpdateStep{
-					Step:    len(liveUpdateSteps) + 1,
-					Message: fmt.Sprintf("Found combination: %s + %s = %s", ingredients[0], ingredients[1], elem),
-					PartialTree: &RecipeResult{
-						TargetElement: elem,
-						Steps: []ResultStep{
-							{
-								Element1:     ingredients[0],
-								Element2:     ingredients[1],
-								Result:       elem,
-								IconFilename: utilities.FindIconForRecipe(ingredients[0], ingredients[1], elem),
-							},
-						},
-					},
-					HighlightNodes: []string{ingredients[0], ingredients[1], elem},
-				})
-			}
-		}
-			currentStep++
-		}
-	})
-
 	// Execute the appropriate search algorithm
 	if searchReq.Algorithm == "bfs" {
-		trees, visited, rawSteps := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
-		var liveUpdateSteps []LiveUpdateStep
-		stepNumber := 1
-		for _, s := range rawSteps {
-		liveUpdateSteps = append(liveUpdateSteps, LiveUpdateStep{
-			Step:    len(liveUpdateSteps) + 1,
-			Message: fmt.Sprintf("Found combination: %s + %s = %s", s.Element1, s.Element2, s.Result),
-			PartialTree: &RecipeResult{
-				TargetElement: s.Result,
-				Steps: []ResultStep{
-					{
-						Element1:     s.Element1,
-						Element2:     s.Element2,
-						Result:       s.Result,
-						IconFilename: utilities.FindIconForRecipe(s.Element1, s.Element2, s.Result),
-					},
-				},
-			},
-			HighlightNodes: []string{s.Element1, s.Element2, s.Result},
-		})
-			stepNumber++
-		}
+		trees, visited, _ := searchalgo.BFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
+		baseElements := searchReq.StartElements
+		result.LiveUpdateSteps = buildLiveUpdateStepsFromTree(trees[0], allRecipes, baseElements)
 		// Reset callback after search
 		utilities.SetLiveUpdateCallback(nil)
 
@@ -381,13 +286,13 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		result.Metrics.NodesVisited = visited
 
 		// Add live update steps to the result
-		result.LiveUpdateSteps = liveUpdateSteps
 		log.Printf("tree: %+v\n", trees)
-		log.Printf("Live update steps: %+v\n", liveUpdateSteps)
+		log.Printf("Live update steps: %+v\n", result.LiveUpdateSteps)
 
 	} else if searchReq.Algorithm == "dfs" {
 		trees, visited := searchalgo.DFSSearch(searchReq.TargetElement, searchReq.RecipeCount)
-
+		baseElements := searchReq.StartElements
+		result.LiveUpdateSteps = buildLiveUpdateStepsFromTree(trees[0], allRecipes, baseElements)
 		// Reset callback after search
 		utilities.SetLiveUpdateCallback(nil)
 
@@ -411,8 +316,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		result.Metrics.NodesVisited = visited
 
 		// Add live update steps to the result
-		result.LiveUpdateSteps = liveUpdateSteps
-		log.Printf("Live update steps: %+v\n", liveUpdateSteps)
+		log.Printf("Live update steps: %+v\n", result.LiveUpdateSteps)
 
 	} else if searchReq.Algorithm == "bidirectional" {
 		// Execute the bidirectional search algorithm
@@ -441,8 +345,9 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		result.Metrics.NodesVisited = visited
 
 		// Add live update steps to the result
-		result.LiveUpdateSteps = liveUpdateSteps
-		log.Printf("Live update steps: %+v\n", liveUpdateSteps)
+		baseElements := searchReq.StartElements
+		result.LiveUpdateSteps = buildLiveUpdateStepsFromTree(trees[0], allRecipes, baseElements)
+		log.Printf("Live update steps: %+v\n", result.LiveUpdateSteps)
 
 	} else {
 		// Invalid algorithm
@@ -526,4 +431,61 @@ func BasicElementsHandler(w http.ResponseWriter, r *http.Request) {
 	// Send the response
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(basicElements)
+}
+
+func buildLiveUpdateStepsFromTree(tree utilities.RecipeTree, allRecipes []Recipe, baseElements []string) []LiveUpdateStep {
+	var steps []LiveUpdateStep
+	var recipeSteps []ResultStep
+
+	stepCounter := 1
+
+	steps = append(steps, LiveUpdateStep{
+		Step:    stepCounter,
+		Message: fmt.Sprintf("Starting search for %s...", tree.Element),
+	})
+	stepCounter++
+
+	// Tambahkan langkah exploring basic elements
+	steps = append(steps, LiveUpdateStep{
+		Step:           stepCounter,
+		Message:        "Exploring basic element combinations...",
+		PartialTree:    &RecipeResult{TargetElement: tree.Element},
+		HighlightNodes: baseElements,
+	})
+	stepCounter++
+
+	var search func(node utilities.RecipeTree)
+	search = func(node utilities.RecipeTree) {
+		if len(node.Ingredients) == 2 {
+			// Ambil nama ikon dari resep yang cocok
+			icon := utilities.FindIconForRecipe(node.Ingredients[0].Element, node.Ingredients[1].Element, node.Element)
+
+			step := ResultStep{
+				Element1:     node.Ingredients[0].Element,
+				Element2:     node.Ingredients[1].Element,
+				Result:       node.Element,
+				IconFilename: icon,
+			}
+			recipeSteps = append(recipeSteps, step)
+
+			steps = append(steps, LiveUpdateStep{
+				Step:    stepCounter,
+				Message: fmt.Sprintf("Found combination: %s + %s = %s", step.Element1, step.Element2, step.Result),
+				PartialTree: &RecipeResult{
+					TargetElement: tree.Element,
+					Steps:         append([]ResultStep{}, recipeSteps...),
+				},
+				HighlightNodes: []string{step.Element1, step.Element2, step.Result},
+			})
+			stepCounter++
+		}
+
+		for _, ing := range node.Ingredients {
+			search(ing)
+		}
+	}
+
+	search(tree)
+
+	return steps
 }

@@ -21,7 +21,7 @@ export default function SearchPage() {
   
   // Live Update State
   const [liveUpdateEnabled, setLiveUpdateEnabled] = useState(true);
-  const [liveUpdateDelay, setLiveUpdateDelay] = useState(2000); // Default delay
+  const [liveUpdateDelay, setLiveUpdateDelay] = useState(3000); // Default delay
   const [liveUpdateData, setLiveUpdateData] = useState(null);
   const [isLiveUpdateComplete, setIsLiveUpdateComplete] = useState(false);
   
@@ -158,7 +158,7 @@ export default function SearchPage() {
                     <input
                       type="range"
                       min="1000"
-                      max="5000"
+                      max="10000"
                       step="500"
                       value={liveUpdateDelay}
                       onChange={(e) => setLiveUpdateDelay(Number(e.target.value))}

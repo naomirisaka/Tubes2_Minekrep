@@ -1,7 +1,7 @@
 // utils/api.js
 
 // Base URL for API calls - using the Go backend port shown in your terminal
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'http://localhost:8081';
 
 /**
  * Makes a search request to the API
