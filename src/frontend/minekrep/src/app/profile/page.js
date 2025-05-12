@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import Image from 'next/image';
 import NavBar from '@/components/NavBar';
 import MinecraftButton from '@/components/MinecraftButton';
 
@@ -8,17 +9,17 @@ import MinecraftButton from '@/components/MinecraftButton';
 const teamMembers = [
   {
     id: 1,
-    name: "Team Member 1",
-    nim: "13523001",
+    name: "Indah Novita Tangdililing",
+    nim: "13523047",
     role: "Algorithm Engineer",
     description: "Worked on implementing BFS algorithm and data structures",
     image: "/images/team/member1.png",
-    github: "https://github.com/teammember1"
+    github: "https://github.com/indahtangdililing"
   },
   {
     id: 2,
-    name: "Team Member 2",
-    nim: "13523002",
+    name: "Bevinda Vivian",
+    nim: "13523120",
     role: "Frontend Developer",
     description: "Developed the user interface and recipe visualization component",
     image: "/images/team/member2.png",
@@ -26,11 +27,11 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Team Member 3",
-    nim: "13523003",
+    name: "Naomi Risaka Sitorus",
+    nim: "13523122",
     role: "Backend Developer",
     description: "Created the API endpoints and implemented DFS algorithm",
-    image: "/images/team/avatar3.png",
+    image: "/images/team/member3.jpg",
     github: "https://github.com/teammember3"
   }
 ];
@@ -85,19 +86,24 @@ export default function ProfilePage() {
                 <div 
                   key={member.id} 
                   className={`bg-gray-800 bg-opacity-80 rounded-lg border border-gray-700 overflow-hidden 
-                              transition-all duration-300 ${expandedMember === member.id ? 'transform scale-105' : ''}`}
+                            transition-all duration-300 ${expandedMember === member.id ? 'transform scale-105' : ''}`}
                 >
                   <div className="p-4">
                     <div className="relative mb-4 mx-auto w-32 h-32 overflow-hidden rounded-lg border-2 border-gray-600">
-                      <div 
-                        className="w-full h-full bg-center bg-cover"
-                        style={{ backgroundImage: `url(${member.image})` }}
-                      >
-                        {/* Fallback if image doesn't load */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-80">
-                          <span className="text-green-400 text-4xl">{member.name.charAt(0)}</span>
-                        </div>
-                      </div>
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        priority={false}
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+                        onError={(e) => {
+                          console.error('Image failed to load:', member.image);
+                          e.target.style.display = 'none';
+                        }}
+                      />
                     </div>
                     
                     <h3 className="text-lg font-semibold text-center text-amber-400 mb-1">
@@ -152,16 +158,13 @@ export default function ProfilePage() {
                 <ul className="text-gray-300 text-sm">
                   <li>Next.js</li>
                   <li>React</li>
-                  <li>Tailwind CSS</li>
                 </ul>
               </div>
               
               <div className="bg-gray-700 bg-opacity-70 p-3 rounded border border-gray-600 text-center">
                 <h3 className="text-amber-400 font-medium mb-2">Backend</h3>
                 <ul className="text-gray-300 text-sm">
-                  <li>Node.js</li>
-                  <li>Express</li>
-                  <li>MongoDB</li>
+                  <li>Go</li>
                 </ul>
               </div>
               
@@ -170,15 +173,14 @@ export default function ProfilePage() {
                 <ul className="text-gray-300 text-sm">
                   <li>BFS (Breadth-First Search)</li>
                   <li>DFS (Depth-First Search)</li>
-                  <li>Graph Traversal</li>
+                  <li>Bi-directional</li>
                 </ul>
               </div>
               
               <div className="bg-gray-700 bg-opacity-70 p-3 rounded border border-gray-600 text-center">
                 <h3 className="text-amber-400 font-medium mb-2">Deployment</h3>
                 <ul className="text-gray-300 text-sm">
-                  <li>Vercel</li>
-                  <li>GitHub Actions</li>
+                  <li>GitHub</li>
                   <li>Docker</li>
                 </ul>
               </div>
@@ -186,7 +188,7 @@ export default function ProfilePage() {
           </div>
           
           <div className="mt-8 text-center">
-            <a href="https://github.com/your-repo-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/naomirisaka/Tubes2_Minekrep" target="_blank" rel="noopener noreferrer">
               <MinecraftButton 
                 text="View Source Code" 
                 variant="primary"
