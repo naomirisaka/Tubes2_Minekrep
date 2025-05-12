@@ -1,24 +1,24 @@
 package scraper
 
-import (
-	"encoding/json"
-	//"fmt"
-	//"log"
-	//"net/http"
-	//"os"
-	//"strings"
-	"io/ioutil"
-	//"sync"
-	"tubes2_minekrep/src/backend/utilities"
-	// "github.com/PuerkitoBio/goquery"
-)
+// import (
+// 	"encoding/json"
+// 	//"fmt"
+// 	//"log"
+// 	//"net/http"
+// 	//"os"
+// 	//"strings"
+// 	"io/ioutil"
+// 	//"sync"
+// 	"tubes2_minekrep/src/backend/utilities"
+// 	// "github.com/PuerkitoBio/goquery"
+// )
 
-type Recipe struct {
-	Element1     string `json:"element1"`
-	Element2     string `json:"element2"`
-	Result       string `json:"result"`
-	IconFilename string `json:"icon_filename"`
-}
+// type Recipe struct {
+// 	Element1     string `json:"element1"`
+// 	Element2     string `json:"element2"`
+// 	Result       string `json:"result"`
+// 	IconFilename string `json:"icon_filename"`
+// }
 
 // func main() {
 // 	baseURL := "https://little-alchemy.fandom.com"
@@ -176,72 +176,72 @@ type Recipe struct {
 // 	encoder.SetIndent("", "  ")
 // 	return encoder.Encode(data)
 // }
-func initializeTiers() {
-	// Set base tier 1
-	for _, element := range utilities.BaseElements {
-		utilities.Tiers[element] = 1
-	}
-	queue := make([]string, 0)
-    queue = append(queue, utilities.BaseElements...)
-    processed := make(map[string]bool)
+// func initializeTiers() {
+// 	// Set base tier 1
+// 	for _, element := range utilities.BaseElements {
+// 		utilities.Tiers[element] = 1
+// 	}
+// 	queue := make([]string, 0)
+//     queue = append(queue, utilities.BaseElements...)
+//     processed := make(map[string]bool)
     
-    for _, elem := range utilities.BaseElements {
-        processed[elem] = true
-    }
-	for len(queue) > 0 {
-        current := queue[0]
-        queue = queue[1:]
+//     for _, elem := range utilities.BaseElements {
+//         processed[elem] = true
+//     }
+// 	for len(queue) > 0 {
+//         current := queue[0]
+//         queue = queue[1:]
         
-        for result, recipeList := range utilities.Recipes {
-            if processed[result] {
-                continue 
-            }
+//         for result, recipeList := range utilities.Recipes {
+//             if processed[result] {
+//                 continue 
+//             }
             
-            for _, recipe := range recipeList {
-                if (recipe.Element1 == current || recipe.Element2 == current) {
+//             for _, recipe := range recipeList {
+//                 if (recipe.Element1 == current || recipe.Element2 == current) {
  
-                    if tier1, ok1 := utilities.Tiers[recipe.Element1]; ok1 {
-                        if tier2, ok2 := utilities.Tiers[recipe.Element2]; ok2 {
-                            resultTier := utilities.Max(tier1, tier2) + 1
-                            existingTier, exists := utilities.Tiers[result]
+//                     if tier1, ok1 := utilities.Tiers[recipe.Element1]; ok1 {
+//                         if tier2, ok2 := utilities.Tiers[recipe.Element2]; ok2 {
+//                             resultTier := utilities.Max(tier1, tier2) + 1
+//                             existingTier, exists := utilities.Tiers[result]
                             
-                            // Update tier kalau ada yagn lebih pendek
-                            if !exists || resultTier < existingTier {
-                                utilities.Tiers[result] = resultTier
-                                if !processed[result] {
-                                    queue = append(queue, result)
-                                }
-                            }
+//                             // Update tier kalau ada yagn lebih pendek
+//                             if !exists || resultTier < existingTier {
+//                                 utilities.Tiers[result] = resultTier
+//                                 if !processed[result] {
+//                                     queue = append(queue, result)
+//                                 }
+//                             }
                             
-                            processed[result] = true
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+//                             processed[result] = true
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-func LoadRecipes(filename string) error {
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return err
-	}
+// func LoadRecipes(filename string) error {
+// 	data, err := ioutil.ReadFile(filename)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	var recipeList []utilities.Recipe
-	err = json.Unmarshal(data, &recipeList)
-	if err != nil {
-		return err
-	}
+// 	var recipeList []utilities.Recipe
+// 	err = json.Unmarshal(data, &recipeList)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	for _, recipe := range recipeList {
-		utilities.Recipes[recipe.Result] = append(utilities.Recipes[recipe.Result], recipe)
-	}
+// 	for _, recipe := range recipeList {
+// 		utilities.Recipes[recipe.Result] = append(utilities.Recipes[recipe.Result], recipe)
+// 	}
 
-	initializeTiers()
+// 	initializeTiers()
 
-	return nil
-}
+// 	return nil
+// }
 // func saveToCSV(data []Recipe, filename string) error {
 // 	file, err := os.Create(filename)
 // 	if err != nil {

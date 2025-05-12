@@ -1,6 +1,12 @@
 package utilities
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	// "os"
+	"sync"
+	"encoding/json"
+)
 
 func IsBaseElement(element string) bool {
 	for _, base := range BaseElements {
@@ -96,4 +102,103 @@ func CopyMap(original map[string][]string) map[string][]string {
         newMap[k] = newSlice
     }
     return newMap
+}
+
+var LiveUpdateCallback func(element string, path []string, found map[string][]string)
+var liveUpdateMutex sync.Mutex
+
+// SetLiveUpdateCallback sets the callback function for live updates
+func SetLiveUpdateCallback(callback func(element string, path []string, found map[string][]string)) {
+    liveUpdateMutex.Lock()
+    defer liveUpdateMutex.Unlock()
+    LiveUpdateCallback = callback
+}
+
+// TrackLiveUpdate calls the callback function if it's set
+func TrackLiveUpdate(element string, path []string, found map[string][]string) {
+	liveUpdateMutex.Lock()
+	defer liveUpdateMutex.Unlock()
+	if LiveUpdateCallback != nil {
+		LiveUpdateCallback(element, path, found)
+	}
+}
+
+func FindIconForRecipe(element1, element2, result string) string {
+	if recipes, exists := Recipes[result]; exists {
+		for _, r := range recipes {
+			if (r.Element1 == element1 && r.Element2 == element2) ||
+			   (r.Element1 == element2 && r.Element2 == element1) {
+				return r.IconFilename
+			}
+		}
+	}
+	return "unknown.png"
+}
+
+
+func initializeTiers() {
+	// Set base tier 1
+	for _, element := range BaseElements {
+		Tiers[element] = 1
+	}
+	queue := make([]string, 0)
+    queue = append(queue, BaseElements...)
+    processed := make(map[string]bool)
+    
+    for _, elem := range BaseElements {
+        processed[elem] = true
+    }
+	for len(queue) > 0 {
+        current := queue[0]
+        queue = queue[1:]
+        
+        for result, recipeList := range Recipes {
+            if processed[result] {
+                continue 
+            }
+            
+            for _, recipe := range recipeList {
+                if (recipe.Element1 == current || recipe.Element2 == current) {
+ 
+                    if tier1, ok1 := Tiers[recipe.Element1]; ok1 {
+                        if tier2, ok2 := Tiers[recipe.Element2]; ok2 {
+                            resultTier := Max(tier1, tier2) + 1
+                            existingTier, exists := Tiers[result]
+                            
+                            // Update tier kalau ada yagn lebih pendek
+                            if !exists || resultTier < existingTier {
+                                Tiers[result] = resultTier
+                                if !processed[result] {
+                                    queue = append(queue, result)
+                                }
+                            }
+                            
+                            processed[result] = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+func LoadRecipes(filename string) error {
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return err
+	}
+
+	var recipeList []Recipe
+	err = json.Unmarshal(data, &recipeList)
+	if err != nil {
+		return err
+	}
+
+	for _, recipe := range recipeList {
+		Recipes[recipe.Result] = append(Recipes[recipe.Result], recipe)
+	}
+
+	initializeTiers()
+
+	return nil
 }

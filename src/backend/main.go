@@ -6,17 +6,17 @@ import (
 	//"io/ioutil"
 	"time"
 	"tubes2_minekrep/src/backend/utilities"
-	"tubes2_minekrep/src/backend/scraper"
+	// "tubes2_minekrep/src/backend/scraper"
 	"tubes2_minekrep/src/backend/searchalgo"
 )
 
 func main() {
-    recipesFile := "data/recipes.json" // Default file path
+    recipesFile := "C:/Users/62812/Stima/Tubes2_Minekrep/data/recipes.json" // Default file path
     targetElement := "French fries" 
-	maxRecipes := 8
+	maxRecipes := 4
 	startTime := time.Now()
 	// Load recipes
-	err := scraper.LoadRecipes(recipesFile)
+	err := utilities.LoadRecipes(recipesFile)
 	if err != nil {
 		fmt.Printf("Error loading recipes: %v\n", err)
 		return
