@@ -8,21 +8,24 @@ import (
 	"path/filepath"
 	"tubes2/utilities"
 	"tubes2/api"
+	"tubes2/scraper"
 )
 
 func main() {
+	// Ensure data directory exists
+	workDir, _ := os.Getwd()
+	recipesPath := filepath.Join(workDir, "data", "recipes.json")
+	scraper.ScrapeIfNeeded(recipesPath)
+
 	// Command line flags
 	utilities.LoadRecipes("data/recipes.json")
 	portPtr := flag.String("port", "8080", "Port for the server to listen on")
 	modePtr := flag.String("mode", "server", "Mode to run (server or test)")
 	flag.Parse()
 
-	// Ensure data directory exists
-	workDir, _ := os.Getwd()
-	recipesPath := filepath.Join(workDir, "data", "recipes.json")
-	if _, err := os.Stat(recipesPath); os.IsNotExist(err) {
-		log.Fatalf("Recipes file not found: %s\nMake sure the 'data' directory with 'recipes.json' exists", recipesPath)
-	}
+	// if _, err := os.Stat(recipesPath); os.IsNotExist(err) {
+	// 	log.Fatalf("Recipes file not found: %s\nMake sure the 'data' directory with 'recipes.json' exists", recipesPath)
+	// }
 
 	// Run in the specified mode
 	if *modePtr == "server" {

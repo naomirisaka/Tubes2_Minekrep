@@ -6,18 +6,19 @@ import (
 	"tubes2/utilities"
 )
 
-func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {
+func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []utilities.Step) {
 	visited := 0
+	var liveSteps []utilities.Step
 
 	if utilities.IsBaseElement(target) {
 		tree := utilities.RecipeTree{Element: target}
-		return []utilities.RecipeTree{tree}, visited
+		return []utilities.RecipeTree{tree}, visited, liveSteps
 	}
 
 	recipeList, exists := utilities.Recipes[target]
 	if !exists || len(recipeList) == 0 {
 		fmt.Printf("Target element '%s' doesn't exist or can't be created\n", target)
-		return nil, visited
+		return nil, visited, liveSteps
 	}
 
 	var allResults []utilities.RecipeTree
@@ -36,7 +37,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {
 			found[target] = []string{e1, e2}
 
 			visitCount := 0
-			if processRecipe(e1, e2, found, &visitCount) {
+			if processRecipe(e1, e2, found, &visitCount, &liveSteps) {
 				visited += visitCount
 				recipeTree := utilities.BuildRecipeTree(target, found)
 				allResults = append(allResults, recipeTree)
@@ -73,7 +74,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {
 				found[target] = []string{e1, e2}
 
 				localVisitCount := 0
-				if processRecipe(e1, e2, found, &localVisitCount) {
+				if processRecipe(e1, e2, found, &localVisitCount, &liveSteps) {
 					mu.Lock()
 					defer mu.Unlock()
 
@@ -98,14 +99,14 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {
 	}
 
 	if maxRecipes > 0 && foundCount < maxRecipes {
-		fmt.Printf("Note: Only found %d recipe(s) for '%s' while %d were requested.\n", 
+		fmt.Printf("Note: Only found %d recipe(s) for '%s' while %d were requested.\n",
 			foundCount, target, maxRecipes)
 	}
 
-	return allResults, visited
+	return allResults, visited, liveSteps
 }
 
-func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *int) bool {
+func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *int, steps *[]utilities.Step) bool {
 	queue := []string{}
 
 	if !utilities.IsBaseElement(e1) && found[e1] == nil {
@@ -130,7 +131,7 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 		}
 
 		recipeList, exists := utilities.Recipes[element]
-		if !exists {
+		if !exists || len(recipeList) == 0 {
 			return false
 		}
 
@@ -149,6 +150,15 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 				queue = append(queue, ing2)
 			}
 
+			// Simpan step di sini karena sudah pasti kombinasi berhasil
+			*steps = append(*steps, utilities.Step{
+				Current:  element,
+				Queue:    append([]string{}, queue...), // salin queue
+				Element1: ing1,
+				Element2: ing2,
+				Result:   element,
+			})
+
 			elementProcessed = true
 			break
 		}
@@ -158,6 +168,7 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 		}
 	}
 
+	// Validasi: semua bahan sudah ditemukan
 	for elem, ingredients := range found {
 		if utilities.IsBaseElement(elem) {
 			continue

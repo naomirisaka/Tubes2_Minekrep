@@ -193,3 +193,15 @@ func TrackLiveUpdate(element string, path []string, found map[string][]string) {
 		LiveUpdateCallback(element, path, found)
 	}
 }
+
+func FindIconForRecipe(element1, element2, result string) string {
+	if recipes, exists := Recipes[result]; exists {
+		for _, r := range recipes {
+			if (r.Element1 == element1 && r.Element2 == element2) ||
+			   (r.Element1 == element2 && r.Element2 == element1) {
+				return r.IconFilename
+			}
+		}
+	}
+	return "unknown.png"
+}
