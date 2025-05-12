@@ -29,18 +29,18 @@ Menampilkan pohon resep hasil pencarian elemen target serta statistik pencarian 
 │   └── Minekrep.pdf
 ├── src
 │   ├── backend
-│   │   ├── api                # Mengirim informasi dari backend ke frontend
+│   │   ├── api                   # Mengirim informasi dari backend ke frontend
 │   │   │    └── handlers.go
-│   │   ├── scraper            # Mengekstrak data resep dari website ke JSON
+│   │   ├── scraper               # Mengekstrak data resep dari website ke JSON
 │   │   │    └── scrap.go
-│   │   ├── searchalgo         # Algoritma pencarian resep
+│   │   ├── searchalgo            # Algoritma pencarian resep
 │   │   │    ├── bfs.go
 │   │   │    ├── bidirectional.go
 │   │   │    └── dfs.go
-│   │   ├── utilities          # Struktur data dan helper function  untuk pencarian
+│   │   ├── utilities             # Struktur data dan helper function  untuk pencarian
 │   │   |    ├── models.go
 │   │   |    └── utils.go
-│   │   └── Dockerfile         # Menciptakan container backend untuk Docker
+│   │   └── Dockerfile            # Menciptakan container backend untuk Docker
 │   ├── frontend
 │   │   ├── minekrep
 │   │   │   ├── public
