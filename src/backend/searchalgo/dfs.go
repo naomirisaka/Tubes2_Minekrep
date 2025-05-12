@@ -3,7 +3,7 @@ package searchalgo
 import (
     "fmt"
     "sync"
-    "tubes2_minekrep/src/backend/utilities"
+    "tubes2/utilities"
 )
 
 // Atomic counter untuk visited
