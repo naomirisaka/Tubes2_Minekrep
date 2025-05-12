@@ -103,6 +103,53 @@ func CopyMap(original map[string][]string) map[string][]string {
     return newMap
 }
 
+func initializeTiers() {
+	// Set base tier 1
+	for _, element := range BaseElements {
+		Tiers[element] = 1
+	}
+	queue := make([]string, 0)
+    queue = append(queue, BaseElements...)
+    processed := make(map[string]bool)
+    
+    for _, elem := range BaseElements {
+        processed[elem] = true
+    }
+	for len(queue) > 0 {
+        current := queue[0]
+        queue = queue[1:]
+        
+        for result, loadedRecipes := range Recipes {
+            if processed[result] {
+                continue 
+            }
+            
+            for _, recipe := range loadedRecipes {
+                if (recipe.Element1 == current || recipe.Element2 == current) {
+ 
+                    if tier1, ok1 := Tiers[recipe.Element1]; ok1 {
+                        if tier2, ok2 := Tiers[recipe.Element2]; ok2 {
+                            resultTier := Max(tier1, tier2) + 1
+                            existingTier, exists := Tiers[result]
+                            
+                            // Update tier kalau ada yagn lebih pendek
+                            if !exists || resultTier < existingTier {
+                                Tiers[result] = resultTier
+                                if !processed[result] {
+                                    queue = append(queue, result)
+                                }
+                            }
+                            
+                            processed[result] = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 func LoadRecipes(filePath string) {
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -121,6 +168,8 @@ func LoadRecipes(filePath string) {
 	for _, r := range loadedRecipes {
 		Recipes[r.Result] = append(Recipes[r.Result], r)
 	}
+	
+	initializeTiers()
 
 	fmt.Printf("Loaded %d recipes.\n", len(loadedRecipes))
 }
