@@ -21,6 +21,12 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 		return nil, visited, liveSteps
 	}
 
+	targetTier, targetTierExists := utilities.Tiers[target]
+	if !targetTierExists {
+		fmt.Printf("Target element '%s' does not have a valid tier\n", target)
+		return nil, visited, liveSteps
+	}
+
 	var allResults []utilities.RecipeTree
 	foundCount := 0
 
@@ -30,14 +36,18 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 				break
 			}
 
-			e1 := recipe.Element1
-			e2 := recipe.Element2
+			e1, e2 := recipe.Element1, recipe.Element2
+			e1Tier, ok1 := utilities.Tiers[e1]
+			e2Tier, ok2 := utilities.Tiers[e2]
+			if ok1 && ok2 && (e1Tier >= targetTier || e2Tier >= targetTier) {
+				continue
+			}
 
 			found := make(map[string][]string)
 			found[target] = []string{e1, e2}
 
 			visitCount := 0
-			if processRecipe(e1, e2, found, &visitCount, &liveSteps) {
+			if processRecipe(e1, e2, found, &visitCount, &liveSteps, targetTier) {
 				visited += visitCount
 				recipeTree := utilities.BuildRecipeTree(target, found)
 				allResults = append(allResults, recipeTree)
@@ -54,6 +64,13 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 		for _, recipe := range recipeList {
 			if resultCount >= maxRecipes {
 				break
+			}
+
+			e1, e2 := recipe.Element1, recipe.Element2
+			e1Tier, ok1 := utilities.Tiers[e1]
+			e2Tier, ok2 := utilities.Tiers[e2]
+			if ok1 && ok2 && (e1Tier >= targetTier || e2Tier >= targetTier) {
+				continue
 			}
 
 			wg.Add(1)
@@ -74,7 +91,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 				found[target] = []string{e1, e2}
 
 				localVisitCount := 0
-				if processRecipe(e1, e2, found, &localVisitCount, &liveSteps) {
+				if processRecipe(e1, e2, found, &localVisitCount, &liveSteps, targetTier) {
 					mu.Lock()
 					defer mu.Unlock()
 
@@ -106,7 +123,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 	return allResults, visited, liveSteps
 }
 
-func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *int, steps *[]utilities.Step) bool {
+func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *int, steps *[]utilities.Step, targetTier int) bool {
 	queue := []string{}
 
 	if !utilities.IsBaseElement(e1) && found[e1] == nil {
@@ -135,10 +152,22 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 			return false
 		}
 
+		elementTier, tierExists := utilities.Tiers[element]
+		if !tierExists {
+			return false
+		}
+
 		elementProcessed := false
 		for _, recipe := range recipeList {
 			ing1 := recipe.Element1
 			ing2 := recipe.Element2
+			ing1Tier, ok1 := utilities.Tiers[ing1]
+			ing2Tier, ok2 := utilities.Tiers[ing2]
+
+			// Skip if any ingredient is not lower-tier
+			if ok1 && ok2 && (ing1Tier >= elementTier || ing2Tier >= elementTier || ing1Tier >= targetTier || ing2Tier >= targetTier) {
+				continue
+			}
 
 			found[element] = []string{ing1, ing2}
 
@@ -150,10 +179,9 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 				queue = append(queue, ing2)
 			}
 
-			// Simpan step di sini karena sudah pasti kombinasi berhasil
 			*steps = append(*steps, utilities.Step{
 				Current:  element,
-				Queue:    append([]string{}, queue...), // salin queue
+				Queue:    append([]string{}, queue...),
 				Element1: ing1,
 				Element2: ing2,
 				Result:   element,
@@ -168,12 +196,10 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 		}
 	}
 
-	// Validasi: semua bahan sudah ditemukan
 	for elem, ingredients := range found {
 		if utilities.IsBaseElement(elem) {
 			continue
 		}
-
 		for _, ing := range ingredients {
 			if !utilities.IsBaseElement(ing) && found[ing] == nil {
 				return false
