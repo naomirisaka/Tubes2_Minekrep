@@ -8,7 +8,7 @@ import (
 
 // bfs search for recipes
 func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []utilities.Step) {
-	visited := 0
+	visited := 1
 	var liveSteps []utilities.Step
 
 	if utilities.IsBaseElement(target) {
