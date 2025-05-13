@@ -66,7 +66,7 @@ export default function ProfilePage() {
               About Our Project
             </h2>
             <p className="text-gray-300 mb-4 text-center">
-              Welcome to Minekrep, a project to fulfill "Tugas Besar 2 Stima" that helps you to enjoy Little Alchemy 2.
+              Welcome to Minekrep, a project to fulfill Tugas Besar 2 Stima that helps you to enjoy Little Alchemy 2.
               This project implements a recipe finder for Little Alchemy 2 game elements using BFS, DFS, and Bidirectional algorithms.
               You can search for crafting paths from basic elements to any target element, with visualization
               of the search process and recipe trees.
@@ -135,7 +135,7 @@ export default function ProfilePage() {
                     
                     <div className="mt-4 flex justify-center">
                       <MinecraftButton 
-                        text={expandedMember === member.id ? "Show Less" : "Show More"} 
+                        text={expandedMember === member.id ? "Show Less" : 'Show More'} 
                         onClick={() => toggleExpandMember(member.id)}
                         variant="secondary"
                         size="small"
