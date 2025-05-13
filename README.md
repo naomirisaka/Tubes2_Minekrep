@@ -62,6 +62,7 @@ Menampilkan pohon resep hasil pencarian elemen target serta statistik pencarian 
 │   │   │   │   │   ├── RecipeVisualizer.jsx
 │   │   │   │   │   ├── SearchForm.jsx
 │   │   │   │   │   └── TeamProfile.jsx
+│   │   │   │   ├── data
 │   │   │   │   ├── styles
 │   │   │   │   │   └── globals.css
 │   │   │   │   ├── utils
@@ -109,7 +110,12 @@ Menampilkan pohon resep hasil pencarian elemen target serta statistik pencarian 
 3. Pindah ke directory src dengan:
    ```sh
    cd src
-4. Jalankan Docker dengan:
+4. Jalankan Docker Desktop
+5. Jalankan Docker di terminal dengan:
     ```sh
     docker-compose up --build
-5. Akses website melalui link yang diberikan oleh container frontend, seperti `http://localhost:3000`
+6. Akses website melalui link yang diberikan oleh container frontend, seperti `http://localhost:3000`
+
+
+## Deployment
+Web Little Alchemy 2 Recipe Finder dapat diakses juga melalui https://minekrep-2025.vercel.app/
