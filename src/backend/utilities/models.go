@@ -1,12 +1,5 @@
 package utilities
 
-// import (
-// 	"encoding/json"
-// 	"fmt"
-// 	"io/ioutil"
-// 	"time"
-// )
-
 type Recipe struct {
 	Element1     string `json:"element1"`
 	Element2     string `json:"element2"`

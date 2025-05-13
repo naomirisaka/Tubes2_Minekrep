@@ -6,6 +6,7 @@ import (
 	"tubes2/utilities"
 )
 
+// bfs search for recipes
 func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []utilities.Step) {
 	visited := 0
 	var liveSteps []utilities.Step
@@ -15,12 +16,12 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 		return []utilities.RecipeTree{tree}, visited, liveSteps
 	}
 
+	// check if target is a valid element
 	recipeList, exists := utilities.Recipes[target]
 	if !exists || len(recipeList) == 0 {
 		fmt.Printf("Target element '%s' doesn't exist or can't be created\n", target)
 		return nil, visited, liveSteps
 	}
-
 	targetTier, targetTierExists := utilities.Tiers[target]
 	if !targetTierExists {
 		fmt.Printf("Target element '%s' does not have a valid tier\n", target)
@@ -36,6 +37,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 				break
 			}
 
+			// tier checking
 			e1, e2 := recipe.Element1, recipe.Element2
 			e1Tier, ok1 := utilities.Tiers[e1]
 			e2Tier, ok2 := utilities.Tiers[e2]
@@ -56,7 +58,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 				visited += visitCount
 			}
 		}
-	} else {
+	} else { // multithreading for multiple recipes
 		var wg sync.WaitGroup
 		var mu sync.Mutex
 		resultCount := 0
@@ -66,6 +68,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 				break
 			}
 
+			// tier checking
 			e1, e2 := recipe.Element1, recipe.Element2
 			e1Tier, ok1 := utilities.Tiers[e1]
 			e2Tier, ok2 := utilities.Tiers[e2]
@@ -123,6 +126,7 @@ func BFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int, []ut
 	return allResults, visited, liveSteps
 }
 
+// process recipe based on the BFS algorithm
 func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *int, steps *[]utilities.Step, targetTier int) bool {
 	queue := []string{}
 
@@ -164,7 +168,6 @@ func processRecipe(e1 string, e2 string, found map[string][]string, visitCount *
 			ing1Tier, ok1 := utilities.Tiers[ing1]
 			ing2Tier, ok2 := utilities.Tiers[ing2]
 
-			// Skip if any ingredient is not lower-tier
 			if ok1 && ok2 && (ing1Tier >= elementTier || ing2Tier >= elementTier || ing1Tier >= targetTier || ing2Tier >= targetTier) {
 				continue
 			}
