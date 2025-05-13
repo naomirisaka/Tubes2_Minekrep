@@ -1,11 +1,18 @@
 package utilities
 
 import (
+<<<<<<< HEAD
 	"fmt"
 	"io/ioutil"
 	// "os"
 	"sync"
 	"encoding/json"
+=======
+	"encoding/json"
+	"fmt"
+	"os"
+	"sync"
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 )
 
 func IsBaseElement(element string) bool {
@@ -104,17 +111,97 @@ func CopyMap(original map[string][]string) map[string][]string {
     return newMap
 }
 
+<<<<<<< HEAD
 var LiveUpdateCallback func(element string, path []string, found map[string][]string)
 var liveUpdateMutex sync.Mutex
 
 // SetLiveUpdateCallback sets the callback function for live updates
+=======
+func initializeTiers() {
+	for _, element := range BaseElements {
+		Tiers[element] = 1
+	}
+	queue := make([]string, 0)
+    queue = append(queue, BaseElements...)
+    processed := make(map[string]bool)
+    
+    for _, elem := range BaseElements {
+        processed[elem] = true
+    }
+	for len(queue) > 0 {
+        current := queue[0]
+        queue = queue[1:]
+        
+        for result, loadedRecipes := range Recipes {
+            if processed[result] {
+                continue 
+            }
+            
+            for _, recipe := range loadedRecipes {
+                if (recipe.Element1 == current || recipe.Element2 == current) {
+ 
+                    if tier1, ok1 := Tiers[recipe.Element1]; ok1 {
+                        if tier2, ok2 := Tiers[recipe.Element2]; ok2 {
+                            resultTier := Max(tier1, tier2) + 1
+                            existingTier, exists := Tiers[result]
+                            
+                            if !exists || resultTier < existingTier {
+                                Tiers[result] = resultTier
+                                if !processed[result] {
+                                    queue = append(queue, result)
+                                }
+                            }
+                            
+                            processed[result] = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+func LoadRecipes(filePath string) {
+	file, err := os.Open(filePath)
+	if err != nil {
+		fmt.Printf("Failed to open file: %v\n", err)
+		return
+	}
+	defer file.Close()
+
+	var loadedRecipes []Recipe
+	decoder := json.NewDecoder(file)
+	if err := decoder.Decode(&loadedRecipes); err != nil {
+		fmt.Printf("Failed to decode JSON: %v\n", err)
+		return
+	}
+
+	for _, r := range loadedRecipes {
+		Recipes[r.Result] = append(Recipes[r.Result], r)
+	}
+	
+	initializeTiers()
+
+	fmt.Printf("Loaded %d recipes.\n", len(loadedRecipes))
+}
+
+// tracking search progress
+var LiveUpdateCallback func(element string, path []string, found map[string][]string)
+var liveUpdateMutex sync.Mutex
+
+// sets callback function for live updates
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 func SetLiveUpdateCallback(callback func(element string, path []string, found map[string][]string)) {
     liveUpdateMutex.Lock()
     defer liveUpdateMutex.Unlock()
     LiveUpdateCallback = callback
 }
 
+<<<<<<< HEAD
 // TrackLiveUpdate calls the callback function if it's set
+=======
+// calls the callback function for live updates
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 func TrackLiveUpdate(element string, path []string, found map[string][]string) {
 	liveUpdateMutex.Lock()
 	defer liveUpdateMutex.Unlock()
@@ -133,6 +220,7 @@ func FindIconForRecipe(element1, element2, result string) string {
 		}
 	}
 	return "unknown.png"
+<<<<<<< HEAD
 }
 
 
@@ -201,4 +289,6 @@ func LoadRecipes(filename string) error {
 	initializeTiers()
 
 	return nil
+=======
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 }

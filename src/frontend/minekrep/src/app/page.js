@@ -18,12 +18,19 @@ export default function Home() {
       
       <div className="p-8 bg-black rounded-lg border-4 border-gray-700 max-w-4xl w-full text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-8 minecraft-text" style={{ textShadow: '3px 3px 0 #000' }}>
-          <span className="text-yellow-400">Little Alchemy 2</span>
+          <a 
+            href="https://littlealchemy2.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-yellow-400 hover:underline"
+          >
+            Little Alchemy 2
+          </a>
           <span className="block text-green-400 mt-2">Recipe Finder</span>
         </h1>
         
         <div className="mb-12 text-white text-lg" style={{ textShadow: '2px 2px 0 #000' }}>
-          <p>Find all possible recipes from the 4 basic elements using BFS and DFS algorithms.</p>
+          <p>Find all possible recipes from basic elements using BFS, DFS, and Bidirectional algorithms.</p>
           <p className="mt-4">Combine elements, discover new creations, and visualize recipe trees!</p>
         </div>
         
@@ -38,7 +45,7 @@ export default function Home() {
               onClick={() => router.push('/search')}
               isActive={hoveredButton === 'search'}
             />
-            <p className="text-white mt-2" style={{ textShadow: '2px 2px 0 #000' }}>Find element recipes</p>
+            <p className="text-white mt-2" style={{ textShadow: '2px 2px 0 #000' }}>Start Crafting :p</p>
           </div>
           
           <div 
@@ -51,7 +58,7 @@ export default function Home() {
               onClick={() => router.push('/profile')}
               isActive={hoveredButton === 'profile'}
             />
-            <p className="text-white mt-2" style={{ textShadow: '2px 2px 0 #000' }}>Meet our team</p>
+            <p className="text-white mt-2" style={{ textShadow: '2px 2px 0 #000' }}>Get to know our team ^^</p>
           </div>
         </div>
         

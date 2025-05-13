@@ -3,10 +3,16 @@ package searchalgo
 import (
     "fmt"
     "sync"
+<<<<<<< HEAD
     "tubes2_minekrep/src/backend/utilities"
 )
 
 // Atomic counter untuk visited
+=======
+    "tubes2/utilities"
+)
+
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 type SafeCounter struct {
     v   int
     mux sync.Mutex
@@ -26,12 +32,19 @@ func (c *SafeCounter) Value() int {
 
 func DFSSearch(target string, maxRecipes int) ([]utilities.RecipeTree, int) {
     counter := &SafeCounter{v: 0}
+<<<<<<< HEAD
 
     counter.Inc()
     
     if utilities.IsBaseElement(target) {
         tree := utilities.RecipeTree{Element: target}
         return []utilities.RecipeTree{tree}, 1
+=======
+    
+    if utilities.IsBaseElement(target) {
+        tree := utilities.RecipeTree{Element: target}
+        return []utilities.RecipeTree{tree}, 0
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
     }
 
     if _, exists := utilities.Recipes[target]; !exists {
@@ -157,7 +170,6 @@ func ExploreAllCombinations(e1, e2 string, baseMap map[string][]string, results 
         
         for _, completeMap := range e2Maps {
             *results = append(*results, completeMap)
-
         }
     }
 }

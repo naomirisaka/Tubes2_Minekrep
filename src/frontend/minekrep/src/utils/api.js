@@ -1,83 +1,88 @@
-// API base URL - replace with your actual backend URL when deployed
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api';
+// utils/api.js
+
+// Base URL for API calls - using the Go backend port shown in your terminal
+const API_BASE_URL = 'http://localhost:8080';
 
 /**
- * Search for element recipes
- * @param {Object} params - Search parameters
- * @param {string} params.algorithm - Search algorithm ('bfs', 'dfs', or 'bidirectional')
- * @param {string} params.targetElement - Target element to search for
- * @param {boolean} params.multipleRecipes - Whether to search for multiple recipes
- * @param {number} params.recipeCount - Number of recipes to search for (if multipleRecipes is true)
- * @returns {Promise<Object>} - Recipe search results
+ * Makes a search request to the API
+ * @param {Object} options - Search options
+ * @param {string} options.algorithm - Algorithm to use ('bfs' or 'dfs')
+ * @param {string} options.targetElement - Target element to find
+ * @param {boolean} options.multipleRecipes - Whether to return multiple recipes
+ * @param {number} options.recipeCount - Number of recipes to return
+ * @returns {Promise<Object>} - Search results
  */
-export const searchRecipes = async ({
-  algorithm = 'bfs',
-  targetElement,
-  multipleRecipes = false,
-  recipeCount = 1
-}) => {
+export const searchRecipes = async (options) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/search`, {
+    const response = await fetch(`${API_BASE_URL}/api/search`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        algorithm,
-        targetElement,
-        multipleRecipes,
-        recipeCount,
-      }),
+      algorithm: options.algorithm,
+      targetElement: options.targetElement, 
+      multipleRecipes: options.multipleRecipes, 
+      recipeCount: options.recipeCount, 
+      startElements: options.startElements || [],
+    }),
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'Failed to search for recipes');
+      throw new Error(`API error: ${response.status} ${response.statusText}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    if (!data.metrics || !data.metrics.time) {
+      data.metrics = {
+        ...data.metrics,
+        time: data.metrics?.time || 0,
+        nodesVisited: data.metrics?.nodesVisited || 0,
+      };
+    }
+
+    return data;
   } catch (error) {
-    console.error('Error searching recipes:', error);
-    throw error;
+    console.error('API Request Error:', error);
+    throw new Error(`Failed to search recipes: ${error.message}`);
   }
 };
 
 /**
- * Get all available elements
- * @returns {Promise<Array>} - List of all available elements
+ * Gets all available elements from the API
+ * @returns {Promise<Array>} - List of all elements
  */
 export const getAllElements = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/elements`);
-
+    const response = await fetch(`${API_BASE_URL}/api/elements`);
+    
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'Failed to fetch elements');
+      throw new Error(`API error: ${response.status} ${response.statusText}`);
     }
-
+    
     return await response.json();
   } catch (error) {
-    console.error('Error fetching elements:', error);
-    throw error;
+    console.error('API Request Error:', error);
+    throw new Error(`Failed to get elements: ${error.message}`);
   }
 };
 
 /**
- * Get basic elements
+ * Gets basic elements from the API
  * @returns {Promise<Array>} - List of basic elements
  */
 export const getBasicElements = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/elements/basic`);
-
+    const response = await fetch(`${API_BASE_URL}/api/elements/basic`);
+    
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'Failed to fetch basic elements');
+      throw new Error(`API error: ${response.status} ${response.statusText}`);
     }
-
+    
     return await response.json();
   } catch (error) {
-    console.error('Error fetching basic elements:', error);
-    throw error;
+    console.error('API Request Error:', error);
+    throw new Error(`Failed to get basic elements: ${error.message}`);
   }
 };

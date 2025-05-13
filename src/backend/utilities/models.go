@@ -1,5 +1,6 @@
 package utilities
 
+<<<<<<< HEAD
 // import (
 // 	"encoding/json"
 // 	"fmt"
@@ -7,6 +8,8 @@ package utilities
 // 	"time"
 // )
 
+=======
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 type Recipe struct {
 	Element1     string `json:"element1"`
 	Element2     string `json:"element2"`
@@ -20,6 +23,7 @@ type Element struct {
 }
 
 type Node struct {
+<<<<<<< HEAD
 	Element    string
 	Path       []string
 	Visited    map[string]bool
@@ -31,6 +35,20 @@ type RecipeTree struct {
 	Element    string      `json:"element"`
 	Ingredients []RecipeTree `json:"ingredients,omitempty"`
 }
+=======
+	Element     string
+	Path        []string
+	Visited     map[string]bool
+	Depth       int
+	Ingredients map[string][]string
+}
+
+type RecipeTree struct {
+	Element     string       `json:"element"`
+	Ingredients []RecipeTree `json:"ingredients,omitempty"`
+}
+
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
 type Step struct {
 	Current   string   `json:"current"`
 	Queue     []string `json:"queue"`
@@ -59,8 +77,16 @@ type LiveUpdateStep struct {
 }
 
 var (
+<<<<<<< HEAD
 	Elements   = make(map[string]Element)
 	Recipes    = make(map[string][]Recipe)
 	BaseElements = []string{"Water", "Fire", "Earth", "Air"}
 	Tiers      = make(map[string]int)
 )
+=======
+	Elements     = make(map[string]Element)
+	Recipes      = make(map[string][]Recipe)
+	BaseElements = []string{"Water", "Fire", "Earth", "Air"}
+	Tiers        = make(map[string]int)
+)
+>>>>>>> dd6ca3248ae7b2d1452d4e3847b539e901bdfce9
