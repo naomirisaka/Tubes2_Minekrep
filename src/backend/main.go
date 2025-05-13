@@ -19,7 +19,7 @@ func main() {
 
 	// Command line flags
 	utilities.LoadRecipes("data/recipes.json")
-	portPtr := flag.String("port", "8080", "Port for the server to listen on")
+	portPtr := flag.String("port", "8081", "Port for the server to listen on")
 	modePtr := flag.String("mode", "server", "Mode to run (server or test)")
 	flag.Parse()
 

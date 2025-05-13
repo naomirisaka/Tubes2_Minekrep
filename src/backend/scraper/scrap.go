@@ -8,16 +8,15 @@ import (
 	"strings"
 	"sync"
 
-// type Recipe struct {
-// 	Element1     string `json:"element1"`
-// 	Element2     string `json:"element2"`
-// 	Result       string `json:"result"`
-// 	IconFilename string `json:"icon_filename"`
-// }
+	"github.com/PuerkitoBio/goquery"
+)
 
-// func main() {
-// 	baseURL := "https://little-alchemy.fandom.com"
-// 	elementPageURL := baseURL + "/wiki/Elements_(Little_Alchemy_2)"
+type Recipe struct {
+	Element1     string `json:"element1"`
+	Element2     string `json:"element2"`
+	Result       string `json:"result"`
+	IconFilename string `json:"icon_filename"`
+}
 
 func ScrapeIfNeeded(filepath string) {
 	// skip scraping if the file already exists
@@ -133,26 +132,12 @@ func scrapeElementPage(url string, mythsSet map[string]bool) []Recipe {
 
 	iconFilename := strings.ToLower(strings.ReplaceAll(pageTitle, " ", "_")) + ".png"
 
-// 		if found && goquery.NodeName(s) == "ul" {
-// 			s.Find("li").Each(func(_ int, li *goquery.Selection) {
-// 				text := li.Text()
-// 				if strings.Contains(text, "+") {
-// 					parts := strings.Split(text, "+")
-// 					if len(parts) == 2 {
-// 						element1 := strings.TrimSpace(parts[0])
-// 						element2 := strings.TrimSpace(parts[1])
-// 						recipes = append(recipes, Recipe{
-// 							Element1:     element1,
-// 							Element2:     element2,
-// 							Result:       result,
-// 							IconFilename: iconFilename,
-// 						})
-// 					}
-// 				}
-// 			})
-// 			found = false
-// 		}
-// 	})
+	found := false
+	doc.Find(".mw-parser-output").Children().Each(func(i int, s *goquery.Selection) {
+		if goquery.NodeName(s) == "h2" && strings.Contains(s.Text(), "Recipes") {
+			found = true
+			return
+		}
 
 		if found && goquery.NodeName(s) == "ul" {
 			s.Find("li").Each(func(_ int, li *goquery.Selection) {

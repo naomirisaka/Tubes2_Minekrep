@@ -49,10 +49,8 @@ export default function SearchPage() {
         recipeCount: shortestPath ? 1 : recipeCount
       });
       
-      // Set the search results
       setSearchResults(results.recipes);
       
-      // Set metrics
       setMetrics({
         time: results.metrics?.time || 0,
         nodesVisited: results.metrics?.nodesVisited || 0
@@ -60,7 +58,7 @@ export default function SearchPage() {
       
       // Handle live update data
       if (results.liveUpdateSteps && results.liveUpdateSteps.length > 0) {
-        setLiveUpdateData(results.liveUpdateSteps); // pastikan ini adalah list of lists
+        setLiveUpdateData(results.liveUpdateSteps); // ini list of lists
         setCurrentRecipeIndex(0);
       }
       
@@ -72,7 +70,7 @@ export default function SearchPage() {
     }
   };
   
-  // Notify when live update visualization is complete
+  // Kabarin kalo udah selesai
   useEffect(() => {
     if (liveUpdateData && liveUpdateData.length > 0 && searchResults) {
       const timer = setTimeout(() => {
@@ -83,7 +81,7 @@ export default function SearchPage() {
     }
   }, [liveUpdateData, searchResults, liveUpdateDelay]);
   
-  // Reset live update data if algorithm or target element changes
+  // reset kalo algo/target element berubah
   useEffect(() => {
     setLiveUpdateData(null);
     setIsLiveUpdateComplete(false);

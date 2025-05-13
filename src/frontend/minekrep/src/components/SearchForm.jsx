@@ -26,7 +26,6 @@ const SearchForm = ({
   const inputRef = useRef(null);
   const basicElements = ["Air", "Earth", "Fire", "Water"];
 
-  // Extract all unique elements from recipes data on component mount
   useEffect(() => {
     const extractUniqueElements = () => {
       const uniqueElements = new Set();
@@ -44,7 +43,6 @@ const SearchForm = ({
     setAllElements(elements);
   }, []);
 
-  // Filter elements based on input
   useEffect(() => {
     if (targetElement.trim() === '') {
       setFilteredElements([]);
@@ -53,12 +51,11 @@ const SearchForm = ({
     
     const filtered = allElements.filter(element => 
       element.toLowerCase().includes(targetElement.toLowerCase())
-    ).slice(0, 10); // Limit to 10 suggestions for better UX
+    ).slice(0, 10); // Limit 10 biar ga ngehalangin
     
     setFilteredElements(filtered);
   }, [targetElement, allElements]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target) && 
@@ -73,19 +70,17 @@ const SearchForm = ({
     };
   }, []);
 
-  // Handle element selection
   const handleElementSelect = (element) => {
     setTargetElement(element);
     setShowDropdown(false);
     setElementError("");
   };
 
-  // Handle recipe count input change
   const handleRecipeCountChange = (e) => {
     const value = e.target.value;
     setRecipeCountInput(value);
     
-    // Validate - only allow numbers
+    // Validate angka aja
     if (value === "" || /^\d+$/.test(value)) {
       setRecipeCountError("");
     } else {
@@ -93,10 +88,8 @@ const SearchForm = ({
     }
   };
   
-  // Update actual recipe count when input is valid
   const handleRecipeCountBlur = () => {
     if (recipeCountInput === "" || !(/^\d+$/.test(recipeCountInput))) {
-      // Reset to previous valid value if input is invalid
       setRecipeCountInput(recipeCount.toString());
       setRecipeCountError("");
       return;
@@ -104,18 +97,17 @@ const SearchForm = ({
     
     const value = parseInt(recipeCountInput);
     
-    // Clamp value between 1 and minimum allowed value (1)
     const clampedValue = Math.max(value, 1);
     setRecipeCount(clampedValue);
     setRecipeCountInput(clampedValue.toString());
     setRecipeCountError("");
   };
 
-  // Handle form submission with validation
+  // Validation
   const handleSubmitWithValidation = (e) => {
     e.preventDefault();
     
-    // Validate element exists
+    // Validate ada ga elemennya
     if (allElements.length > 0 && !allElements.includes(targetElement)) {
       setElementError(`"${targetElement}" is not on the Little Alchemy 2 element list ^^`);
       return;
@@ -126,7 +118,6 @@ const SearchForm = ({
       return;
     }
 
-    // Clear any errors and submit
     setElementError("");
     handleSearch(e);
   };
@@ -161,7 +152,7 @@ const SearchForm = ({
           Search for any of the 720 elements available in Little Alchemy 2
         </p>
         
-        {/* Dropdown for element suggestions */}
+        {/* Dropdown untuk element suggestions */}
         {showDropdown && filteredElements.length > 0 && (
           <div 
             ref={dropdownRef}

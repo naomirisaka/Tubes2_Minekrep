@@ -5,7 +5,6 @@ import { useState } from 'react';
 const MinecraftButton = ({ text, onClick, variant = 'primary', isActive = false, className = '' }) => {
   const [isPressed, setIsPressed] = useState(false);
   
-  // Button variants
   const variants = {
     primary: {
       base: 'bg-green-600',

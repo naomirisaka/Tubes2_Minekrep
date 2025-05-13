@@ -5,7 +5,6 @@ import Image from 'next/image';
 import NavBar from '@/components/NavBar';
 import MinecraftButton from '@/components/MinecraftButton';
 
-// Define team member data
 const teamMembers = [
   {
     id: 1,
