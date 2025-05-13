@@ -12,8 +12,8 @@ import (
 
 func main() {
     recipesFile := "C:/Users/62812/Stima/Tubes2_Minekrep/data/recipes.json" // Default file path
-    targetElement := "French fries" 
-	maxRecipes := 4
+    targetElement := "Steam" 
+	maxRecipes := 1
 	startTime := time.Now()
 	// Load recipes
 	err := utilities.LoadRecipes(recipesFile)
